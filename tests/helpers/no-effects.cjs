@@ -4,26 +4,32 @@ const fs = require('node:fs'), path = require('node:path'), { fileURLToPath } = 
 const trace = process.env.IMA_TEST_TRACE;
 const blocked = JSON.parse(process.env.IMA_TEST_FORBIDDEN_ROOTS || '[]').map(p => path.resolve(p));
 const events = [], write = fs.writeFileSync.bind(fs);
-function refuse(kind, operation) {
-  events.push({ kind, operation });
+function refuse(kind, operation, diagnostic) {
+  events.push({ kind, operation, ...diagnostic });
   throw Object.assign(new Error('test_side_effect_forbidden'), { code: 'test_side_effect_forbidden' });
 }
-function checkFile(value) {
+function checkFile(value, operation) {
   let file;
   if (value instanceof URL && value.protocol === 'file:') file = fileURLToPath(value);
   else if (typeof value === 'string') file = value;
   if (!file) return;
   const absolute = path.resolve(file);
-  if (blocked.some(root => absolute === root || absolute.startsWith(root + path.sep))) refuse('checkout_access', 'filesystem');
+  const blockedRoot=blocked.findIndex(root => absolute === root || absolute.startsWith(root + path.sep));
+  if (blockedRoot!==-1) {
+    const known=new Set(['.gitconfig','.npmrc','npmrc','package.json','node','npm-cli.js']);
+    const basename=path.basename(absolute),fileClass=known.has(basename)?basename:'other';
+    const callers=new Error().stack.split('\n').slice(2,7).map(line=>line.trim().match(/^at ([A-Za-z0-9_$.<>]+) \(/)?.[1]).filter(Boolean);
+    refuse('checkout_access','filesystem',{blockedRoot,fileClass,api:operation,callers});
+  }
 }
-for (const name of ['readFileSync', 'openSync', 'statSync', 'lstatSync', 'accessSync', 'realpathSync']) {
+for (const name of ['existsSync', 'readFileSync', 'openSync', 'statSync', 'lstatSync', 'accessSync', 'realpathSync']) {
   const original = fs[name];
-  fs[name] = function(file, ...args) { checkFile(file); return original.call(this, file, ...args); };
-  if (typeof original.native === 'function') fs[name].native = function(file, ...args) { checkFile(file); return original.native.call(this, file, ...args); };
+  fs[name] = function(file, ...args) { checkFile(file,name); return original.call(this, file, ...args); };
+  if (typeof original.native === 'function') fs[name].native = function(file, ...args) { checkFile(file,name+'.native'); return original.native.call(this, file, ...args); };
 }
 for (const name of ['readFile', 'open', 'stat', 'lstat', 'access', 'realpath']) {
   const original = fs.promises[name];
-  fs.promises[name] = async function(file, ...args) { checkFile(file); return original.call(this, file, ...args); };
+  fs.promises[name] = async function(file, ...args) { checkFile(file,'promises.'+name); return original.call(this, file, ...args); };
 }
 for (const [module, names] of [
   ['node:http', ['request', 'get']], ['node:https', ['request', 'get']],

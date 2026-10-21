@@ -12,6 +12,7 @@ import { createG1FollowupGuard, runG1PairedAcceptance } from '../../scripts/lib/
 import { createLocalApplication } from '../../packages/ima-agent/src/app/index.mjs';
 import { sdkFixture, wire, libraries, sse } from '../helpers/sdk-fixture.mjs';
 import { observedUpstream, observedScopedHistory, composedScopedWebFrames } from '../helpers/observed-scoped-web.mjs';
+import { childEnv } from '../helpers/environment.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
 const post = body => ({ method: 'POST', redirect: 'error', body: JSON.stringify(body) });
@@ -122,7 +123,8 @@ async function installedFollowup(f, { followup, firstSaved, firstWire, mutateCon
   await promisify(execFile)(process.execPath, ['--require', nodeGuard,
     path.resolve(path.dirname(process.execPath), '../lib/node_modules/npm/bin/npm-cli.js'), 'install', '--offline', '--ignore-scripts', '--omit=dev',
     '--no-audit', '--no-fund', '--update-notifier=false', '--prefix', prefix, '--cache', path.join(work, 'empty-cache'),
-    '--userconfig', userConfig, '--globalconfig', globalConfig, artifact]);
+    '--userconfig', userConfig, '--globalconfig', globalConfig, artifact],
+    { env: childEnv(f.directory,path.join(work,'npm-install-trace.json'),[root,os.homedir()]) });
   const installRoot = path.join(prefix, 'node_modules/@ima-local/standalone'), proofFile = path.join(work, 'bundle-proof.json');
   await fs.copyFile(path.join(installRoot, 'dist/build.json'), proofFile); await fs.chmod(proofFile, 0o600);
   for (const file of ['g1-followup-cli-child.mjs', 'g1-followup-acceptance.mjs']) await fs.copyFile(path.join(root, 'scripts/lib', file), path.join(work, file));
@@ -149,8 +151,7 @@ async function installedFollowup(f, { followup, firstSaved, firstWire, mutateCon
   const trace = path.join(work, 'trace.json');
   const spawned = await new Promise((resolve, reject) => {
     const child = execFile(process.execPath, ['--require', path.join(work, 'no-effects.cjs'), path.join(work, 'g1-followup-cli-child.mjs'), configFile], {
-      cwd: work, maxBuffer: 8192, env: { PATH: path.dirname(process.execPath) + ':/usr/bin:/bin',
-        IMA_TEST_TRACE: trace, IMA_TEST_FORBIDDEN_ROOTS: JSON.stringify([root, os.homedir()]) },
+      cwd: work, maxBuffer: 8192, env: childEnv(f.directory,trace,[root,os.homedir()]),
     }, async (error, stdout, stderr) => {
       try { assert.equal(stderr, '');
         const receipt = JSON.parse(stdout); assert.equal(receipt.pid ?? child.pid, child.pid); assert.notEqual(child.pid, process.pid);
