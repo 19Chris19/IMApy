@@ -18,7 +18,7 @@ import { exerciseG1Artifact } from '../helpers/g1-artifact.mjs';
 import { exerciseMaterialArtifact } from '../helpers/material-artifact.mjs';
 import { exerciseReadinessArtifact } from '../helpers/readiness-artifact.mjs';
 import { exerciseProviderTaskArtifact } from '../helpers/provider-task-artifact.mjs';
-import { isolateToolchain } from '../helpers/isolated-toolchain.mjs';
+import { isolateToolchain, createIsolatedArtifactDirectory } from '../helpers/isolated-toolchain.mjs';
 
 const execute = promisify(execFile), hash = v => createHash('sha256').update(v).digest('hex');
 let isolatedNode=process.execPath, npm;
@@ -30,7 +30,7 @@ async function child(args, env, cwd) {
 }
 
 test('packed artifact installs offline outside both checkouts and runs local CLI/SDK and real STDIO discovery without login', async t => {
-  const directory = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'ima-s1-artifact-')));
+  const directory = await createIsolatedArtifactDirectory(forbidden);
   t.after(() => fs.rm(directory, { recursive: true, force: true }));
   const toolchain=await isolateToolchain(directory);isolatedNode=toolchain.node;npm=toolchain.npm;
   const runner = path.join(directory, 'runner'), prefix = path.join(directory, 'install'), state = path.join(directory, 'personal-state');

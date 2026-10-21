@@ -592,7 +592,7 @@
     },
     {
       "file": "tests/helpers/auth-fixture.mjs",
-      "sha256": "70c4347e26927a744c483bb8e174860964676547c61bba52863033f6ad6be9fe",
+      "sha256": "a660c5c69af787b2b75574f698516beaf28f70d5c88a12951b04200261b204d2",
       "mode": 420
     },
     {
@@ -637,7 +637,7 @@
     },
     {
       "file": "tests/helpers/isolated-toolchain.mjs",
-      "sha256": "56055534bf78a5acd6b5a813122cdb752f6e437c87db8844c4d4409211f4536c",
+      "sha256": "9421fd9c00539e60ae85adccb63103beb5018183847007d8a912804abea2da82",
       "mode": 420
     },
     {
@@ -732,7 +732,7 @@
     },
     {
       "file": "tests/integration/artifact.test.mjs",
-      "sha256": "ffc559c609adcdedd4d6aa61c44d6180e75f5cd1e54a6324d6ffc31a936d90cc",
+      "sha256": "9fac48256fc2f5bab9bb853194d8289608f00891b2c6be968dfc638e8ba984d0",
       "mode": 420
     },
     {
@@ -793,6 +793,11 @@
     {
       "file": "tests/unit/g1-web-acceptance.test.mjs",
       "sha256": "666d9d8793ca3433aa76c66ee909cc6620b8e365196c5b74459e4d73ea0b89ef",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/isolated-toolchain.test.mjs",
+      "sha256": "54f5a767141cd4b8a7786061906a4de839c1a4e79eecf88049a3c54ab3e93970",
       "mode": 420
     },
     {
