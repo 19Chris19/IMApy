@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">从人工登录到独立调用</title>
+  <desc id="desc">流程示意，不是真实问答录像。本人扫码登录 IMA，独立 SDK 通过 HTTP/SSE 调用，再由 CLI、MCP 和 Skill 接入工作流。日常调用无需浏览器常驻。</desc>
+  <rect width="1200" height="440" rx="28" fill="#142D2A"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif">
+    <text x="48" y="65" fill="#CCE7D8" font-size="26">一次人工登录，接入你的工作流</text>
+    <rect x="48" y="109" width="292" height="220" rx="20" fill="#F6F8F5"/>
+    <text x="78" y="182" fill="#142D2A" font-size="54" font-weight="650">IMA 网页</text>
+    <text x="80" y="222" fill="#61736D" font-size="26">本人扫码与手机确认</text>
+    <image x="208" y="222" width="122" height="90" xlink:href="hero-subject.png"/>
+    <rect x="454" y="109" width="292" height="220" rx="20" fill="#DCF2E7"/>
+    <text x="488" y="196" fill="#142D2A" font-size="60" font-weight="700">IMApy</text>
+    <text x="488" y="242" fill="#087B62" font-size="32">独立 SDK</text>
+    <text x="488" y="283" fill="#61736D" font-size="26">HTTP / SSE</text>
+    <rect x="860" y="109" width="292" height="220" rx="20" fill="#F6F8F5"/>
+    <text x="895" y="190" fill="#142D2A" font-size="50" font-weight="650">CLI / MCP</text>
+    <text x="896" y="242" fill="#142D2A" font-size="40">+ Skill</text>
+    <text x="896" y="283" fill="#61736D" font-size="26">接入 Agent 工作流</text>
+    <path d="M354 218H440M760 218H846" stroke="#4D6D60" stroke-width="3"/>
+    <g id="login-link" stroke="#91DAB7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M354 218H435M423 207L435 218L423 229"/></g>
+    <g id="workflow-link" stroke="#91DAB7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M760 218H841M829 207L841 218L829 229"/></g>
+    <g id="workflow-ready"><circle cx="64" cy="384" r="7" fill="#91DAB7"/><text x="86" y="394" fill="#CCE7D8" font-size="28">日常调用无需浏览器常驻</text></g>
+  </g>
+</svg>

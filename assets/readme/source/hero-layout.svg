@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="560" viewBox="0 0 1200 560">
+  <title>IMApy — 把 IMA 接进你的工作流</title>
+  <desc>概念插画：资料册与 SDK、CLI、MCP、Skill 入口。首次扫码，后续通过 HTTP/SSE 调用。</desc>
+  <rect width="1200" height="560" rx="28" fill="#F6F8F5"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif" fill="#142D2A">
+    <text x="58" y="77" font-size="26" fill="#087B62" letter-spacing="3">IMA WEB → YOUR WORKFLOW</text>
+    <text x="52" y="238" font-size="144" font-weight="700" letter-spacing="-9">IMApy</text>
+    <circle cx="455" cy="224" r="11" fill="#087B62"/>
+    <text x="58" y="318" font-size="44" font-weight="600">把 IMA 接进你的工作流</text>
+    <text x="60" y="383" font-size="28" fill="#61736D">人工扫码登录 · 后续 HTTP / SSE 调用</text>
+    <path d="M60 429H540" stroke="#C8D6CE" stroke-width="2"/>
+    <text x="60" y="478" font-size="28" letter-spacing="2">SDK / CLI / MCP / SKILL</text>
+  </g>
+  <g id="knowledge-folio"><image x="634" y="62" width="520" height="430" preserveAspectRatio="xMidYMid meet" xlink:href="hero-subject.png"/></g>
+</svg>

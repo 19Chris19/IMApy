@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: transparent cutout for IMApy, a developer tool that turns personal IMA web knowledge into SDK / CLI / MCP workflows.
+Primary request: a single precision-crafted open knowledge folio, with a few layered paper leaves unfolding into three clean structured index cards, suggesting source material becoming a reusable interface.
+Style/medium: elegant tactile 3D editorial illustration, restrained and practical, matte ivory paper, deep ink-green binding, small mint-green and clear-blue index tabs. Fine paper edges, soft realistic self-occlusion, no glossy chrome.
+Composition/framing: compact three-quarter view from slightly above; all parts in frame; generous clear padding on all sides. One unified object, intended to sit at the right of a typographic README hero.
+Scene/backdrop: genuinely transparent background with native alpha, no floor, no backdrop or drop shadow outside the object.
+Lighting/mood: soft studio light from upper left, calm, precise, readable on both warm white and dark ink backgrounds.
+Text: none. Paper leaves can have subtle abstract ruled marks and small square citation markers, but absolutely no letters, numbers, words, logos, QR codes or watermarks.
+Constraints: no people, robots, brains, magic sparkles, screens, screenshot UI, arrows, cables or free-floating decorative particles. Do not generate title typography. Preserve clean natural transparent edges.

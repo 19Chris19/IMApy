@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { gunzipSync, gzipSync } from 'node:zlib';
+import { README_MEDIA } from './readme-media.mjs';
 
 export const hash = value => createHash('sha256').update(value).digest('hex');
 export function safeMember(name) {
@@ -13,6 +14,15 @@ export function auditBytes(name, bytes) {
   safeMember(name);
   if (/(?:^|\/)(?:\.git|node_modules|profiles|credentials|private|\.local-state|\.env(?:\..*)?|receiver\.agekey)(?:\/|$)/iu.test(name)
     || /\.(?:agekey|enc|age|log|tgz)$/iu.test(name)) throw Error('release_private_member:' + name);
+  // Binary files remain forbidden except these reviewed, exact public images.
+  // Never treat an arbitrary image extension as proof that its contents are public.
+  const media = Object.hasOwn(README_MEDIA, name) && README_MEDIA[name];
+  if (media) {
+    if (bytes.length > 2 * 1024 * 1024 || bytes.length !== media.bytes || hash(bytes) !== media.sha256)
+      throw Error('release_artwork_digest_mismatch:' + name);
+    return null;
+  }
+  if (/\.(?:png|gif|webp|jpe?g|avif)$/iu.test(name)) throw Error('release_unreviewed_artwork:' + name);
   let text; try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { throw Error('release_nontext_member:' + name); }
   const rules = [
     ['personal_absolute_path', /\/(?:Users|home)\/[A-Za-z0-9._-]+(?:\/|$)/u],

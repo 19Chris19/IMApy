@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "directories": ["bin", "packages", "tests", "skills", "scripts/lib", "reports/public", ".github"],
+  "directories": ["bin", "packages", "tests", "skills", "scripts/lib", "reports/public", ".github", "assets/readme"],
   "files": [
     "package.json", "package-lock.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "CHANGELOG.md", ".gitignore",
     "scripts/build.mjs", "scripts/pack.mjs", "scripts/check-recorded-acceptance.mjs", "scripts/check-release.mjs", "scripts/export-release.mjs",
     "release/source-policy.json", "release/AGENTS.md", "docs/USAGE.md", "docs/ACCEPTANCE.md", "docs/KNOWN_LIMITATIONS.md",
-    "docs/PROVIDER_ADAPTER.md", "docs/PRE_RELEASE.md", "docs/source-provenance.json", "docs/local-protocol-revisions.json", "docs/login-device-provenance.json"
+    "docs/PROVIDER_ADAPTER.md", "docs/PRE_RELEASE.md", "docs/source-provenance.json", "docs/local-protocol-revisions.json", "docs/login-device-provenance.json",
+    "CONTRIBUTING.md", "scripts/build-readme.py"
   ],
   "mappings": [{"from": "release/AGENTS.md", "to": "AGENTS.md"}],
   "excludedHistoricalOriginalsRetainedLocally": true,
