@@ -6,6 +6,9 @@ export function childEnv(stateDirectory, trace, forbiddenRoots = []) {
   return {
     PATH: path.dirname(process.execPath) + path.delimiter + '/usr/bin:/bin',
     LANG: 'en_US.UTF-8', TMPDIR: process.env.TMPDIR || '/tmp',
+    // npm's Git helper probes os.homedir() even with explicit empty npm configs.
+    // Keep every isolated child on a private synthetic home, never the UID home.
+    HOME: path.join(path.dirname(trace), 'synthetic-home'),
     IMA_STANDALONE_HOME: stateDirectory,
     IMA_TEST_TRACE: trace, IMA_TEST_FORBIDDEN_ROOTS: JSON.stringify(forbiddenRoots),
     IMA_QA_CONFIG: '/synthetic-do-not-read/provider.json',

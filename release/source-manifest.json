@@ -607,7 +607,7 @@
     },
     {
       "file": "tests/helpers/environment.mjs",
-      "sha256": "65c653a8033f58d89652793d4b8a498cf97fa6f6d35171cbcc599e12ac80c334",
+      "sha256": "0999ade96751637a0a8043b5195778b209514ccea20ebb9db9b502c5559a1dde",
       "mode": 420
     },
     {
@@ -657,7 +657,7 @@
     },
     {
       "file": "tests/helpers/no-effects.cjs",
-      "sha256": "35249866ec6692ca2e37eb6379ba3f8dec67da9a4383b610d36e07ef7a264f31",
+      "sha256": "7ed3219b42e8607307d9ce40dae6d379f5bc6763a494c419b731ce43521c6e61",
       "mode": 420
     },
     {
@@ -787,7 +787,7 @@
     },
     {
       "file": "tests/unit/g1-followup-acceptance.test.mjs",
-      "sha256": "917534ae66cadbd0eee03e3a9107cafe003514782cb83604cdf7cc0566bdf6cc",
+      "sha256": "dd78778182486f25c07d46bc310f864cae8d32ff99139d11d3416d86790b0e94",
       "mode": 420
     },
     {
@@ -797,7 +797,7 @@
     },
     {
       "file": "tests/unit/isolated-toolchain.test.mjs",
-      "sha256": "54f5a767141cd4b8a7786061906a4de839c1a4e79eecf88049a3c54ab3e93970",
+      "sha256": "3a70795dbec04563706e5dec92aae731a5278db4364451201d3ad79e55c0ef7e",
       "mode": 420
     },
     {
