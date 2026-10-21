@@ -27,7 +27,7 @@ export async function checkRelease(directory=root) {
   if(acceptance.currentProfileValidated!==false||acceptance.candidateVersionValidated!==false)fail();
   const chat=JSON.parse(await fs.readFile(path.join(directory,'reports/public/chat-visibility.json')));
   if(chat.observedIndependentMcpTools!==11||chat.imaRequests!==0||chat.newReleaseInstalled!==false||chat.realAgentQuestionAcceptance!==false)fail();
-  for(const name of ['README.md','docs/USAGE.md','docs/ACCEPTANCE.md','docs/KNOWN_LIMITATIONS.md','docs/PROVIDER_ADAPTER.md','docs/PRE_RELEASE.md','CHANGELOG.md']) {
+  for(const name of ['README.md','CONTRIBUTING.md','docs/USAGE.md','docs/ACCEPTANCE.md','docs/KNOWN_LIMITATIONS.md','docs/PROVIDER_ADAPTER.md','docs/PRE_RELEASE.md','CHANGELOG.md']) {
     const text=await fs.readFile(path.join(directory,name),'utf8');
     for(const match of text.matchAll(/\]\(([^)#]+)(?:#[^)]*)?\)/gu)){
       const link=match[1];if(/^(?:https?:|mailto:)/u.test(link))continue;
@@ -36,7 +36,7 @@ export async function checkRelease(directory=root) {
   }
   const value={schemaVersion:1,version:pkg.version,sourceFiles:source.length,packageFiles:members.length,
     packageSha256:hash(archive),publicHistoricalReports:Object.keys(ACCEPTANCE_REPORTS).length,chatVisibilityOnly:true,
-    privacyChecks:'allowlist,UTF8,personal-path,credential-signatures,archive-members,public-evidence-schema',
+    privacyChecks:'allowlist,UTF8,reviewed-artwork-digests,personal-path,credential-signatures,archive-members,public-evidence-schema',
     realImaRequests:0,productionChanged:false,githubWorkflow:'configured_not_remotely_run'};
   return {summary:value,source,members};
 }

@@ -1,0 +1,16 @@
+{
+  "width": 1200,
+  "fps": 30,
+  "duration": 5,
+  "colors": 192,
+  "dither": "none",
+  "clip_to_base_alpha": true,
+  "max_size_mb": 2,
+  "reveals": [
+    { "id": "login-link", "axis": "x", "start": 0.25, "end": 1.05, "exit": { "start": 4.2, "end": 4.9 } },
+    { "id": "workflow-link", "axis": "x", "start": 1.05, "end": 1.85, "exit": { "start": 4.2, "end": 4.9 } }
+  ],
+  "layers": [
+    { "id": "workflow-ready", "enter": { "start": 1.5, "end": 2.1, "from": [0, 8] }, "exit": { "start": 4.2, "end": 4.9, "to": [0, 4] } }
+  ]
+}

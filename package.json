@@ -32,7 +32,9 @@
     "docs/source-provenance.json",
     "docs/local-protocol-revisions.json",
     "docs/login-device-provenance.json",
-    "reports/public"
+    "reports/public",
+    "assets/readme",
+    "CONTRIBUTING.md"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
