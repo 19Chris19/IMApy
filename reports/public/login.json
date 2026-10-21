@@ -1,0 +1,26 @@
+{
+  "version": "0.0.0-s4.8",
+  "platform": "darwin",
+  "arch": "arm64",
+  "loginSaved": true,
+  "deviceContextCaptured": true,
+  "clientIdentityCaptured": true,
+  "sdkSucceeded": true,
+  "cliSucceeded": true,
+  "mcpSucceeded": true,
+  "recoverySucceeded": true,
+  "actualNewQuestions": 3,
+  "agentRegistered": false,
+  "scope": {
+    "uniqueKnowledgeBaseCount": 1,
+    "webSearch": false,
+    "credentialRefreshCalls": 0,
+    "materialsRead": 0
+  },
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "2a540fe60ed5ee072f5d8ca700a74747a39675f4fa93262b70c159483c59d432",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}

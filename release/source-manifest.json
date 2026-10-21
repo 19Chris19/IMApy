@@ -1,0 +1,984 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0-alpha.1",
+  "sourceBaseCommit": "921475346615fb768da4dcfea74f22a95abf17db",
+  "originalGitHistoryIncluded": false,
+  "containsUserState": false,
+  "files": [
+    {
+      "file": ".github/workflows/ci.yml",
+      "sha256": "0a7fc019ac06dafb8c3a64bf46a361c2c36f12f13d80c95a9f4660e90eabb66b",
+      "mode": 420
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "e0abd534f896e2e068dcd97cc9f79a12fb6201bd142d7040bc8cb1bd48e65d7a",
+      "mode": 420
+    },
+    {
+      "file": "AGENTS.md",
+      "sha256": "37b5d8f8f3a7608309ffa976ddc6a843420843d52444fb0e1623670ad7cf22af",
+      "mode": 420
+    },
+    {
+      "file": "bin/ima.mjs",
+      "sha256": "fd99095d802fed2bfd2c7ba030820ec23406a473827aac41ef54a02fe9712c86",
+      "mode": 493
+    },
+    {
+      "file": "CHANGELOG.md",
+      "sha256": "5002558a9375f2ea235398b82edac9d6232f045ecd1f97236c59b2b684c6dc29",
+      "mode": 420
+    },
+    {
+      "file": "docs/ACCEPTANCE.md",
+      "sha256": "b1f1d4f060d4a304260a0659467e1b6940e33c41687791c0067e425008c0dd38",
+      "mode": 420
+    },
+    {
+      "file": "docs/KNOWN_LIMITATIONS.md",
+      "sha256": "4e39004ce75dcb44ac09b7115e7914d103078be1abb60a9771184545e59d2cdd",
+      "mode": 420
+    },
+    {
+      "file": "docs/local-protocol-revisions.json",
+      "sha256": "6cb78b665047425dadfbcc5ee216e04293fe4eb0ca291ca28e0f60d74c34b571",
+      "mode": 420
+    },
+    {
+      "file": "docs/login-device-provenance.json",
+      "sha256": "14bdc728bcd835152e16003d679d610759d2819b45e1777ec9b184beeeef8460",
+      "mode": 420
+    },
+    {
+      "file": "docs/PRE_RELEASE.md",
+      "sha256": "be6e48d488f2808ddfab0279954314da545b2ddcabcf3fdcb16807946997659c",
+      "mode": 420
+    },
+    {
+      "file": "docs/PROVIDER_ADAPTER.md",
+      "sha256": "e2a1a4766c8714a4bab23505859a1bd2cc6fb2d402d196c10e0a0b82f24a2a41",
+      "mode": 420
+    },
+    {
+      "file": "docs/source-provenance.json",
+      "sha256": "51faa22cd44cac0ec5d589bece6b572e963a7d186f2848f004cf9dd4a96a6014",
+      "mode": 420
+    },
+    {
+      "file": "docs/USAGE.md",
+      "sha256": "bc2033f1741b47636153dfb11b6b42bc94c9777e7b5260a90de438cb895753a1",
+      "mode": 420
+    },
+    {
+      "file": "LICENSE",
+      "sha256": "f53488aa11b5f4280a250af9d89786a0eadb9327d3f6a03d8233eb31e9def9e2",
+      "mode": 420
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "660dfb5941ab48edbf2ccd85afb3812bf2f2f52247e93e94d890f6a290497325",
+      "mode": 420
+    },
+    {
+      "file": "package.json",
+      "sha256": "be9c434e80eb814c582ac98e1882837c7caaa82821de53bf05f4aa8d21a19e9b",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/package.json",
+      "sha256": "7b3c0d2fe74028be97bc6736446d1318a62d19ed7cfee92ee86cc449331421e0",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/app/contracts.mjs",
+      "sha256": "15b8e13afc0ef7afd7995cb3a8c1aee740be3e82e8ab8a3f4d116876cc9bd335",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/app/index.mjs",
+      "sha256": "29a364d6006142b877891e82d911f346c02c3578e194a279fb6bd63f1fa71075",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/app/recorded-acceptance.json",
+      "sha256": "276df574403bc5785ce3832021d57e3f242fc045b456eb0bc2f096ebec582be3",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/app/recorded-acceptance.mjs",
+      "sha256": "653553b851b0cfef6822ff0d11cf6365c36a7349a11e4d5cd5528ee85691e0b5",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/app/registration.mjs",
+      "sha256": "988c590c59de862005ec4bd15dd0da05383915096796f38832cf9dc0b41bfa4c",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/app/workflows.mjs",
+      "sha256": "4c097d61005c3a83720e3639589f4d251434f83025d70951ef29df08e17ae215",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/cli/commands.mjs",
+      "sha256": "577de31f6b417a041acef82312ac2eee71a439cf58174fa6c49d31c7731aa9e1",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/cli/index.mjs",
+      "sha256": "17800ee5292ef582777c28161778d416e0ba003a00e6d42a5190eda718b057c9",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/cli/output.mjs",
+      "sha256": "d5b76027cf0a34d716b1b3f9a97242be17b657cdbddcb7af3933c79751df9415",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/mcp/server.mjs",
+      "sha256": "5be7ff77b28cc77eded4553f9973ca24e4cf3c50d41a200c94c8475aea2352a7",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-agent/src/sdk/index.mjs",
+      "sha256": "74a7974859e0268e8d1a9280e621abea7bce650244f530b7e913023a9dc01f8b",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/extraction-baseline.json",
+      "sha256": "1ab43b63cb63671919765d239ae8b3c43459616c0a6c3307cd1bb0df14549c33",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/index.js",
+      "sha256": "9a04bf2778f3e0b438599ffe3aaf350553b404f8f4bc3d45ddf9a5a17c0175de",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/LICENSE",
+      "sha256": "f53488aa11b5f4280a250af9d89786a0eadb9327d3f6a03d8233eb31e9def9e2",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/package.json",
+      "sha256": "ab1f3c425f847290aee4ef0295bed4dcaed9dcfe42fea22375ea1de187cd5ed6",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/README.md",
+      "sha256": "d522b6ed4ae2702684d79a8a17093e3dea0c0738b6b8c6e351b1b3d8080c5ba9",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/auth-refresh.js",
+      "sha256": "5499969e39cbec53a0481d4b91d916058e9072b5df6757ade80d811175b9db6c",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/chat-presentation.js",
+      "sha256": "c2a8b6713a26da03c2891867d20ac09f8fd7c2e88c23f5195580434a4b639ecd",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/general-session-checkpoint.js",
+      "sha256": "51cb0dafce05f2b95c92c7ff9dea7275faeaab0b9e9b69ef141d7630af7fca7e",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/ima-answer-profile.js",
+      "sha256": "2c50ee51585661896040469522e24e4e3d6bad13bc969bc5eac5c21568c18ee9",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/ima-knowledge-agent-contract.js",
+      "sha256": "b1ccab78493b13faff0a3e9b2d7ee37c98410f3225bc958ce36a7158b4a6d4cb",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/ima-upstream-protocol.js",
+      "sha256": "730677e5628b0231c44c086da68b24902f96a183b45babb982220e4a0ac264db",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/ima-web-protocol-client.js",
+      "sha256": "63e397af4cd5b52a6fb38720e42cd04c57f73a587edf4e851434229beb544f4c",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/knowledge-evidence.js",
+      "sha256": "4ff349e69ee7d4ae12c3fe5012868e2e89eac91f46f758d323a8bd7690a97608",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/material-web-access.js",
+      "sha256": "619ce61d17c59108a63ee4663d43a9fba063dfcb3bb9ed7c3eb92cf6ee092018",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/node-http-transport.js",
+      "sha256": "b9da79ad0e77a62a6482a07f7a3a2c84701764075e340859064e47ec513edfe8",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/operation-deadline.js",
+      "sha256": "37a1a05d005188198cb9fde7fd3cccd273ab37f77ee9e4b97ae9df1792d31d76",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/refresh-diagnostics.js",
+      "sha256": "992c3adaad94d474a1df12a828bfeacda0f5991e0d6ef6d3afdf2cadafa3e366",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/scoped-agent-checkpoint.js",
+      "sha256": "51742d596ffe6ae71d287af5f482a300f8bafb441f7fc58dd8cb12a15416e7b6",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/session-checkpoint.js",
+      "sha256": "56be8be82cdcf22c836c80a6bdf8842ad4c8b05fdc34813fce0b6f28007caddb",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/source-evidence-contract.js",
+      "sha256": "83aa2976c4884bacc7509ae4df5cfab59ea69d01b6d78c84443784097e9a6796",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/task-result-contract.js",
+      "sha256": "e293c157ac62f8cc5783dbb3adda5f057328d2d3be24501ecda8a40bd60398b1",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-core/src/web-login-context.js",
+      "sha256": "c55fab320a59b7c689861690949588872a216ee3b4cb4520d7c667587e95021c",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/error-evidence.mjs",
+      "sha256": "162617f08672fa9203a7fd4c94322898bad238a2beb7cd13ac03bb8c4cf69cf4",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/error-translator.mjs",
+      "sha256": "58039e86ca2cd761cdd6515b268cf06c917e086904b0e3203484c94c0d126321",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/index.mjs",
+      "sha256": "eb4bc094652d63e826e0b347d3c07ddc06b2804bbb8c5aeca87223aad577f06b",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/login-capture.mjs",
+      "sha256": "cfb04bce8e5a5b1e32a607f7704ebefd3ba475e5fd777f73876180458f32f436",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/protocol-port.mjs",
+      "sha256": "24baf547698769e5a2a78ae526c56718ca68d4c973d38eca182cb4e5ca7f844c",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/qualification.mjs",
+      "sha256": "2089483addb79d85e2ea23aa11b3bffaed0c839904ed309c9e14bb07229c952f",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/session-commit-coordinator.mjs",
+      "sha256": "df07d5707ca2fd31a09c316c7df9553709097f5c830372f097f78a4e424ab591",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/task-client-factory.mjs",
+      "sha256": "fdadd4a40085c4da69afbcda47d712507b7ae2ffb503d36cf67fe317784b3b9e",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/task-session-bridge.mjs",
+      "sha256": "09aafdd949eae8c431c65276b595942217a826a99178be4753fde51931c4023b",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/upstream-intent-journal.mjs",
+      "sha256": "c0feb5dddb82edc6b4689767da848978ea497e7382993f6d57cba4559a7cd12e",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-provider-adapter/src/web-evidence.mjs",
+      "sha256": "16e1f59fc74f2fe5b4b1e4053fcd9d9c40fe288bf22926b8131b48bc714d1b86",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/package.json",
+      "sha256": "84f21f23cd7f5e74916352c815b941e4fdf60b8aafd92ddbf0ab3193ef4555f2",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/auth-maintenance.mjs",
+      "sha256": "cf3841d35c7c74c283e07d6b60241a1057b014d672db61eeb38e1d2f44d90ad2",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/browser-login.mjs",
+      "sha256": "d3da6bb6a5c92bb086095590b94c9241d3b82d73b1aa4362db486f83319d9e68",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/conversation-state.mjs",
+      "sha256": "49fb2db997460c2c4f81639953bdcfff8c099d1fcbc4c9ffc6dd1c9bb06c923d",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/credentials.mjs",
+      "sha256": "4cad0fa1bc50ba194400141be429af9ca7b04e3b322c8d50606dad2e02ef1d56",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/errors.mjs",
+      "sha256": "acc3f41a1fc434d35b0a4a71eaacc322efe1bd3c91fad7a4324fdd25930da394",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/index.mjs",
+      "sha256": "84511b33b3f5c31ab728898a652faf8e3649ac873168ffb9b109a7bba0d3a108",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/knowledge-citation-projection.mjs",
+      "sha256": "04505a4241fad06e2ee7ed478982aada4db0c1349d8635fe02d363ddb41a32a1",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/local-readiness.mjs",
+      "sha256": "64340b70c9d01895c9b05d9d94b44c9964c3d539ecdee856175daad48ca70ce6",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/login-device-context.mjs",
+      "sha256": "68cc320030fd73bc84905cc9ef0ce614e9d9c931b4c1b309d07ce2579da14a91",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/login-page.mjs",
+      "sha256": "f2c7a7f1f7394fe37a4722ede10e6e7cc83e35ff071190e3e7a708af9ae64dc9",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/personal-auth.mjs",
+      "sha256": "304ac34a7aff165a58418bbea7daac57f05b898f97a206af8659fad1689c8447",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/personal-client.mjs",
+      "sha256": "7b8a0c4d306790d960d01785a0a5409117d09ccfb9a66b67ce108bd65eba14eb",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/profile-store.mjs",
+      "sha256": "7f598403f2a4dc0774382f85fc8694156294c51d21bb8f22884a2337f0b73ee4",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/task-history-inspection.mjs",
+      "sha256": "09e7fe453f0f6002999bf0b3acd737a10fa3711b430e4a1933b8e46249eecba1",
+      "mode": 420
+    },
+    {
+      "file": "packages/ima-runtime/src/task-journal.mjs",
+      "sha256": "27586fb0c8ffbc724a500341de68a9272be57ec49f47ec35f76c01c03a05c0fd",
+      "mode": 420
+    },
+    {
+      "file": "README.md",
+      "sha256": "21feba60a9b6d468e031c4d654e2e3d45e823f1f6d797e294c2ab2223954e53c",
+      "mode": 420
+    },
+    {
+      "file": "release/AGENTS.md",
+      "sha256": "37b5d8f8f3a7608309ffa976ddc6a843420843d52444fb0e1623670ad7cf22af",
+      "mode": 420
+    },
+    {
+      "file": "release/source-policy.json",
+      "sha256": "a2ceb952b28428dcb72bc0c54569f4291700d4057f27f5fc3c683f07abd9badd",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/chat-visibility.json",
+      "sha256": "26447f97d97c9c2bfe84fa543b56e6c97c603f371467c448ddeec4ff6367d606",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/deep.json",
+      "sha256": "60545305d93d33c87939a7da7602bcf4653e7b1a67ab6c0d5f3069c3d116d0ca",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/login.json",
+      "sha256": "d34585737fd65c6c640c9defbfec242df7eed9afe78b046fd4f174fbfbb3e6f9",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/native.json",
+      "sha256": "737daffec1b9ff979814acfec6247c74fa56edc365189178c1c2e79dc15a8822",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/otherModels.json",
+      "sha256": "2e2f6c4aaf283819464667266543262ede641f7e752605e367324efa1aa716ec",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/quick.json",
+      "sha256": "4aee3cebe3e94fdd213a99669145d23eca8b89c1a5e667436c60394f670571d0",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/refresh.json",
+      "sha256": "f28de360b09fd3df51a4aeb84d03684625cd61ff6c7d74566dc591bbd4e3d603",
+      "mode": 420
+    },
+    {
+      "file": "reports/public/web.json",
+      "sha256": "e8ba98a99a3776b39c479272daddb990fa68b44a142b17fa861c3bf8a070a2ec",
+      "mode": 420
+    },
+    {
+      "file": "scripts/build.mjs",
+      "sha256": "d46bbfbebb4fb8670d37b5546c173ffd9114dd808ee7860d007fb8b06af5df7d",
+      "mode": 420
+    },
+    {
+      "file": "scripts/check-recorded-acceptance.mjs",
+      "sha256": "d587abdd880b57f1adf70b3e0dee248dc7a1b4e905332683819139142f6cdcd8",
+      "mode": 420
+    },
+    {
+      "file": "scripts/check-release.mjs",
+      "sha256": "52d21c2bd306326997ef02208c575dd21e5c84ac4b7828f28f352f9ccf8381c7",
+      "mode": 420
+    },
+    {
+      "file": "scripts/export-release.mjs",
+      "sha256": "8fca95cc9201655807d5e45f019786ee9a22e862c510126665eb73b3b344e8f6",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/g1-followup-acceptance.mjs",
+      "sha256": "d0f52b083395ce5624e688b4d78cd3dfe0b992bcfbd93e8d0500a67da0f27d88",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/g1-followup-cli-child.mjs",
+      "sha256": "d8ab5c570ffa4ffddf8268deb822157e063a3f366efd2332587000472278073f",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/g1-web-acceptance.mjs",
+      "sha256": "133b01bd6696dd2b34f0be3520b842b9bffce7c3da12d1813717a1afc824f519",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/public-evidence.mjs",
+      "sha256": "d40d591841f4dce22c9c10d4af86fe22fc5a7db3de7017daeaa280a4e9dcf392",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/recorded-acceptance.mjs",
+      "sha256": "43ec010207eb4cb091b5c654e0eaa00368531e150cc31daf9cd17fbcfdb3e44e",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/release-files.mjs",
+      "sha256": "f6a27b15582ef5c98db818d0c65714698d0e31af1cf50b2b07128715e071c999",
+      "mode": 420
+    },
+    {
+      "file": "scripts/lib/resource-observer-child.mjs",
+      "sha256": "980a5724e285e17af39918e4f6523906b4a7f3a6e8f6a02f9ff7f51b8cb9bab6",
+      "mode": 420
+    },
+    {
+      "file": "scripts/pack.mjs",
+      "sha256": "f7b84686a94ed693c289144ede5db629613d9864a989a1095dee30c97db1d6fa",
+      "mode": 420
+    },
+    {
+      "file": "skills/ima-standalone/agents/openai.yaml",
+      "sha256": "14114714757d48068af30deae27b45e5642afe8ba3476dbfa8b7b90ad31dec6b",
+      "mode": 420
+    },
+    {
+      "file": "skills/ima-standalone/README.md",
+      "sha256": "25064f16e7e2451b3eb26857f0bb9c6a90a4826fcfa5a8084c0b55bc26d19896",
+      "mode": 420
+    },
+    {
+      "file": "skills/ima-standalone/references/evidence.md",
+      "sha256": "074b4911727196b3bd8c7ca0b0fe8451b49093c0c1edff2e54e222321735f261",
+      "mode": 420
+    },
+    {
+      "file": "skills/ima-standalone/references/first-run.md",
+      "sha256": "52015f325c0223b7752eec5cca64581726bb6be5c0a46e7dfaa6d4023530fc4b",
+      "mode": 420
+    },
+    {
+      "file": "skills/ima-standalone/SKILL.md",
+      "sha256": "bdb01e6229059b47c3c8fb89f28352efb27d346f5e222d4165bc108250505229",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/auth/refresh-r2-shape.json",
+      "sha256": "bd78c52838ca6e1b684c81f053524844bccfd0a55638e05266aff6e7f5127a82",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/bound-session-history.json",
+      "sha256": "c949d4c8e8b0b5fcd067d954a23f95494b6b59cc5a21c0d6c2735d4efc34fe05",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/citation-late-numbers.json",
+      "sha256": "6d99107a2e0a09f875609d0b566ec364ac1064322423cd0e91a98c15c984ac03",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/deep-thinking.json",
+      "sha256": "2275b5faa6624e804900ed81c0617da0630efff776bd07838a4552c1d919d036",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/general-chat.json",
+      "sha256": "50c68aae3378ee5ac5db7d596f19af40ab8f566cd7fe2770544f7efbe407a40f",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/knowledge-sessions.json",
+      "sha256": "ae9ddbaf0d65b437ba6872708eb9fe02657b7dc51869f369cc15c94a0e1c8456",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/library-selection.json",
+      "sha256": "266c5038e9aa95d75956c9cb581a77e1e2ab899c017cfea2004bed1c771c89c8",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/scoped-agent-session-history.json",
+      "sha256": "87f17ee2da44ec7655438082b3be49d1504e1d9c700d861a2f49dbf48620a0f9",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/scoped-web-file-list-type3.json",
+      "sha256": "ee3e1798c8667dd2479370fd175c919d39ca9dbf8e68ab40ad4f11171fe41cad",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/scoped-web-task-history-s415.json",
+      "sha256": "79af5986b3a538f97cd9b26e6d7cc8d11a4399aba5953b39c8e99077acc08acd",
+      "mode": 420
+    },
+    {
+      "file": "tests/fixtures/web/wire.json",
+      "sha256": "a1ab2129003ef2e8ed602c673f3b7bc7d7c383cac283c1bc8ff8ce2e02c7fbc4",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/agent-artifact.mjs",
+      "sha256": "36c8c58a0f3a4a3cf4ed41c05fee36b91c23a29164ce5e954087de53e328ef1a",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/auth-fixture.mjs",
+      "sha256": "70c4347e26927a744c483bb8e174860964676547c61bba52863033f6ad6be9fe",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/bounded-acceptance-guard.cjs",
+      "sha256": "9e2c3fa55967a505031f9cb66108eef93402f70fd84f8a7d67767395996ef947",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/deny-source-state.cjs",
+      "sha256": "1e84e6e1b2588ed314a103051d5c44638c830ff4d9708da882cddd5a1519cc4c",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/environment.mjs",
+      "sha256": "65c653a8033f58d89652793d4b8a498cf97fa6f6d35171cbcc599e12ac80c334",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/g1-artifact.mjs",
+      "sha256": "f322dd3f5a420fb67f7ec5943803da0a41c42395bc79ae49b0818cfa45bbc463",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/g1-auth-readback-child.mjs",
+      "sha256": "eca371a17c6f16f5adf4529eea19a2485c50892dab10bfb2a66d1028eb7445ba",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/g1-followup-cli-mock.mjs",
+      "sha256": "5e4bb01f0422cf2ace2876b63fb584ed6a252a7a94537b00c1ca8cd0010187f1",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/g1-pair-recovery-child.mjs",
+      "sha256": "8a8d08198f0e88010b4248fac4defbb67e02cdb09b80e6f809c525d1c488f22c",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/g1-recovery-child.mjs",
+      "sha256": "9caeba743026c89233c993d9e087f600f185eb969396ff299a5dfa1c8aba0fae",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/isolated-toolchain.mjs",
+      "sha256": "56055534bf78a5acd6b5a813122cdb752f6e437c87db8844c4d4409211f4536c",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/login-browser.mjs",
+      "sha256": "32b775db7a68f76ff770be074f6cbc28b750c89271f00b6f1915fd1afecc9d89",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/material-artifact.mjs",
+      "sha256": "42cdc1064532a62f0d24f180b7cc10975aebbe589d0d51b207f5001fd25301e9",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/models.json",
+      "sha256": "319dc2ef90d13d95f74980b4e654971d3b134553eea03291dcee557dd005d11c",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/no-effects.cjs",
+      "sha256": "29d07f964e4abca2efc18f9a0a4c7a12764f820045f8c0c29c0226d674bd41a1",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/no-upstream.cjs",
+      "sha256": "7bbc626296009c5a1776e5faa19f812934e5f4a2311bfccc51dfb8237208283c",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/observed-scoped-web.mjs",
+      "sha256": "716ff6dd7b0f235da972970096578db26f964facbdc6df0e786ff1f460f653cf",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/own-loopback-only.cjs",
+      "sha256": "ee5b7f50ea2b047e1b89f6fbabaff41072fe0855a78878a35c1d7324c921f43a",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/provider-http-process-child.mjs",
+      "sha256": "2c20060175eb72d0af8ba4fb02f052288f5dddeec46c01c06756851c85470b1c",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/provider-signal-child.mjs",
+      "sha256": "bf9f7a5ba6f7516b19708d4c49ba25203d915ca493f5400e81ba9a2a21674d54",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/provider-task-artifact.mjs",
+      "sha256": "2f6a6ab3de66c2d685865906e2665ac9a72d7c5a84218404bfea22488a59807f",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/provider-task-fixture.mjs",
+      "sha256": "aa7978cb2a9d6da7b9227d07fe90fe3421bc7d28b9c2333ea69837948ae7997a",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/readiness-artifact.mjs",
+      "sha256": "e8d36bbc15877aee6c2f55e72c9eabb1808e89f1370b8c3957535c5ffd6284ed",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/sdk-fixture.mjs",
+      "sha256": "ce69b2e3998ebe1578795bed80aa6aacb9c5b068cb26d46c7a25e9d56758ab81",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/session-coordinator-child.mjs",
+      "sha256": "c771cfb83e0b766163bbe001a8f5f09037368f84067883ccd04d37714f87e2a4",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/session-coordinator-fixture.mjs",
+      "sha256": "0312833b35ce5f17b71515e1d3f34cfe2de7a1c227d1c09fa2902d338e4f2fe4",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/upstream-intent-child.mjs",
+      "sha256": "25b8d0426ca50bbe93083d06e911049cd759b85611bb6f72e68de1ef6b6f4938",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/upstream-intent-fixture.mjs",
+      "sha256": "6df29b7c90ec1d2f95d8878ab8bc1d8bac0fe372bf753505b0fd805469e45cd2",
+      "mode": 420
+    },
+    {
+      "file": "tests/helpers/web-citations.mjs",
+      "sha256": "6f1993f7dd430b768375dff3c0a75b43705af154e2db14524d0264c8f3b79a18",
+      "mode": 420
+    },
+    {
+      "file": "tests/integration/artifact.test.mjs",
+      "sha256": "ffc559c609adcdedd4d6aa61c44d6180e75f5cd1e54a6324d6ffc31a936d90cc",
+      "mode": 420
+    },
+    {
+      "file": "tests/integration/provider-session-crash.test.mjs",
+      "sha256": "994e7f8ed49279538a29882bec11620d5a5ce535a0558653e50336de57008717",
+      "mode": 420
+    },
+    {
+      "file": "tests/integration/provider-upstream-crash.test.mjs",
+      "sha256": "ddd8084fcaf282d90015110803e919f2e2d8675ca749f05b04cbca6f398b1f93",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/agent-cli.test.mjs",
+      "sha256": "82b77983f83c8e40395987e9505f5c3768d01c76b5ebb4220a400f05f488037a",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/agent-web-citations.test.mjs",
+      "sha256": "1e19838eb315aad1fa368a5c11570813434b9a4ccbb1355390e9f5290de6883a",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/agent-workflows.test.mjs",
+      "sha256": "83f530687e3f2b35e02f421f6c1ba242bd17324e029ff130787855fc4a1c96b9",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/auth-maintenance-limits.test.mjs",
+      "sha256": "fc44ad16e360fb3b0dc07e1a3392c9daea8679900e9ca1caf8b7374853665228",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/auth-maintenance.test.mjs",
+      "sha256": "b0fa75224aa61c9fdb4dd10a757168843b9918aaddbb30d5e6ef79fdb2a9ecef",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/bounded-acceptance-guard.test.mjs",
+      "sha256": "a8533f4f45cb7178ab9fc6969d9e7f8efcd0d30aca8726c3f4fd3307b7e5fe08",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/browser-login.test.mjs",
+      "sha256": "1be30819ab9a1c62f987cadfc1a96ba65996de4346c458f56822887c42cca43d",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/cli-output.test.mjs",
+      "sha256": "dc89a43204c43c5138eb30c692f8e065a029ba4fa51a6e86b2da374db723a096",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/g1-followup-acceptance.test.mjs",
+      "sha256": "917534ae66cadbd0eee03e3a9107cafe003514782cb83604cdf7cc0566bdf6cc",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/g1-web-acceptance.test.mjs",
+      "sha256": "666d9d8793ca3433aa76c66ee909cc6620b8e365196c5b74459e4d73ea0b89ef",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/local-readiness.test.mjs",
+      "sha256": "8749ce8c59382cec5fb4eaffbd328dd7e2270416d60300d2fb076ce0d0bcde5e",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/local-runtime.test.mjs",
+      "sha256": "0236c000fe07bac1ea7070c5486bd499d84379ca457a2437dfea8d9b385eb55b",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/login-device-context.test.mjs",
+      "sha256": "3b2f0f3ce02a1781e14ea708c40de12907445564a1f5f1a579175aa7fd7a5640",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/login-page.test.mjs",
+      "sha256": "9717f021caf272dd6060ade79dd4604589d54f8e5dc0982abfaea0fafe7e1b21",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/material-evidence-agent.test.mjs",
+      "sha256": "00bde11b291196d10666d0eda3a27a974a9510d5a5c1a5814e224a7d9d80b755",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/material-evidence-runtime.test.mjs",
+      "sha256": "d7a6ebb26aa0501dd899f7e53f7b725c6b1d930cfef9a7bb7379294569e62d83",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/mcp.test.mjs",
+      "sha256": "c7949d5b411fc153859f9f138cef6c0bb84fbb03ae66801c587249034b378a68",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/package-version.test.mjs",
+      "sha256": "d7d9be5b099be59dd77cc777f544e89589fc778e991cc9a107fbf629fa0c28b6",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/personal-auth.test.mjs",
+      "sha256": "f3c53b81afa661285d511621f31a8be95ec5246da9a62d3c5078f9e79f0b1c24",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/personal-client-faults.test.mjs",
+      "sha256": "10f49dcb45bf378f14c530255bd319cc952fa83a6dd789be0ae351a78cf64e63",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/personal-client.test.mjs",
+      "sha256": "5c6664c7d6dca1f5685a5b393ca975c9cbf181865fdb3861511b9a7f4540836d",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/profile-store.test.mjs",
+      "sha256": "6f26112f05046db14d185867fecd22ceee6d58f9230c50b94272f8f94fefd239",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provenance.test.mjs",
+      "sha256": "4b086f5e089086df4e51616198b36c7df5be83000532d9016e327caed3efedd1",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-adapter.test.mjs",
+      "sha256": "d7f6e783e410db606ce645a041554765762ac4bf217803f560de2a7d34def3c6",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-error-translator.test.mjs",
+      "sha256": "b4668cf6f98d7a1d17689e6bbd672a757125a02c0b7dc4e1d1721082155122fd",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-login-capture.test.mjs",
+      "sha256": "11cd3af7e03d7c97e1c3bb6d0eb58413329e703a199e2c13ff371df2c6a829c1",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-protocol-port.test.mjs",
+      "sha256": "db60af2d05169f8b5abd82fbfa945794c3a5962e0624ec52655cb4279c7290cb",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-qualification.test.mjs",
+      "sha256": "4ae5585a85e403162769dc55e37086b39c5b9af25a7509c3825f28fd0b307186",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-session-coordinator.test.mjs",
+      "sha256": "3c3bf87a7b28fb841faa9521cc3b9cbc2665e851f5befb369b29f3dba9bbcf34",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-task-client-factory.test.mjs",
+      "sha256": "835b002514c78e586e8b6642c244f996a6ec8bc05e0aabc03bd26507ac40a211",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-task-session-bridge.test.mjs",
+      "sha256": "58ed8a054b27b79a1a0da0031dadf456ba8e75838a09821755d6ac2b5dedecc2",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-upstream-intent.test.mjs",
+      "sha256": "8cf7e2c6bcff96e7ef1219dbb8f838422173383de4bd4f3faf37ceb28edbb9b6",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/provider-web-evidence.test.mjs",
+      "sha256": "13cd968bd0def631236c8ee15dfe157bd844d824479c2fa5e85facc53aeb22e9",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/recorded-acceptance.test.mjs",
+      "sha256": "67d3beda4c257c8bec77c5ef2abd1197a450be285ad1a8687ca3d13bee8f181c",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/refresh-diagnostics.test.mjs",
+      "sha256": "b0ea5b509ca6ed68cbf1d7ac4d15f840a26c05feb17f120edd9be599c44c8822",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/refresh-validity-text.test.mjs",
+      "sha256": "cca7ca19085ba6774753197df296a3e28e6cf36c3d384cc1b58ba79539b13a1b",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/registration.test.mjs",
+      "sha256": "522e6ab10f6b59f69f9fafa9a2fdbca3f1eb2a85122cf84fb94b71d7ed54abbe",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/release-boundaries.test.mjs",
+      "sha256": "1b270452f08ce7d1c3bb0534583525ac1ec6a098d7d367e2678ab4e584756c0b",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/scoped-web-media-card.test.mjs",
+      "sha256": "31070f840c1126bc44c639bb8d85fd3424e8e82ef2b0bfc1fe224a6cf0b25021",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/scoped-web-task-history-s415.test.mjs",
+      "sha256": "790c85ea76499da22209d337a1c3dea3e2882b47e93f132a35184441c14d9ca9",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/sdk-presentation.test.mjs",
+      "sha256": "3f8cf8fa3f0931cbd2f8f36063a0825817fb0588eb3f72dfc9f7d4a57ef1abf1",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/sdk-process-recovery.test.mjs",
+      "sha256": "c246f74ae7be9dec8c805837f9c0d94b690e70f1f9a513a391b9b990d1e6d3c4",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/task-history-inspection.test.mjs",
+      "sha256": "2b555be6089cd8adfb246e6233f8a9901036e13cd3543caa4a3aabd68f06cae8",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/task-journal.test.mjs",
+      "sha256": "9da4769c346cdc9c82d2923228da1d48a3c53c60e956eb8b9f9b2450f59a12a3",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/web-citations.test.mjs",
+      "sha256": "0bae6ca9c1e53b8dda3e827951db8dfaf326420c1832610881cc9700760b8796",
+      "mode": 420
+    },
+    {
+      "file": "tests/unit/web-evidence-consistency.test.mjs",
+      "sha256": "e70dbb5ec4d733cb62a8c2e612f5057acd0694aff3fd096b0ce2a04eeed851ce",
+      "mode": 420
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "sha256": "e7823029ebce1e5f0e8f7dbabcb91bd44f6525cd97c33b5521e6b55dd57d39b1",
+      "mode": 420
+    }
+  ]
+}

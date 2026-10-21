@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-20",
+  "scope": "historical_bounded_runs_only",
+  "currentProfileValidated": false,
+  "grantsAuthorization": false,
+  "candidateVersionValidated": false,
+  "allPlatformsValidated": false,
+  "evidenceAvailability": "public_whitelist_projections_with_original_report_hashes",
+  "evidence": {
+    "login": {
+      "file": "reports/public/login.json",
+      "sha256": "d34585737fd65c6c640c9defbfec242df7eed9afe78b046fd4f174fbfbb3e6f9",
+      "originalReportSha256": "2a540fe60ed5ee072f5d8ca700a74747a39675f4fa93262b70c159483c59d432"
+    },
+    "deep": {
+      "file": "reports/public/deep.json",
+      "sha256": "60545305d93d33c87939a7da7602bcf4653e7b1a67ab6c0d5f3069c3d116d0ca",
+      "originalReportSha256": "a05b24bc1343e4de89cd6d6e91ac58d40065e2a3610b91edc21bb98acc8e0201"
+    },
+    "otherModels": {
+      "file": "reports/public/otherModels.json",
+      "sha256": "2e2f6c4aaf283819464667266543262ede641f7e752605e367324efa1aa716ec",
+      "originalReportSha256": "233b38fa25abebe69024befcde1a9f2a1d572c47605ed7d73c04523022f2ffa5"
+    },
+    "quick": {
+      "file": "reports/public/quick.json",
+      "sha256": "4aee3cebe3e94fdd213a99669145d23eca8b89c1a5e667436c60394f670571d0",
+      "originalReportSha256": "9e9c19108dbbf074b4b6cdb472fb205a6fc40941423b1ebebaa565f14c79718c"
+    },
+    "refresh": {
+      "file": "reports/public/refresh.json",
+      "sha256": "f28de360b09fd3df51a4aeb84d03684625cd61ff6c7d74566dc591bbd4e3d603",
+      "originalReportSha256": "dedca0e80999d9c9d5c49d6304be5e402f96b28edf97782af261c3fd17aec2af"
+    },
+    "web": {
+      "file": "reports/public/web.json",
+      "sha256": "e8ba98a99a3776b39c479272daddb990fa68b44a142b17fa861c3bf8a070a2ec",
+      "originalReportSha256": "927fd18a350250c99c28d020ffd1432c15f9bceab013057c6a16d84a025d4ad7"
+    },
+    "native": {
+      "file": "reports/public/native.json",
+      "sha256": "737daffec1b9ff979814acfec6247c74fa56edc365189178c1c2e79dc15a8822",
+      "originalReportSha256": "392454e8071aadb71fe854d898bfe3f7b8f32fab5fad68f4cbfb83968412c740"
+    }
+  },
+  "recorded": {
+    "loginAndBasicQA": {
+      "evidence": "login",
+      "artifactVersion": "0.0.0-s4.8",
+      "platform": "darwin-arm64",
+      "accounts": 1,
+      "knowledgeBases": 1,
+      "questions": 3,
+      "adapters": [
+        "SDK",
+        "CLI",
+        "official_SDK_STDIO"
+      ],
+      "manualLogin": true,
+      "deviceContextCaptured": true,
+      "sameConversation": true,
+      "offlineRestartRecovery": true,
+      "webSearch": false,
+      "nativeAgentQA": false
+    },
+    "modelSelections": {
+      "artifactVersion": "0.0.0-s4.8",
+      "platform": "darwin-arm64",
+      "accounts": 1,
+      "knowledgeBases": 1,
+      "webSearch": false,
+      "observations": [
+        {
+          "model": "DeepSeek-V4-Flash",
+          "mode": "deep",
+          "adapter": "SDK",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "deep",
+          "observation": "successes/deep_original"
+        },
+        {
+          "model": "Hy3",
+          "mode": "deep",
+          "adapter": "SDK",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "deep",
+          "observation": "successes/deep_other"
+        },
+        {
+          "model": "Hy3",
+          "mode": "deep",
+          "adapter": "fresh_process_CLI",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "deep",
+          "observation": "successes/restart_deep"
+        },
+        {
+          "model": "DeepSeek-V4-Flash",
+          "mode": "quick",
+          "adapter": "official_SDK_STDIO",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "otherModels",
+          "observation": "steps/mcp_return_quick"
+        },
+        {
+          "model": "Hy4 preview",
+          "mode": "deep",
+          "adapter": "official_SDK_STDIO",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "otherModels",
+          "observation": "steps/mcp_hy4_deep"
+        },
+        {
+          "model": "Hy4 preview",
+          "mode": "deep",
+          "adapter": "fresh_process_SDK",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "otherModels",
+          "observation": "steps/restart_hy4_deep"
+        },
+        {
+          "model": "GLM-5.3-Flash",
+          "mode": "deep",
+          "adapter": "SDK",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "otherModels",
+          "observation": "steps/switch_glm_deep"
+        },
+        {
+          "model": "Hy3",
+          "mode": "quick",
+          "adapter": "official_SDK_STDIO",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "quick",
+          "observation": "steps/mcp_hy3_quick"
+        },
+        {
+          "model": "Hy4 preview",
+          "mode": "quick",
+          "adapter": "official_SDK_STDIO",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "quick",
+          "observation": "steps/mcp_hy4_quick"
+        },
+        {
+          "model": "Hy4 preview",
+          "mode": "quick",
+          "adapter": "fresh_process_SDK",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "quick",
+          "observation": "steps/restart_hy4_quick"
+        },
+        {
+          "model": "GLM-5.3-Flash",
+          "mode": "quick",
+          "adapter": "SDK",
+          "sameConversation": true,
+          "boundedContextCheck": true,
+          "evidence": "quick",
+          "observation": "steps/switch_glm_quick"
+        }
+      ],
+      "completeAdapterPermutation": false,
+      "excluded": [
+        {
+          "evidence": "deep",
+          "observation": "extraMcpReturnToQuick",
+          "outcome": "cancelled_before_QA_not_accepted",
+          "oldTaskPreserved": true
+        }
+      ]
+    },
+    "credentialRefresh": {
+      "evidence": "refresh",
+      "artifactVersion": "0.0.0-s4.12",
+      "platform": "darwin-arm64",
+      "accounts": 1,
+      "refreshes": 1,
+      "authenticatedCatalogReads": 1,
+      "durableCommit": true,
+      "freshProcessReadback": true,
+      "scheduledMaintenance": false,
+      "crossDay": false
+    },
+    "scopedWebCitations": {
+      "evidence": "web",
+      "artifactVersion": "0.0.0-s4.16",
+      "platform": "darwin-arm64",
+      "model": "GLM quick",
+      "mode": "quick",
+      "accounts": 1,
+      "knowledgeBases": 1,
+      "adapters": [
+        "SDK",
+        "fresh_process_CLI"
+      ],
+      "sameConversation": true,
+      "offlineRecoveryAndExportsEqual": true,
+      "nativeAgentQA": false,
+      "sourcesReadInFull": false,
+      "materialOriginalRead": false,
+      "officialSourceSelectionValidated": false,
+      "guaranteesSearchExecution": false
+    },
+    "hostRegistration": {
+      "evidence": "native",
+      "artifactVersion": "0.0.0-s4.18",
+      "host": "Codex",
+      "toolsDiscovered": 11,
+      "nativeDiscoveryConnection": "fresh_isolated_check",
+      "localStatusTransport": "official_MCP_SDK_STDIO",
+      "onlineRequests": 0,
+      "activeChatHotReloadVerified": false,
+      "skillInstalledAndDiscovered": true,
+      "agentRealQA": false,
+      "skillEvidenceWorkflowRealAcceptance": false
+    }
+  },
+  "pending": [
+    "current_candidate_real_acceptance",
+    "native_agent_qa_and_skill_evidence_workflow",
+    "cross_day_maintenance",
+    "material_original_read",
+    "provider_pool_migration",
+    "cross_platform"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "runtimeVersion": "0.0.0-s4.8",
+  "agentRegistered": false,
+  "scope": {
+    "uniqueKnowledgeBaseCount": 1,
+    "webSearch": false,
+    "materialOriginalReads": 0
+  },
+  "checks": {
+    "allQASelectionsMatched": true,
+    "upstreamModelVerificationPassed": true
+  },
+  "steps": [
+    {
+      "alias": "mcp_hy3_quick",
+      "model": "Hy3",
+      "mode": "quick",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "mcp_hy4_quick",
+      "model": "Hy4 preview",
+      "mode": "quick",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "restart_hy4_quick",
+      "model": "Hy4 preview",
+      "mode": "quick",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "switch_glm_quick",
+      "model": "GLM-5.3-Flash",
+      "mode": "quick",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    }
+  ],
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "9e9c19108dbbf074b4b6cdb472fb205a6fc40941423b1ebebaa565f14c79718c",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}

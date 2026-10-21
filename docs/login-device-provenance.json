@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "https://github.com/19Chris19/ima-qa-web-agent",
+  "sourceCommit": "0cf6f8f8f0cb0872f420e68cf8cb21aa1275e173",
+  "lastContextChangeCommit": "32903b2f1bfc5aa98f90077d1767a19692e6c260",
+  "license": "MIT",
+  "files": [
+    {
+      "source": "src/air/ima-first-party-client-context.js",
+      "sha256": "165a74bb43ffeef57b3ee4c07986205595dffd3d17ab61a664660fb661112806",
+      "usage": "adapted evidence recipe, not byte-for-byte core extraction"
+    },
+    {
+      "source": "src/air/ima-client-identity.js",
+      "sha256": "dc8f72c1d34e340e1b4315c82d4b583c14fa24ad7d39e8080bf96f1d0fd8ff75",
+      "usage": "adapted evidence recipe, not byte-for-byte core extraction"
+    }
+  ],
+  "adaptedInto": [
+    "packages/ima-runtime/src/login-device-context.mjs",
+    "packages/ima-runtime/src/browser-login.mjs",
+    "packages/ima-runtime/src/credentials.mjs"
+  ],
+  "newLiveObservation": false,
+  "realAcceptance": false
+}

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official homepage unscoped QA request and Hy3 same-session follow-up stream. Identities, text and device values replaced; frames reduced. Not a full raw stream.",
+  "sessionRequest": {
+    "name": "",
+    "sessionType": 0,
+    "envInfo": {
+      "robotType": 10000,
+      "interactType": 2
+    },
+    "msgsLimit": 10
+  },
+  "sessionResponse": {
+    "code": 0,
+    "session_id": "SCRUBBED_GENERAL_SESSION",
+    "knowledge_base_info": null,
+    "session_info": {
+      "id": "SCRUBBED_GENERAL_SESSION",
+      "by_knowledge_base_id": "",
+      "robot_type": 10000,
+      "interact_type": 2,
+      "session_type": 0,
+      "scene_type": 0,
+      "related_url": "",
+      "knowledge_base_info_with_folder": null,
+      "msgs": []
+    }
+  },
+  "request": {
+    "session_id": "SCRUBBED_GENERAL_SESSION",
+    "robot_type": 10000,
+    "question": "Scrubbed general question",
+    "question_type": 3,
+    "client_id": "SCRUBBED_CLIENT_ID",
+    "model_info": {
+      "model_id": "SCRUBBED_MODEL_0",
+      "model_type": 3,
+      "enable_enhancement": false
+    },
+    "history_info": {
+      "type": 0
+    },
+    "device_info": {
+      "uskey": "SCRUBBED_USKEY",
+      "uskey_bus_infos_input": "SCRUBBED_USKEY_BUS_INFOS_INPUT"
+    },
+    "client_tools": []
+  },
+  "frames": [
+    {
+      "eventName": "QA_START",
+      "data": {
+        "icon": "SCRUBBED_ICON",
+        "title": "Scrubbed model",
+        "trace_id": "SCRUBBED_TRACE",
+        "model_info": {}
+      }
+    },
+    {
+      "eventName": "SESSION_START",
+      "data": {
+        "MsgSeqID": "SCRUBBED_MESSAGE_ID"
+      }
+    },
+    {
+      "eventName": "STRUCTURED_BLOCK",
+      "data": {
+        "Type": "loading",
+        "Data": {},
+        "Id": "SCRUBBED_BLOCK_0",
+        "UpdateType": "create"
+      }
+    },
+    {
+      "eventName": "STRUCTURED_BLOCK",
+      "data": {
+        "Type": "loading",
+        "Data": {},
+        "Id": "SCRUBBED_BLOCK_0",
+        "UpdateType": "delete"
+      }
+    },
+    {
+      "eventName": "STRUCTURED_BLOCK",
+      "data": {
+        "Type": "blockMessage",
+        "Data": {
+          "text_message": {
+            "Text": "Scrubbed answer "
+          }
+        },
+        "Id": "SCRUBBED_BLOCK_1"
+      }
+    },
+    {
+      "eventName": "STRUCTURED_BLOCK",
+      "data": {
+        "Type": "blockMessage",
+        "Data": {
+          "text_message": {
+            "Text": "Scrubbed continuation."
+          }
+        },
+        "Id": "SCRUBBED_BLOCK_1"
+      }
+    },
+    {
+      "eventName": "STRUCTURED_BLOCK",
+      "data": {
+        "Type": "loading",
+        "Data": {},
+        "Id": "SCRUBBED_BLOCK_0",
+        "UpdateType": "delete"
+      }
+    },
+    {
+      "eventName": "SUGGEST_QUESTION",
+      "data": [
+        {
+          "Text": "Scrubbed question 1",
+          "ToolChainType": 2,
+          "ToolChainName": "Scrubbed question 2"
+        },
+        {
+          "Text": "Scrubbed question 3",
+          "ToolChainType": 2,
+          "ToolChainName": "Scrubbed question 4"
+        },
+        {
+          "Text": "Scrubbed question 5",
+          "ToolChainType": 2,
+          "ToolChainName": "Scrubbed question 6"
+        }
+      ]
+    },
+    {
+      "eventName": "ATTACHED_BLOCK",
+      "data": {
+        "Type": "qaDownloadGuide",
+        "Data": {
+          "download_channel": "SCRUBBED_CHANNEL"
+        },
+        "UpdateType": "create"
+      }
+    },
+    {
+      "eventName": "COMPLETED",
+      "data": {
+        "Code": 0,
+        "Msg": "",
+        "MsgSeqID": "SCRUBBED_MESSAGE_ID",
+        "IntentReportID": {
+          "FirstID": 0,
+          "SecondID": 0,
+          "ThirdID": 0
+        },
+        "DebugProfile": {
+          "TraceID": "",
+          "会话ID": "",
+          "RobotType": 0,
+          "关键步骤列表": null
+        },
+        "ToolCalls": {}
+      }
+    },
+    {
+      "eventName": "CLOSE",
+      "data": "[DONE]"
+    }
+  ]
+}

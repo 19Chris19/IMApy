@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "sampledAt": "2026-10-19",
+  "scope": "Reduced structural fixture from one browser-read command14 quick history; all text, identities and URLs replaced. Not a real deep-history or restored dispatch receipt.",
+  "request": {
+    "session_id": "SCRUBBED_SCOPED_HISTORY",
+    "msgs_limit": 5
+  },
+  "response": {
+    "code": 0,
+    "session": {
+      "id": "SCRUBBED_SCOPED_HISTORY",
+      "robot_type": 10000,
+      "interact_type": 2,
+      "scene_type": 0,
+      "session_type": 0,
+      "by_knowledge_base_id": "",
+      "related_url": "",
+      "knowledge_base_info_with_folder": null,
+      "is_msgs_end": true,
+      "msgs": [
+        {
+          "type": 3,
+          "qa_msg": {
+            "client_id": "SCRUBBED_CLIENT",
+            "msg_seq_id": "SCRUBBED_MESSAGE",
+            "can_get_stream": false,
+            "question": {
+              "question_type": 2,
+              "model_type": 3,
+              "text": "Scrubbed scoped question",
+              "attachments": [],
+              "folder_info_list": [],
+              "tags": [],
+              "knowledge_base_info_list": [
+                {
+                  "knowledge_base_id": "SCRUBBED_LIBRARY_0",
+                  "knowledge_base_name": "Scrubbed library"
+                }
+              ],
+              "original_qa_req": {
+                "session_id": "",
+                "client_id": "",
+                "question_type": 0,
+                "model_type": 0,
+                "model_info": null,
+                "command_info": {
+                  "type": 14,
+                  "knowledge_qa_info": {
+                    "knowledge_ids": [
+                      "SCRUBBED_LIBRARY_0"
+                    ],
+                    "folder_ids": [],
+                    "knowledge_scene_type": 0,
+                    "media_id_infos": [],
+                    "tags": []
+                  },
+                  "generate_podcast_info": null
+                }
+              }
+            },
+            "format_answer": {
+              "answer": "Scrubbed noncanonical flat field",
+              "truncated": "",
+              "complete_info": {
+                "code": 0
+              },
+              "block_list": [
+                "{\"Id\":\"SCRUBBED_FILES\",\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_TOOL\",\"description\":\"Scrubbed phase\",\"status\":1}},\"UpdateType\":\"create\"}",
+                "{\"Id\":\"SCRUBBED_TEXT\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed first \"}}}",
+                "{\"Id\":\"SCRUBBED_REFS\",\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"17\":{\"type\":1,\"title\":\"Scrubbed web title 17\",\"content\":\"Scrubbed excerpt\",\"logo_url\":\"SCRUBBED_LOGO\",\"source\":\"SCRUBBED_WEB_A\",\"jump_url\":\"SCRUBBED_WEB_A\",\"reference_content_type\":2}}}}}",
+                "{\"Id\":\"SCRUBBED_TEXT\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed [7](@index-ref?id=17) middle \"}}}",
+                "{\"Id\":\"SCRUBBED_FILES\",\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_TOOL\",\"description\":\"Scrubbed phase\",\"status\":2,\"files\":[{\"id\":\"SCRUBBED_MATERIAL\",\"type\":7,\"title\":\"Scrubbed material\",\"subtitle\":\"Scrubbed type\",\"introduction\":\"Scrubbed excerpt\",\"logo\":\"SCRUBBED_LOGO\",\"cover\":\"SCRUBBED_COVER\",\"jumpUrl\":\"SCRUBBED_JUMP\",\"timestamp\":1,\"index\":0,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"Scrubbed library\",\"introduction\":\"Scrubbed introduction\",\"description\":\"Scrubbed description\",\"creatorName\":\"Scrubbed creator\",\"permissionType\":1}}]}},\"UpdateType\":\"update\"}",
+                "{\"Id\":\"SCRUBBED_REFS\",\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"4\":{\"type\":1,\"title\":\"Scrubbed web title 4\",\"content\":\"Scrubbed excerpt\",\"logo_url\":\"SCRUBBED_LOGO\",\"source\":\"SCRUBBED_WEB_B\",\"jump_url\":\"SCRUBBED_WEB_B\",\"reference_content_type\":2}}}}}",
+                "{\"Id\":\"SCRUBBED_TEXT\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed [12](@index-ref?id=4).\"}}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "expectedAnswer": "Scrubbed first Scrubbed [7](@index-ref?id=17) middle Scrubbed [12](@index-ref?id=4)."
+}

@@ -1,0 +1,94 @@
+{
+  "runtimeVersion": "0.0.0-s4.8",
+  "agentRegistered": false,
+  "scope": {
+    "uniqueKnowledgeBaseCount": 1,
+    "webSearch": false,
+    "materialOriginalReads": 0
+  },
+  "checks": {
+    "allQARequestsMatchedExpectedModel": true,
+    "sameUpstreamSession": true,
+    "historyVerificationPassed": true
+  },
+  "models": [
+    {
+      "name": "DeepSeek-V4-Flash",
+      "deep": "passed_this_window"
+    },
+    {
+      "name": "Hy3",
+      "deep": "passed_sdk_and_restarted_cli"
+    },
+    {
+      "name": "Hy4 preview",
+      "deep": "catalog_only"
+    },
+    {
+      "name": "GLM-5.3-Flash",
+      "deep": "catalog_only"
+    }
+  ],
+  "successes": [
+    {
+      "alias": "deep_original",
+      "mode": "deep",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "deep_other",
+      "mode": "deep",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "restart_deep",
+      "mode": "deep",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    }
+  ],
+  "upstreamModelHistoryVerification": {
+    "observed": [
+      {
+        "alias": "deep_original",
+        "present": true,
+        "matches": true,
+        "completionCode": 0,
+        "stillGenerating": false
+      },
+      {
+        "alias": "deep_other",
+        "present": true,
+        "matches": true,
+        "completionCode": 0,
+        "stillGenerating": false
+      },
+      {
+        "alias": "restart_deep",
+        "present": true,
+        "matches": true,
+        "completionCode": 0,
+        "stillGenerating": false
+      }
+    ]
+  },
+  "extraMcpReturnToQuick": {
+    "status": "not_accepted",
+    "taskStatus": "cancelled",
+    "qaDispatched": false
+  },
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "a05b24bc1343e4de89cd6d6e91ac58d40065e2a3610b91edc21bb98acc8e0201",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}

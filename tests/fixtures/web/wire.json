@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "scope": "Wire fields and enum relations observed in a logged-in browser; private values replaced, collections reduced. Not a full upstream replay.",
+  "models": {
+    "request": {
+      "scene": 0
+    },
+    "response": {
+      "code": 0,
+      "version": "SCRUBBED_VERSION",
+      "models": [
+        {
+          "enable_enhancement": true,
+          "model_id": "SCRUBBED_MODEL_0",
+          "model_type": 3,
+          "model_name": "Scrubbed model 0",
+          "is_default": true,
+          "sub_model_infos": {
+            "0": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_0",
+              "model_type": 3
+            },
+            "1": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_1",
+              "model_type": 1
+            }
+          },
+          "sub_model_types": {
+            "0": 3,
+            "1": 1
+          }
+        },
+        {
+          "enable_enhancement": true,
+          "model_id": "SCRUBBED_MODEL_2",
+          "model_type": 0,
+          "model_name": "Scrubbed model 1",
+          "is_default": false,
+          "sub_model_infos": {
+            "0": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_2",
+              "model_type": 0
+            },
+            "1": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_3",
+              "model_type": 2
+            }
+          },
+          "sub_model_types": {
+            "0": 0,
+            "1": 2
+          }
+        },
+        {
+          "enable_enhancement": true,
+          "model_id": "SCRUBBED_MODEL_4",
+          "model_type": 1001,
+          "model_name": "Scrubbed model 2",
+          "is_default": false,
+          "sub_model_infos": {
+            "0": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_4",
+              "model_type": 1001
+            },
+            "1": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_5",
+              "model_type": 1002
+            }
+          },
+          "sub_model_types": {
+            "0": 1001,
+            "1": 1002
+          }
+        },
+        {
+          "enable_enhancement": true,
+          "model_id": "SCRUBBED_MODEL_6",
+          "model_type": 3000,
+          "model_name": "Scrubbed model 3",
+          "is_default": false,
+          "sub_model_infos": {
+            "0": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_6",
+              "model_type": 3000
+            },
+            "1": {
+              "enable_enhancement": true,
+              "enable_thinking": false,
+              "model_id": "SCRUBBED_MODEL_7",
+              "model_type": 3001
+            }
+          },
+          "sub_model_types": {
+            "0": 3000,
+            "1": 3001
+          }
+        }
+      ]
+    }
+  },
+  "libraryList": {
+    "request": {
+      "params": [
+        {
+          "type": 1002,
+          "cursor": "",
+          "limit": 20
+        }
+      ]
+    },
+    "response": {
+      "code": 0,
+      "results": [
+        {
+          "type": 1002,
+          "knowledge_base_list": [
+            {
+              "id": "SCRUBBED_KB",
+              "basic_info": {
+                "name": "Scrubbed knowledge base"
+              },
+              "permission_info": {
+                "access_status": 1,
+                "forbid_member_access_content": false
+              },
+              "user_permission_info": {
+                "role_type": 10000
+              }
+            }
+          ],
+          "is_end": true,
+          "next_cursor": ""
+        }
+      ]
+    }
+  },
+  "libraryPage": {
+    "request": {
+      "knowledge_base_id": "SCRUBBED_KB",
+      "knowledge_list_req": {
+        "knowledge_base_id": "SCRUBBED_KB",
+        "folder_id": "SCRUBBED_KB",
+        "sort_type": 9,
+        "need_default_cover": true,
+        "version": "SCRUBBED_VERSION"
+      }
+    },
+    "response": {
+      "code": 0,
+      "list_rsp": {
+        "knowledge_base_info": {
+          "id": "SCRUBBED_KB",
+          "basic_info": {
+            "name": "Scrubbed knowledge base"
+          },
+          "permission_info": {
+            "access_status": 1,
+            "forbid_member_access_content": false
+          },
+          "user_permission_info": {
+            "role_type": 10000
+          }
+        },
+        "knowledge_list": [
+          {
+            "media_id": "SCRUBBED_MATERIAL_0",
+            "title": "Scrubbed material 0",
+            "media_type": 15,
+            "access_status": 3,
+            "folder_info": null
+          },
+          {
+            "media_id": "SCRUBBED_MATERIAL_1",
+            "title": "Scrubbed material 1",
+            "media_type": 11,
+            "access_status": 3,
+            "folder_info": null
+          },
+          {
+            "media_id": "SCRUBBED_MATERIAL_2",
+            "title": "Scrubbed material 2",
+            "media_type": 99,
+            "access_status": 3,
+            "folder_info": {
+              "folder_id": "SCRUBBED_CHILD_2",
+              "name": "Scrubbed child 2"
+            }
+          }
+        ],
+        "current_path": [
+          {
+            "folder_id": "SCRUBBED_KB",
+            "parent_folder_id": "",
+            "name": "Scrubbed folder 0"
+          }
+        ],
+        "is_end": true,
+        "next_cursor": "",
+        "version": "SCRUBBED_VERSION"
+      }
+    }
+  },
+  "materials": {
+    "request": {
+      "sort_type": 9,
+      "need_default_cover": true,
+      "knowledge_base_id": "SCRUBBED_KB",
+      "folder_id": "SCRUBBED_FOLDER",
+      "cursor": "",
+      "limit": 50,
+      "version": "",
+      "ext_info": {}
+    },
+    "response": {
+      "code": 0,
+      "knowledge_base_info": {
+        "id": "SCRUBBED_KB",
+        "basic_info": {
+          "name": "Scrubbed knowledge base"
+        },
+        "permission_info": {
+          "access_status": 1,
+          "forbid_member_access_content": false
+        },
+        "user_permission_info": {
+          "role_type": 10000
+        }
+      },
+      "knowledge_list": [
+        {
+          "media_id": "SCRUBBED_MATERIAL_0",
+          "title": "Scrubbed material 0",
+          "media_type": 11,
+          "access_status": 3,
+          "folder_info": null
+        },
+        {
+          "media_id": "SCRUBBED_MATERIAL_1",
+          "title": "Scrubbed material 1",
+          "media_type": 11,
+          "access_status": 3,
+          "folder_info": null
+        },
+        {
+          "media_id": "SCRUBBED_MATERIAL_2",
+          "title": "Scrubbed material 2",
+          "media_type": 11,
+          "access_status": 3,
+          "folder_info": null
+        }
+      ],
+      "current_path": [
+        {
+          "folder_id": "SCRUBBED_KB",
+          "parent_folder_id": "",
+          "name": "Scrubbed folder 0"
+        },
+        {
+          "folder_id": "SCRUBBED_FOLDER",
+          "parent_folder_id": "SCRUBBED_KB",
+          "name": "Scrubbed folder 1"
+        }
+      ],
+      "is_end": false,
+      "next_cursor": "SCRUBBED_CURSOR_NEXT",
+      "version": "SCRUBBED_VERSION"
+    }
+  },
+  "qa": {
+    "quick": {
+      "request": {
+        "session_id": "SCRUBBED_SESSION_ID",
+        "robot_type": 5,
+        "question": "Scrubbed question",
+        "question_type": 2,
+        "client_id": "SCRUBBED_CLIENT_ID",
+        "command_info": {
+          "type": 14,
+          "knowledge_qa_info": {
+            "tags": [],
+            "knowledge_ids": [],
+            "media_id_infos": []
+          }
+        },
+        "model_info": {
+          "model_id": "SCRUBBED_MODEL_0",
+          "model_type": 3,
+          "enable_enhancement": false
+        },
+        "history_info": {},
+        "device_info": {
+          "uskey": "SCRUBBED_USKEY",
+          "uskey_bus_infos_input": "SCRUBBED_USKEY_BUS_INFOS_INPUT"
+        },
+        "client_tools": []
+      }
+    },
+    "deep": {
+      "request": {
+        "session_id": "SCRUBBED_SESSION_ID",
+        "robot_type": 5,
+        "question": "Scrubbed question",
+        "question_type": 2,
+        "client_id": "SCRUBBED_CLIENT_ID",
+        "command_info": {
+          "type": 14,
+          "knowledge_qa_info": {
+            "tags": [],
+            "knowledge_ids": [],
+            "media_id_infos": []
+          }
+        },
+        "model_info": {
+          "model_id": "SCRUBBED_MODEL_1",
+          "model_type": 1,
+          "enable_enhancement": false
+        },
+        "history_info": {},
+        "device_info": {
+          "uskey": "SCRUBBED_USKEY",
+          "uskey_bus_infos_input": "SCRUBBED_USKEY_BUS_INFOS_INPUT"
+        },
+        "client_tools": []
+      }
+    }
+  }
+}

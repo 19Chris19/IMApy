@@ -1,0 +1,21 @@
+{
+  "name": "@ima-local/protocol-core",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "description": "Experimental, independently testable IMA web protocol core. No account pool or service startup.",
+  "type": "commonjs",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

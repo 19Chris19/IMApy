@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "observed_refresh_response_shape_only",
+  "date": "2026-10-20",
+  "candidateVersion": "0.0.0-s4.10",
+  "httpStatus": 200,
+  "bodyReadCompleted": true,
+  "jsonParsed": true,
+  "failedStage": "response_contract",
+  "reason": "validity_invalid",
+  "responseShape": {
+    "root": "object",
+    "code": "number",
+    "token": "string",
+    "token_valid_time": "string",
+    "user_id": "string",
+    "userId": "missing",
+    "uid": "missing",
+    "refresh_token": "missing",
+    "refreshToken": "missing",
+    "token_type": "missing",
+    "tokenType": "missing",
+    "id_type": "missing",
+    "idType": "missing"
+  },
+  "containsResponseValues": false,
+  "canonicalDecimalContentObserved": false,
+  "unitOrValueProvedByShape": false,
+  "scope": "Field types only; no response values, credentials, identifiers or expiry number retained. Test payload values are separately synthetic."
+}

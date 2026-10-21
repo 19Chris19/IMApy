@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two observed blockThinking wire shapes; 378 original frames reduced to four synthetic frames. No thought text retained.",
+  "frames": [
+    {"Type":"blockThinking","Data":{"thinking_message":{"Message":"Scrubbed fragment A","Status":1}},"Id":"SCRUBBED_THINK_A"},
+    {"Type":"blockThinking","Data":{"thinking_message":{"Status":2,"Tips":"Scrubbed completion tip"}},"Id":"SCRUBBED_THINK_A"},
+    {"Type":"blockThinking","Data":{"thinking_message":{"Message":"Scrubbed fragment B","Status":1}},"Id":"SCRUBBED_THINK_B"},
+    {"Type":"blockThinking","Data":{"thinking_message":{"Status":2,"Tips":"Scrubbed completion tip"}},"Id":"SCRUBBED_THINK_B"}
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "sampledAt": "2026-10-20",
+    "runtime": "0.0.0-s4.15",
+    "rawHistorySha256": "4f660c15da100035225eb0dbc573a0f63d6d2ec444413f7375be41a5412884fa",
+    "realReads": {
+      "libraries": 1,
+      "history": 1
+    },
+    "newRealQuestions": 0,
+    "privateContentIncluded": false,
+    "textAndIdentitiesReplaced": true,
+    "rawFragmentCount": 20,
+    "scopeMismatchPreserved": true
+  },
+  "request": {
+    "session_id": "SCRUBBED_SCOPED_HISTORY",
+    "msgs_limit": 5
+  },
+  "response": {
+    "code": 0,
+    "session": {
+      "id": "SCRUBBED_SCOPED_HISTORY",
+      "robot_type": 10000,
+      "interact_type": 2,
+      "scene_type": 0,
+      "session_type": 0,
+      "by_knowledge_base_id": "",
+      "related_url": "",
+      "knowledge_base_info_with_folder": null,
+      "is_msgs_end": true,
+      "msgs": [
+        {
+          "type": 3,
+          "qa_msg": {
+            "client_id": "SCRUBBED_CLIENT",
+            "msg_seq_id": "SCRUBBED_MESSAGE",
+            "can_get_stream": false,
+            "question": {
+              "question_type": 2,
+              "model_type": 3,
+              "text": "Scrubbed scoped question",
+              "attachments": [],
+              "folder_info_list": [],
+              "tags": [],
+              "knowledge_base_info_list": [
+                {
+                  "knowledge_base_id": "SCRUBBED_LIBRARY_0",
+                  "knowledge_base_name": "Scrubbed library"
+                }
+              ],
+              "original_qa_req": {
+                "session_id": "",
+                "client_id": "",
+                "question_type": 0,
+                "model_type": 0,
+                "model_info": null,
+                "command_info": {
+                  "type": 14,
+                  "knowledge_qa_info": {
+                    "knowledge_ids": [
+                      "SCRUBBED_LIBRARY_0"
+                    ],
+                    "folder_ids": [],
+                    "knowledge_scene_type": 0,
+                    "media_id_infos": [],
+                    "tags": []
+                  },
+                  "generate_podcast_info": null
+                }
+              }
+            },
+            "format_answer": {
+              "answer": "Synthetic flat answer intentionally not used",
+              "truncated": "",
+              "complete_info": {
+                "code": 0
+              },
+              "block_list": [
+                "{\"Id\":\"SCRUBBED_VALUE_1\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Tips\":\"SCRUBBED_VALUE_2\",\"Message\":\"SCRUBBED_VALUE_3\",\"Status\":2}}}",
+                "{\"Id\":\"SCRUBBED_VALUE_4\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 1 \"}}}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_VALUE_5\",\"description\":\"SCRUBBED_VALUE_6\",\"status\":1}},\"Id\":\"SCRUBBED_VALUE_5\",\"UpdateType\":\"create\"}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_VALUE_8\",\"description\":\"SCRUBBED_VALUE_9\",\"status\":1}},\"Id\":\"SCRUBBED_VALUE_8\",\"UpdateType\":\"create\"}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_VALUE_8\",\"description\":\"SCRUBBED_VALUE_9\",\"files\":[{\"type\":2,\"title\":\"SCRUBBED_VALUE_10\",\"subtitle\":\"SCRUBBED_VALUE_11\",\"introduction\":\"SCRUBBED_VALUE_12\",\"logo\":\"https://example.test/source/0\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"https://example.test/source/2\",\"timestamp\":1,\"index\":1},{\"type\":2,\"title\":\"SCRUBBED_VALUE_13\",\"subtitle\":\"SCRUBBED_VALUE_14\",\"introduction\":\"SCRUBBED_VALUE_15\",\"logo\":\"https://example.test/source/3\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"https://example.test/source/4\",\"index\":2},{\"id\":\"SCRUBBED_VALUE_16\",\"type\":1,\"title\":\"SCRUBBED_VALUE_17\",\"subtitle\":\"SCRUBBED_VALUE_18\",\"introduction\":\"SCRUBBED_VALUE_19\",\"logo\":\"https://example.test/source/5\",\"cover\":\"https://example.test/source/6\",\"jumpUrl\":\"https://example.test/source/7\",\"timestamp\":1,\"index\":3,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_20\",\"name\":\"SCRUBBED_VALUE_21\",\"introduction\":\"SCRUBBED_VALUE_22\",\"description\":\"SCRUBBED_VALUE_22\",\"creatorName\":\"SCRUBBED_VALUE_23\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_24\",\"type\":3,\"title\":\"SCRUBBED_VALUE_25\",\"subtitle\":\"SCRUBBED_VALUE_26\",\"introduction\":\"SCRUBBED_VALUE_27\",\"logo\":\"https://example.test/source/8\",\"cover\":\"https://example.test/source/9\",\"jumpUrl\":\"https://example.test/source/10\",\"timestamp\":1,\"index\":4,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_28\",\"name\":\"SCRUBBED_VALUE_29\",\"introduction\":\"SCRUBBED_VALUE_30\",\"description\":\"SCRUBBED_VALUE_30\",\"creatorName\":\"SCRUBBED_VALUE_31\",\"permissionType\":2}},{\"type\":2,\"title\":\"SCRUBBED_VALUE_32\",\"subtitle\":\"SCRUBBED_VALUE_33\",\"introduction\":\"SCRUBBED_VALUE_34\",\"logo\":\"https://example.test/source/11\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"https://example.test/source/12\",\"index\":5},{\"id\":\"SCRUBBED_VALUE_35\",\"type\":1,\"title\":\"SCRUBBED_VALUE_36\",\"subtitle\":\"SCRUBBED_VALUE_18\",\"introduction\":\"SCRUBBED_VALUE_37\",\"logo\":\"https://example.test/source/5\",\"cover\":\"https://example.test/source/13\",\"jumpUrl\":\"https://example.test/source/14\",\"timestamp\":1,\"index\":6,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_38\",\"name\":\"SCRUBBED_VALUE_39\",\"introduction\":\"SCRUBBED_VALUE_40\",\"description\":\"SCRUBBED_VALUE_40\",\"creatorName\":\"SCRUBBED_VALUE_41\",\"permissionType\":2}},{\"type\":2,\"title\":\"SCRUBBED_VALUE_42\",\"subtitle\":\"SCRUBBED_VALUE_43\",\"introduction\":\"SCRUBBED_VALUE_44\",\"logo\":\"https://example.test/source/15\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"https://example.test/source/16\",\"index\":7},{\"id\":\"SCRUBBED_VALUE_45\",\"type\":1,\"title\":\"SCRUBBED_VALUE_46\",\"subtitle\":\"SCRUBBED_VALUE_18\",\"introduction\":\"SCRUBBED_VALUE_47\",\"logo\":\"https://example.test/source/5\",\"cover\":\"https://example.test/source/17\",\"jumpUrl\":\"https://example.test/source/18\",\"timestamp\":1,\"index\":8,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_48\",\"name\":\"SCRUBBED_VALUE_49\",\"introduction\":\"SCRUBBED_VALUE_50\",\"description\":\"SCRUBBED_VALUE_50\",\"creatorName\":\"SCRUBBED_VALUE_51\",\"permissionType\":2}},{\"type\":2,\"title\":\"SCRUBBED_VALUE_52\",\"subtitle\":\"SCRUBBED_VALUE_53\",\"introduction\":\"SCRUBBED_VALUE_54\",\"logo\":\"https://example.test/source/19\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"https://example.test/source/20\",\"index\":9},{\"id\":\"SCRUBBED_VALUE_55\",\"type\":2,\"title\":\"SCRUBBED_VALUE_56\",\"subtitle\":\"SCRUBBED_VALUE_57\",\"introduction\":\"SCRUBBED_VALUE_58\",\"logo\":\"https://example.test/source/3\",\"cover\":\"https://example.test/source/21\",\"jumpUrl\":\"https://example.test/source/22\",\"timestamp\":1,\"index\":10,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_59\",\"name\":\"SCRUBBED_VALUE_60\",\"introduction\":\"SCRUBBED_VALUE_61\",\"description\":\"SCRUBBED_VALUE_61\",\"creatorName\":\"SCRUBBED_VALUE_62\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_63\",\"type\":1,\"title\":\"SCRUBBED_VALUE_64\",\"subtitle\":\"SCRUBBED_VALUE_18\",\"introduction\":\"SCRUBBED_VALUE_65\",\"logo\":\"https://example.test/source/5\",\"cover\":\"https://example.test/source/23\",\"jumpUrl\":\"https://example.test/source/24\",\"timestamp\":1,\"index\":11,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_59\",\"name\":\"SCRUBBED_VALUE_60\",\"introduction\":\"SCRUBBED_VALUE_61\",\"description\":\"SCRUBBED_VALUE_61\",\"creatorName\":\"SCRUBBED_VALUE_62\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_66\",\"type\":1,\"title\":\"SCRUBBED_VALUE_67\",\"subtitle\":\"SCRUBBED_VALUE_18\",\"introduction\":\"SCRUBBED_VALUE_68\",\"logo\":\"https://example.test/source/5\",\"cover\":\"https://example.test/source/25\",\"jumpUrl\":\"https://example.test/source/26\",\"timestamp\":1,\"index\":12,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_69\",\"name\":\"SCRUBBED_VALUE_70\",\"introduction\":\"SCRUBBED_VALUE_71\",\"description\":\"SCRUBBED_VALUE_71\",\"creatorName\":\"SCRUBBED_VALUE_72\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_73\",\"type\":2,\"title\":\"SCRUBBED_VALUE_74\",\"subtitle\":\"SCRUBBED_VALUE_57\",\"introduction\":\"SCRUBBED_VALUE_58\",\"logo\":\"https://example.test/source/3\",\"cover\":\"https://example.test/source/27\",\"jumpUrl\":\"https://example.test/source/28\",\"timestamp\":1,\"index\":13,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_59\",\"name\":\"SCRUBBED_VALUE_60\",\"introduction\":\"SCRUBBED_VALUE_61\",\"description\":\"SCRUBBED_VALUE_61\",\"creatorName\":\"SCRUBBED_VALUE_62\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_75\",\"type\":1,\"title\":\"SCRUBBED_VALUE_76\",\"subtitle\":\"SCRUBBED_VALUE_18\",\"introduction\":\"SCRUBBED_VALUE_77\",\"logo\":\"https://example.test/source/5\",\"cover\":\"https://example.test/source/29\",\"jumpUrl\":\"https://example.test/source/30\",\"timestamp\":1,\"index\":14,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_78\",\"name\":\"SCRUBBED_VALUE_79\",\"introduction\":\"SCRUBBED_VALUE_80\",\"description\":\"SCRUBBED_VALUE_80\",\"creatorName\":\"SCRUBBED_VALUE_81\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_82\",\"type\":2,\"title\":\"SCRUBBED_VALUE_83\",\"subtitle\":\"SCRUBBED_VALUE_57\",\"introduction\":\"SCRUBBED_VALUE_58\",\"logo\":\"https://example.test/source/3\",\"cover\":\"https://example.test/source/27\",\"jumpUrl\":\"https://example.test/source/31\",\"timestamp\":1,\"index\":15,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_VALUE_59\",\"name\":\"SCRUBBED_VALUE_60\",\"introduction\":\"SCRUBBED_VALUE_61\",\"description\":\"SCRUBBED_VALUE_61\",\"creatorName\":\"SCRUBBED_VALUE_62\",\"permissionType\":2}}],\"status\":2}},\"Id\":\"SCRUBBED_VALUE_8\",\"UpdateType\":\"create\"}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_VALUE_5\",\"description\":\"SCRUBBED_VALUE_6\",\"files\":[{\"id\":\"SCRUBBED_VALUE_84\",\"type\":11,\"title\":\"SCRUBBED_VALUE_85\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_87\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_88\",\"timestamp\":1,\"index\":1,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_92\",\"type\":11,\"title\":\"SCRUBBED_VALUE_93\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_94\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_95\",\"timestamp\":1,\"index\":2,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_96\",\"type\":11,\"title\":\"SCRUBBED_VALUE_97\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_98\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_99\",\"timestamp\":1,\"index\":3,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_100\",\"type\":11,\"title\":\"SCRUBBED_VALUE_101\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_102\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_103\",\"timestamp\":1,\"index\":4,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_104\",\"type\":11,\"title\":\"SCRUBBED_VALUE_105\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_106\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_107\",\"timestamp\":1,\"index\":5,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_108\",\"type\":11,\"title\":\"SCRUBBED_VALUE_109\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_110\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_111\",\"timestamp\":1,\"index\":6,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_112\",\"type\":7,\"title\":\"SCRUBBED_VALUE_113\",\"subtitle\":\"SCRUBBED_VALUE_114\",\"introduction\":\"SCRUBBED_VALUE_115\",\"logo\":\"https://example.test/source/33\",\"cover\":\"https://example.test/source/34\",\"jumpUrl\":\"https://example.test/source/35\",\"timestamp\":1,\"index\":7,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_116\",\"type\":7,\"title\":\"SCRUBBED_VALUE_117\",\"subtitle\":\"SCRUBBED_VALUE_114\",\"introduction\":\"SCRUBBED_VALUE_118\",\"logo\":\"https://example.test/source/33\",\"cover\":\"https://example.test/source/36\",\"jumpUrl\":\"https://example.test/source/37\",\"timestamp\":1,\"index\":8,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_119\",\"type\":11,\"title\":\"SCRUBBED_VALUE_120\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_121\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_122\",\"timestamp\":1,\"index\":9,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}},{\"id\":\"SCRUBBED_VALUE_123\",\"type\":11,\"title\":\"SCRUBBED_VALUE_101\",\"subtitle\":\"SCRUBBED_VALUE_86\",\"introduction\":\"SCRUBBED_VALUE_102\",\"logo\":\"https://example.test/source/32\",\"cover\":\"https://example.test/source/1\",\"jumpUrl\":\"SCRUBBED_VALUE_124\",\"timestamp\":1,\"index\":10,\"sourceType\":1,\"knowledgeBaseInfo\":{\"id\":\"SCRUBBED_LIBRARY_0\",\"name\":\"SCRUBBED_VALUE_89\",\"introduction\":\"SCRUBBED_VALUE_90\",\"description\":\"SCRUBBED_VALUE_90\",\"creatorName\":\"SCRUBBED_VALUE_91\",\"permissionType\":2}}],\"status\":2}},\"Id\":\"SCRUBBED_VALUE_5\",\"UpdateType\":\"create\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_125\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Status\":2,\"Tips\":\"SCRUBBED_VALUE_2\",\"Message\":\"SCRUBBED_VALUE_126\"}}}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 2 \"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"1\":{\"type\":1,\"title\":\"SCRUBBED_VALUE_10\",\"content\":\"SCRUBBED_VALUE_12\",\"logo_url\":\"https://example.test/source/0\",\"source\":\"https://example.test/source/2\",\"jump_url\":\"https://example.test/source/2\",\"reference_content_type\":2}}}},\"Id\":\"SCRUBBED_VALUE_128\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 3 [1](@index-ref?id=1)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"2\":{\"type\":1,\"title\":\"SCRUBBED_VALUE_32\",\"content\":\"SCRUBBED_VALUE_34\",\"logo_url\":\"https://example.test/source/11\",\"source\":\"https://example.test/source/12\",\"jump_url\":\"https://example.test/source/12\",\"reference_content_type\":2}}}},\"Id\":\"SCRUBBED_VALUE_128\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 4 [2](@index-ref?id=2)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"3\":{\"type\":1,\"title\":\"SCRUBBED_VALUE_13\",\"content\":\"SCRUBBED_VALUE_15\",\"logo_url\":\"https://example.test/source/3\",\"source\":\"https://example.test/source/4\",\"jump_url\":\"https://example.test/source/4\",\"reference_content_type\":2}}}},\"Id\":\"SCRUBBED_VALUE_128\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 5 [3](@index-ref?id=3)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"4\":{\"type\":1,\"title\":\"SCRUBBED_VALUE_42\",\"content\":\"SCRUBBED_VALUE_44\",\"logo_url\":\"https://example.test/source/15\",\"source\":\"https://example.test/source/16\",\"jump_url\":\"https://example.test/source/16\",\"reference_content_type\":2}}}},\"Id\":\"SCRUBBED_VALUE_128\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 6 [4](@index-ref?id=4)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"5\":{\"type\":2,\"title\":\"SCRUBBED_VALUE_85\",\"content\":\"SCRUBBED_VALUE_129\",\"logo_url\":\"https://example.test/source/32\",\"source\":\"SCRUBBED_VALUE_86\",\"kb_name\":\"SCRUBBED_VALUE_89\",\"media_id\":\"SCRUBBED_VALUE_84\",\"reference_content_type\":2}}}},\"Id\":\"SCRUBBED_VALUE_128\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 7 [5](@index-ref?id=5)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"6\":{\"type\":2,\"title\":\"SCRUBBED_VALUE_93\",\"content\":\"SCRUBBED_VALUE_130\",\"logo_url\":\"https://example.test/source/32\",\"source\":\"SCRUBBED_VALUE_86\",\"kb_name\":\"SCRUBBED_VALUE_89\",\"media_id\":\"SCRUBBED_VALUE_92\",\"reference_content_type\":2}}}},\"Id\":\"SCRUBBED_VALUE_128\"}",
+                "{\"Id\":\"SCRUBBED_VALUE_127\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Synthetic fragment 8 [6](@index-ref?id=6)\"}}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

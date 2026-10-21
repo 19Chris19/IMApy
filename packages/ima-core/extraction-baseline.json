@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "855a232b621706eb3e7fd00f6dcbfd756ffef1b2",
+  "semanticChanges": false,
+  "files": [
+    {
+      "module": "ima-web-protocol-client",
+      "sha256": "5a38722cb5179f984eef01e416cc1a53990e5aa3c3ee2bb02ffa434bee86ed96"
+    },
+    {
+      "module": "ima-answer-profile",
+      "sha256": "2c50ee51585661896040469522e24e4e3d6bad13bc969bc5eac5c21568c18ee9"
+    },
+    {
+      "module": "ima-upstream-protocol",
+      "sha256": "f3ef0c6c7f2734034e9fd2f470fdd281f9435bb1f843ef7f0d38ea528b08cefc"
+    },
+    {
+      "module": "chat-presentation",
+      "sha256": "34f92cb6edd514988cdfad61d14a4a2b6c4e0e9c653f03fb1092751ebfc7b2e7"
+    },
+    {
+      "module": "knowledge-evidence",
+      "sha256": "9d4c5188b3a7f9a2265175d6adf7cfff765316c128a20e83a76789670342bf0a"
+    },
+    {
+      "module": "ima-knowledge-agent-contract",
+      "sha256": "c6c7eba9a7269d01d6f884aff2ff6e895c0a7f5f9932e58af10873cbf8f5755b"
+    }
+  ]
+}

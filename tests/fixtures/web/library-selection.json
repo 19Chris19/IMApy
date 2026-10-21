@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "scope": "Paired dedicated list request/response from the independent SDK metadata acceptance. Five distinct library IDs; same-ID cross-group overlap is synthetic-only. Earlier combined homepage request retained separately to prevent comparing different endpoint wrappers. Names and IDs replaced; permission codes are opaque and grant no original read authorization.",
+  "request": {
+    "params": [
+      {
+        "type": 1001,
+        "cursor": "",
+        "limit": 20
+      },
+      {
+        "type": 1002,
+        "cursor": "",
+        "limit": 20
+      },
+      {
+        "type": 1004,
+        "cursor": "",
+        "limit": 20
+      },
+      {
+        "type": 1005,
+        "cursor": "",
+        "limit": 50
+      }
+    ]
+  },
+  "observedHomeRequest": {
+    "need_folder_number": true,
+    "need_first_knowledge_base": true,
+    "knowledge_list_req": {
+      "need_default_cover": false,
+      "sort_type": 9,
+      "limit": 50,
+      "cursor": ""
+    },
+    "knowledge_base_list_req": {
+      "params": [
+        {
+          "type": 1001,
+          "cursor": "",
+          "limit": 20
+        },
+        {
+          "type": 1002,
+          "cursor": "",
+          "limit": 20
+        },
+        {
+          "type": 1004,
+          "cursor": "",
+          "limit": 20
+        },
+        {
+          "type": 1005,
+          "cursor": "",
+          "limit": 50
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "dedicatedOperation": "/cgi-bin/knowledge_tab_reader/get_knowledge_base_list",
+    "observedHomeOperation": "/cgi-bin/knowledge_tab_reader/get_home_page_data",
+    "sampledAt": "2026-10-18",
+    "requestResponsePaired": true
+  },
+  "response": {
+    "code": 0,
+    "results": [
+      {
+        "type": 1001,
+        "is_end": true,
+        "knowledge_base_list_name": "Scrubbed library group 1001",
+        "next_cursor": "",
+        "knowledge_base_list": [
+          {
+            "id": "SCRUBBED_LIBRARY_0",
+            "basic_info": {
+              "name": "Scrubbed library 0"
+            },
+            "permission_info": {
+              "access_status": 2,
+              "forbid_member_access_content": false
+            },
+            "user_permission_info": {
+              "role_type": 10000
+            }
+          },
+          {
+            "id": "SCRUBBED_LIBRARY_1",
+            "basic_info": {
+              "name": "Scrubbed library 1"
+            },
+            "permission_info": {
+              "access_status": 2,
+              "forbid_member_access_content": false
+            },
+            "user_permission_info": {
+              "role_type": 10000
+            }
+          }
+        ]
+      },
+      {
+        "type": 1002,
+        "is_end": true,
+        "knowledge_base_list_name": "Scrubbed library group 1002",
+        "next_cursor": "",
+        "knowledge_base_list": [
+          {
+            "id": "SCRUBBED_LIBRARY_2",
+            "basic_info": {
+              "name": "Scrubbed library 2"
+            },
+            "permission_info": {
+              "access_status": 1,
+              "forbid_member_access_content": false
+            },
+            "user_permission_info": {
+              "role_type": 10000
+            }
+          }
+        ]
+      },
+      {
+        "type": 1004,
+        "is_end": true,
+        "knowledge_base_list_name": "Scrubbed library group 1004",
+        "next_cursor": "",
+        "knowledge_base_list": [
+          {
+            "id": "SCRUBBED_LIBRARY_3",
+            "basic_info": {
+              "name": "Scrubbed library 3"
+            },
+            "permission_info": {
+              "access_status": 3,
+              "forbid_member_access_content": false
+            },
+            "user_permission_info": {
+              "role_type": 10000
+            }
+          }
+        ]
+      },
+      {
+        "type": 1005,
+        "is_end": true,
+        "knowledge_base_list_name": "Scrubbed library group 1005",
+        "next_cursor": "",
+        "knowledge_base_list": [
+          {
+            "id": "SCRUBBED_LIBRARY_4",
+            "basic_info": {
+              "name": "Scrubbed library 4"
+            },
+            "permission_info": {
+              "access_status": 3,
+              "forbid_member_access_content": false
+            },
+            "user_permission_info": {
+              "role_type": 100
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "selectedKnowledgeBaseId": "SCRUBBED_LIBRARY_2",
+  "expected": {
+    "groups": 4,
+    "records": 5,
+    "uniqueLibraries": 5,
+    "selectedGroups": [
+      1002
+    ]
+  }
+}

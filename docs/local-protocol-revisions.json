@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "baseSourceCommit": "0cf6f8f8f0cb0872f420e68cf8cb21aa1275e173",
+  "localBaseCommit": "e80d765",
+  "stage": "S4.20 optional maintenance lifetime limits with monotonic deadline; synthetic only",
+  "realCalls": 0,
+  "upstreamScopedWebValidated": false,
+  "files": [
+    {
+      "file": "packages/ima-core/src/chat-presentation.js",
+      "originalSha256": "f627f90065a6ffd5905f6b03cf3b6c30ff03f1f171fd29d64ac642f2eb2dbbdf",
+      "currentSha256": "c2a8b6713a26da03c2891867d20ac09f8fd7c2e88c23f5195580434a4b639ecd",
+      "reason": "Explicit body-reference resolution, bounded Markdown matching and shared safe URL admission."
+    },
+    {
+      "file": "packages/ima-core/src/ima-web-protocol-client.js",
+      "originalSha256": "420b09e44583ae4dd60b56eb1ec765a9baa88ec745e22361f5db25c27b1eac8a",
+      "currentSha256": "63e397af4cd5b52a6fb38720e42cd04c57f73a587edf4e851434229beb544f4c",
+      "reason": "Scoped per-turn enhancement composition and restoration; synthetic candidate, no new live claim."
+    },
+    {
+      "file": "packages/ima-core/src/scoped-agent-checkpoint.js",
+      "originalSha256": "e93803081c1a5623149b76cd5cdb52d9950c0636036d9291f2f6e6e0111adaba",
+      "currentSha256": "51742d596ffe6ae71d287af5f482a300f8bafb441f7fc58dd8cb12a15416e7b6",
+      "reason": "Preserve web intent in validated per-turn scoped selections and transitions."
+    },
+    {
+      "file": "packages/ima-core/src/source-evidence-contract.js",
+      "originalSha256": "3c8d6df00376b22857f21c7e6b12f9ed788e8ff5777670bc828fa70f8fca9d3b",
+      "currentSha256": "83aa2976c4884bacc7509ae4df5cfab59ea69d01b6d78c84443784097e9a6796",
+      "reason": "Keep explicit mapped web evidence from overriding contradictory terminal totals/basis; unresolved or unusable relations remain unverified. Pure read-only projection, no new real calls or key/count cardinality inference."
+    },
+    {
+      "file": "packages/ima-core/src/task-result-contract.js",
+      "originalSha256": "903ac6c0f90f0f9621d34b9ae832bb6d56ec047cec49960609ac0fa271e3e359",
+      "currentSha256": "e293c157ac62f8cc5783dbb3adda5f057328d2d3be24501ecda8a40bd60398b1",
+      "reason": "Consistent scoped intent validation and exact body-reference diagnostics in read-only projection."
+    },
+    {
+      "file": "packages/ima-core/src/auth-refresh.js",
+      "originalSha256": "69f6a03244205db36563056a3b08456aed1746d98167b33175d34f2cdc4ebbcc",
+      "currentSha256": "5499969e39cbec53a0481d4b91d916058e9072b5df6757ade80d811175b9db6c",
+      "reason": "Keep bounded redacted stages and fences; additionally normalize canonical positive decimal validity text only, with the existing uint32/seconds/expiry bounds. R2 observed the string type, not its value; no new-candidate live claim."
+    },
+    {
+      "file": "packages/ima-core/src/ima-upstream-protocol.js",
+      "originalSha256": "accd2179ae58ab058337796803b32ecbc911ec6290c80945f63017df1780dded",
+      "currentSha256": "730677e5628b0231c44c086da68b24902f96a183b45babb982220e4a0ac264db",
+      "reason": "Admit only the observed opaque full-library fileList type3; retain operational expanded web metadata with explicit classifier proof; never infer citations from index."
+    },
+    {
+      "file": "packages/ima-core/src/ima-knowledge-agent-contract.js",
+      "originalSha256": "c6c7eba9a7269d01d6f884aff2ff6e895c0a7f5f9932e58af10873cbf8f5755b",
+      "currentSha256": "b1ccab78493b13faff0a3e9b2d7ee37c98410f3225bc958ce36a7158b4a6d4cb",
+      "reason": "Classify exact expanded web-card wrappers observed in scoped+web; preserve unknown scope and explicit knowledge types."
+    },
+    {
+      "file": "packages/ima-core/index.js",
+      "originalSha256": "11329e5ef39af8cf78a54afa0fd48174de0e46eb22d9afec975d84215976a18b",
+      "currentSha256": "9a04bf2778f3e0b438599ffe3aaf350553b404f8f4bc3d45ddf9a5a17c0175de",
+      "reason": "Export the shared strict private web-login context normalizer alongside the unchanged protocol exports."
+    },
+    {
+      "file": "packages/ima-core/package.json",
+      "originalSha256": "2cc6a9021c5808c7392f5fa97c06637275368c970a13acc78beca5c6d17241c1",
+      "currentSha256": "ab1f3c425f847290aee4ef0295bed4dcaed9dcfe42fea22375ea1de187cd5ed6",
+      "reason": "Release metadata version only; protocol behavior unchanged."
+    }
+  ],
+  "addedFiles": [
+    {
+      "file": "packages/ima-core/src/refresh-diagnostics.js",
+      "currentSha256": "992c3adaad94d474a1df12a828bfeacda0f5991e0d6ef6d3afdf2cadafa3e366",
+      "reason": "New local ephemeral diagnostic projection with fixed fields/types and per-operation event cap."
+    },
+    {
+      "file": "packages/ima-core/src/web-login-context.js",
+      "currentSha256": "c55fab320a59b7c689861690949588872a216ee3b4cb4520d7c667587e95021c",
+      "reason": "Shared strict private web-login/device context normalization for personal capture and downstream encrypted storage; no upstream calls."
+    }
+  ],
+  "responseTypeEvidence": "tests/fixtures/auth/refresh-r2-shape.json",
+  "priorRealReadAcceptance": {
+    "originalReportSha256": "9cbada116f0fb623c70679ca1904ed0a9e7873253fcfa38413fc69256c85ea98",
+    "originalReportIncluded": false,
+    "scope": "historical_read_only_run_not_current_candidate_acceptance"
+  },
+  "priorRealStreamAcceptance": {
+    "file": "reports/public/web.json",
+    "sha256": "e8ba98a99a3776b39c479272daddb990fa68b44a142b17fa861c3bf8a070a2ec",
+    "originalReportSha256": "927fd18a350250c99c28d020ffd1432c15f9bceab013057c6a16d84a025d4ad7",
+    "runtimeVersion": "0.0.0-s4.16",
+    "newCandidateRealAcceptance": false
+  }
+}

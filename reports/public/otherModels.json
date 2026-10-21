@@ -1,0 +1,57 @@
+{
+  "runtimeVersion": "0.0.0-s4.8",
+  "agentRegistered": false,
+  "scope": {
+    "uniqueKnowledgeBaseCount": 1,
+    "webSearch": false,
+    "materialOriginalReads": 0
+  },
+  "checks": {
+    "allQASelectionsMatched": true,
+    "upstreamModelVerificationPassed": true
+  },
+  "steps": [
+    {
+      "alias": "mcp_return_quick",
+      "model": "DeepSeek-V4-Flash",
+      "mode": "quick",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "mcp_hy4_deep",
+      "model": "Hy4 preview",
+      "mode": "deep",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "restart_hy4_deep",
+      "model": "Hy4 preview",
+      "mode": "deep",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    },
+    {
+      "alias": "switch_glm_deep",
+      "model": "GLM-5.3-Flash",
+      "mode": "deep",
+      "status": "succeeded",
+      "complete": true,
+      "sameConversation": true,
+      "contextLabelRetained": true
+    }
+  ],
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "233b38fa25abebe69024befcde1a9f2a1d572c47605ed7d73c04523022f2ffa5",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}

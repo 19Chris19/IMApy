@@ -1,0 +1,33 @@
+{
+  "artifact": {
+    "version": "0.0.0-s4.18"
+  },
+  "registration": {
+    "reviewedArgvMatches": true
+  },
+  "nativeDiscovery": {
+    "toolCount": 11,
+    "currentActiveChatHotReloadVerified": false
+  },
+  "skill": {
+    "nativeDiscovery": true,
+    "enabled": true,
+    "currentChatExecutionAcceptance": false
+  },
+  "localStatus": {
+    "profileMatches": true
+  },
+  "networkProof": {
+    "realImaRequests": 0
+  },
+  "effects": {
+    "qa": 0,
+    "modelCalls": 0
+  },
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "392454e8071aadb71fe854d898bfe3f7b8f32fab5fad68f4cbfb83968412c740",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "https://github.com/19Chris19/ima-qa-web-agent",
+  "sourceCommit": "0cf6f8f8f0cb0872f420e68cf8cb21aa1275e173",
+  "codeLicense": "MIT",
+  "scope": "Selected protocol package only. No Provider service, credentials, histories or installed Agent configuration copied.",
+  "files": [
+    {
+      "source": "packages/ima-core/src/auth-refresh.js",
+      "target": "packages/ima-core/src/auth-refresh.js",
+      "sha256": "69f6a03244205db36563056a3b08456aed1746d98167b33175d34f2cdc4ebbcc"
+    },
+    {
+      "source": "packages/ima-core/src/chat-presentation.js",
+      "target": "packages/ima-core/src/chat-presentation.js",
+      "sha256": "f627f90065a6ffd5905f6b03cf3b6c30ff03f1f171fd29d64ac642f2eb2dbbdf"
+    },
+    {
+      "source": "packages/ima-core/src/general-session-checkpoint.js",
+      "target": "packages/ima-core/src/general-session-checkpoint.js",
+      "sha256": "51cb0dafce05f2b95c92c7ff9dea7275faeaab0b9e9b69ef141d7630af7fca7e"
+    },
+    {
+      "source": "packages/ima-core/src/ima-answer-profile.js",
+      "target": "packages/ima-core/src/ima-answer-profile.js",
+      "sha256": "2c50ee51585661896040469522e24e4e3d6bad13bc969bc5eac5c21568c18ee9"
+    },
+    {
+      "source": "packages/ima-core/src/ima-knowledge-agent-contract.js",
+      "target": "packages/ima-core/src/ima-knowledge-agent-contract.js",
+      "sha256": "c6c7eba9a7269d01d6f884aff2ff6e895c0a7f5f9932e58af10873cbf8f5755b"
+    },
+    {
+      "source": "packages/ima-core/src/ima-upstream-protocol.js",
+      "target": "packages/ima-core/src/ima-upstream-protocol.js",
+      "sha256": "accd2179ae58ab058337796803b32ecbc911ec6290c80945f63017df1780dded"
+    },
+    {
+      "source": "packages/ima-core/src/ima-web-protocol-client.js",
+      "target": "packages/ima-core/src/ima-web-protocol-client.js",
+      "sha256": "420b09e44583ae4dd60b56eb1ec765a9baa88ec745e22361f5db25c27b1eac8a"
+    },
+    {
+      "source": "packages/ima-core/src/knowledge-evidence.js",
+      "target": "packages/ima-core/src/knowledge-evidence.js",
+      "sha256": "4ff349e69ee7d4ae12c3fe5012868e2e89eac91f46f758d323a8bd7690a97608"
+    },
+    {
+      "source": "packages/ima-core/src/material-web-access.js",
+      "target": "packages/ima-core/src/material-web-access.js",
+      "sha256": "619ce61d17c59108a63ee4663d43a9fba063dfcb3bb9ed7c3eb92cf6ee092018"
+    },
+    {
+      "source": "packages/ima-core/src/node-http-transport.js",
+      "target": "packages/ima-core/src/node-http-transport.js",
+      "sha256": "b9da79ad0e77a62a6482a07f7a3a2c84701764075e340859064e47ec513edfe8"
+    },
+    {
+      "source": "packages/ima-core/src/operation-deadline.js",
+      "target": "packages/ima-core/src/operation-deadline.js",
+      "sha256": "37a1a05d005188198cb9fde7fd3cccd273ab37f77ee9e4b97ae9df1792d31d76"
+    },
+    {
+      "source": "packages/ima-core/src/scoped-agent-checkpoint.js",
+      "target": "packages/ima-core/src/scoped-agent-checkpoint.js",
+      "sha256": "e93803081c1a5623149b76cd5cdb52d9950c0636036d9291f2f6e6e0111adaba"
+    },
+    {
+      "source": "packages/ima-core/src/session-checkpoint.js",
+      "target": "packages/ima-core/src/session-checkpoint.js",
+      "sha256": "56be8be82cdcf22c836c80a6bdf8842ad4c8b05fdc34813fce0b6f28007caddb"
+    },
+    {
+      "source": "packages/ima-core/src/source-evidence-contract.js",
+      "target": "packages/ima-core/src/source-evidence-contract.js",
+      "sha256": "3c8d6df00376b22857f21c7e6b12f9ed788e8ff5777670bc828fa70f8fca9d3b"
+    },
+    {
+      "source": "packages/ima-core/src/task-result-contract.js",
+      "target": "packages/ima-core/src/task-result-contract.js",
+      "sha256": "903ac6c0f90f0f9621d34b9ae832bb6d56ec047cec49960609ac0fa271e3e359"
+    },
+    {
+      "source": "packages/ima-core/index.js",
+      "target": "packages/ima-core/index.js",
+      "sha256": "11329e5ef39af8cf78a54afa0fd48174de0e46eb22d9afec975d84215976a18b"
+    },
+    {
+      "source": "packages/ima-core/package.json",
+      "target": "packages/ima-core/package.json",
+      "sha256": "2cc6a9021c5808c7392f5fa97c06637275368c970a13acc78beca5c6d17241c1"
+    },
+    {
+      "source": "packages/ima-core/LICENSE",
+      "target": "packages/ima-core/LICENSE",
+      "sha256": "f53488aa11b5f4280a250af9d89786a0eadb9327d3f6a03d8233eb31e9def9e2"
+    },
+    {
+      "source": "packages/ima-core/extraction-baseline.json",
+      "target": "packages/ima-core/extraction-baseline.json",
+      "sha256": "1ab43b63cb63671919765d239ae8b3c43459616c0a6c3307cd1bb0df14549c33"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "scope": "Reduced single completed bound-session history read using observed common get_session request, not a captured bound-history UI click. Nontext values, identities, titles, URLs and prose replaced. Original 15-block order, repeated IDs/types and four ordered text fragments retained. No pagination or continuation dispatch evidence.",
+  "request": {
+    "session_id": "SCRUBBED_BOUND_HISTORY_SESSION",
+    "msgs_limit": 5
+  },
+  "response": {
+    "code": 0,
+    "client_cache_not_change": false,
+    "session": {
+      "id": "SCRUBBED_BOUND_HISTORY_SESSION",
+      "robot_type": 5,
+      "interact_type": 0,
+      "scene_type": 1,
+      "session_type": 0,
+      "related_url": "SCRUBBED_KB",
+      "by_knowledge_base_id": "",
+      "knowledge_base_info_with_folder": {
+        "knowledge_base_id": "SCRUBBED_KB",
+        "folder_ids": []
+      },
+      "is_msgs_end": true,
+      "msgs": [
+        {
+          "type": 3,
+          "qa_msg": {
+            "client_id": "SCRUBBED_BOUND_HISTORY_CLIENT",
+            "msg_seq_id": "SCRUBBED_BOUND_HISTORY_MESSAGE",
+            "can_get_stream": false,
+            "question": {
+              "text": "Scrubbed bound question",
+              "model_type": 1,
+              "original_qa_req": {
+                "session_id": "",
+                "client_id": "",
+                "model_info": null
+              }
+            },
+            "format_answer": {
+              "answer": "Scrubbed flat representation differs",
+              "truncated": "",
+              "block_list": [
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_0\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Status\":2,\"Message\":\"Scrubbed text\"}}}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_HISTORY_ID_1\",\"description\":\"Scrubbed text\",\"files\":[{\"id\":\"SCRUBBED_HISTORY_ID_2\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_3\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_4\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_5\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_6\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_7\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_8\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_9\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_10\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_11\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_12\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_13\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_14\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_15\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_16\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_17\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_18\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_19\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_20\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_21\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_22\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_MATERIAL_1\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_23\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_24\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_25\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_26\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_27\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_28\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_29\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_30\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_31\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2}],\"status\":2}},\"Id\":\"SCRUBBED_HISTORY_ID_1\",\"UpdateType\":\"update\"}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_0\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Status\":2,\"Tips\":\"Scrubbed text\"}}}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_32\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Message\":\"Scrubbed text\",\"Status\":2}}}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_HISTORY_ID_33\",\"description\":\"Scrubbed text\",\"files\":[{\"id\":\"SCRUBBED_HISTORY_ID_34\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_35\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_36\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_MATERIAL_1\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_37\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_38\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_39\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_40\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_41\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_42\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_43\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_21\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_44\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_45\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_11\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_26\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_46\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_47\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_48\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_8\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_49\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_31\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_29\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2}],\"status\":2}},\"Id\":\"SCRUBBED_HISTORY_ID_33\",\"UpdateType\":\"update\"}",
+                "{\"Type\":\"fileList\",\"Data\":{\"file_list\":{\"tool_id\":\"SCRUBBED_HISTORY_ID_50\",\"description\":\"Scrubbed text\",\"files\":[{\"id\":\"SCRUBBED_MATERIAL_0\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_51\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_MATERIAL_2\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_39\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_3\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_27\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_5\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_9\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_7\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_17\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_6\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_41\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_52\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_13\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_18\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_4\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_2\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_45\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_53\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_19\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_10\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_54\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_15\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_55\",\"type\":11,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_1\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_20\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_56\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2},{\"id\":\"SCRUBBED_HISTORY_ID_8\",\"type\":7,\"title\":\"Scrubbed text\",\"logo\":\"SCRUBBED_URL_0\",\"sourceType\":2}],\"status\":2}},\"Id\":\"SCRUBBED_HISTORY_ID_50\",\"UpdateType\":\"update\"}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_32\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Tips\":\"Scrubbed text\",\"Status\":2}}}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_57\",\"Type\":\"blockThinking\",\"Data\":{\"thinking_message\":{\"Message\":\"Scrubbed text\",\"Status\":2,\"Tips\":\"Scrubbed text\"}}}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_58\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed canonical bound answer \"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"1\":{\"type\":2,\"title\":\"Scrubbed text\",\"content\":\"Scrubbed text\",\"logo_url\":\"SCRUBBED_URL_0\",\"source\":\"Scrubbed text\",\"kb_name\":\"Scrubbed text\",\"media_id\":\"SCRUBBED_MATERIAL_0\",\"positions\":[{\"position_type\":4,\"text_position\":{\"content\":\"Scrubbed text\"}}]}}}},\"Id\":\"SCRUBBED_HISTORY_ID_59\"}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_58\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed first citation [1](@index-ref?id=1)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"2\":{\"type\":2,\"title\":\"Scrubbed text\",\"content\":\"Scrubbed text\",\"logo_url\":\"SCRUBBED_URL_0\",\"source\":\"Scrubbed text\",\"kb_name\":\"Scrubbed text\",\"media_id\":\"SCRUBBED_MATERIAL_1\",\"positions\":[{\"position_type\":4,\"text_position\":{\"content\":\"Scrubbed text\"}}]}}}},\"Id\":\"SCRUBBED_HISTORY_ID_59\"}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_58\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed second citation [2](@index-ref?id=2)\"}}}",
+                "{\"Type\":\"referenceIndexes\",\"Data\":{\"reference_indexes\":{\"indexes\":{\"3\":{\"type\":2,\"title\":\"Scrubbed text\",\"content\":\"Scrubbed text\",\"logo_url\":\"SCRUBBED_URL_1\",\"source\":\"Scrubbed text\",\"kb_name\":\"Scrubbed text\",\"media_id\":\"SCRUBBED_MATERIAL_2\",\"positions\":[{\"position_type\":3,\"pid_position\":{\"pid\":\"Scrubbed text\",\"content\":\"Scrubbed text\"}}]}}}},\"Id\":\"SCRUBBED_HISTORY_ID_59\"}",
+                "{\"Id\":\"SCRUBBED_HISTORY_ID_58\",\"Type\":\"blockMessage\",\"Data\":{\"text_message\":{\"Text\":\"Scrubbed third citation [3](@index-ref?id=3).\"}}}"
+              ],
+              "complete_info": {
+                "code": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "expectedAnswer": "Scrubbed canonical bound answer Scrubbed first citation [1](@index-ref?id=1)Scrubbed second citation [2](@index-ref?id=2)Scrubbed third citation [3](@index-ref?id=3).",
+  "expectedReferences": {
+    "index:1": [
+      "1"
+    ],
+    "index:2": [
+      "2"
+    ],
+    "index:3": [
+      "3"
+    ]
+  },
+  "observedComparison": {
+    "canonicalFragmentsMatchRetainedStream": true,
+    "flatAnswerDiffers": true,
+    "modelTypeMatchesRetainedRequest": true,
+    "inputFilesUnchanged": true,
+    "newQuestions": 0,
+    "originalReads": 0
+  }
+}

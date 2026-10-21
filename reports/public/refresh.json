@@ -1,0 +1,20 @@
+{
+  "realOperations": {
+    "credentialCommitCompleted": true,
+    "freshProcessReadbackPassed": true,
+    "authenticatedReadContractPassed": true,
+    "refreshHTTPIntents": 1,
+    "authenticatedReadHTTPIntents": 1,
+    "questions": 0
+  },
+  "maintenance": {
+    "realScheduledRefreshValidated": false,
+    "longRunningAcceptance": false
+  },
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "dedca0e80999d9c9d5c49d6304be5e402f96b28edf97782af261c3fd17aec2af",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}

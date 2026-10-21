@@ -1,0 +1,4 @@
+interface:
+  display_name: "独立 IMA 取材"
+  short_description: "使用个人 IMA 账号选库取材、连续追问并核对准确来源，支持任务恢复。"
+  default_prompt: "使用 $ima-standalone 从我指定的知识库取材，并说明回答依据及尚未核验的内容。"

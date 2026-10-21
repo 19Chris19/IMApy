@@ -1,0 +1,51 @@
+{
+  "name": "@ima-local/standalone",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "description": "IMApy development preview: independent IMA web SDK, CLI, MCP and evidence Skill",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "ima-local": "bin/ima.mjs"
+  },
+  "exports": {
+    ".": "./dist/sdk.mjs",
+    "./protocol": "./packages/ima-core/index.js",
+    "./provider-adapter": "./dist/provider-adapter.mjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "packages/ima-core",
+    "skills/ima-standalone",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md",
+    "docs/USAGE.md",
+    "docs/ACCEPTANCE.md",
+    "docs/KNOWN_LIMITATIONS.md",
+    "docs/PROVIDER_ADAPTER.md",
+    "docs/source-provenance.json",
+    "docs/local-protocol-revisions.json",
+    "docs/login-device-provenance.json",
+    "reports/public"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "pack:local": "node scripts/pack.mjs",
+    "test": "node --require ./tests/helpers/no-upstream.cjs --test --test-concurrency=2 tests/unit/*.test.mjs tests/integration/*.test.mjs",
+    "check:acceptance": "node scripts/check-recorded-acceptance.mjs",
+    "check:release": "node scripts/check-release.mjs",
+    "export:source": "node scripts/export-release.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "esbuild": "0.28.2",
+    "zod": "3.25.76"
+  }
+}

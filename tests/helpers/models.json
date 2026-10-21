@@ -1,0 +1,106 @@
+{
+  "code": 0,
+  "version": "SCRUBBED_VERSION",
+  "models": [
+    {
+      "enable_enhancement": true,
+      "model_id": "SCRUBBED_MODEL_0",
+      "model_type": 3,
+      "model_name": "Scrubbed model 0",
+      "is_default": true,
+      "sub_model_infos": {
+        "0": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_0",
+          "model_type": 3
+        },
+        "1": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_1",
+          "model_type": 1
+        }
+      },
+      "sub_model_types": {
+        "0": 3,
+        "1": 1
+      }
+    },
+    {
+      "enable_enhancement": true,
+      "model_id": "SCRUBBED_MODEL_2",
+      "model_type": 0,
+      "model_name": "Scrubbed model 1",
+      "is_default": false,
+      "sub_model_infos": {
+        "0": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_2",
+          "model_type": 0
+        },
+        "1": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_3",
+          "model_type": 2
+        }
+      },
+      "sub_model_types": {
+        "0": 0,
+        "1": 2
+      }
+    },
+    {
+      "enable_enhancement": true,
+      "model_id": "SCRUBBED_MODEL_4",
+      "model_type": 1001,
+      "model_name": "Scrubbed model 2",
+      "is_default": false,
+      "sub_model_infos": {
+        "0": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_4",
+          "model_type": 1001
+        },
+        "1": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_5",
+          "model_type": 1002
+        }
+      },
+      "sub_model_types": {
+        "0": 1001,
+        "1": 1002
+      }
+    },
+    {
+      "enable_enhancement": true,
+      "model_id": "SCRUBBED_MODEL_6",
+      "model_type": 3000,
+      "model_name": "Scrubbed model 3",
+      "is_default": false,
+      "sub_model_infos": {
+        "0": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_6",
+          "model_type": 3000
+        },
+        "1": {
+          "enable_enhancement": true,
+          "enable_thinking": false,
+          "model_id": "SCRUBBED_MODEL_7",
+          "model_type": 3001
+        }
+      },
+      "sub_model_types": {
+        "0": 3000,
+        "1": 3001
+      }
+    }
+  ]
+}

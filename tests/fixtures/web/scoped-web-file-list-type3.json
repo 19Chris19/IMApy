@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "date": "2026-10-20",
+    "recordedRuntime": "0.0.0-s4.13",
+    "observedFrame": 41,
+    "privateEventSha256": "687ebb7cff7c11995cf5c1e760f48955ff600618703ef3516b19d25e6630e65f",
+    "privateContentIncluded": false,
+    "webCards": 5,
+    "knowledgeCards": 10,
+    "type3KnowledgeCards": 1,
+    "terminalObserved": false,
+    "independentRealQARequests": 1,
+    "advertisedKnowledgeScopes": 7,
+    "knowledgeScopeMatchesRequest": 0,
+    "scopeMismatchPreserved": true
+  },
+  "event": {
+    "eventName": "STRUCTURED_BLOCK",
+    "data": {
+      "Type": "fileList",
+      "Data": {
+        "file_list": {
+          "tool_id": "SCRUBBED_TOOL",
+          "description": "Synthetic mixed retrieval completed",
+          "files": [
+            {
+              "type": 2,
+              "title": "Synthetic source 0",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 0",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://example.test/source/0",
+              "index": 1,
+              "timestamp": 1
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 1",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 1",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://example.test/source/1",
+              "index": 2
+            },
+            {
+              "type": 1,
+              "title": "Synthetic source 2",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 2",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/2",
+              "index": 3,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_2",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_0",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 3,
+              "title": "Synthetic source 3",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 3",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/3",
+              "index": 4,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_3",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_1",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 4",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 4",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://example.test/source/4",
+              "index": 5
+            },
+            {
+              "type": 1,
+              "title": "Synthetic source 5",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 5",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/5",
+              "index": 6,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_5",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_2",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 6",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 6",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://example.test/source/6",
+              "index": 7
+            },
+            {
+              "type": 1,
+              "title": "Synthetic source 7",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 7",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/7",
+              "index": 8,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_7",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_3",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 8",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 8",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://example.test/source/8",
+              "index": 9
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 9",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 9",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/9",
+              "index": 10,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_9",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_4",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 1,
+              "title": "Synthetic source 10",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 10",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/10",
+              "index": 11,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_10",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_4",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 1,
+              "title": "Synthetic source 11",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 11",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/11",
+              "index": 12,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_11",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_5",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 12",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 12",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/12",
+              "index": 13,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_12",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_4",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 1,
+              "title": "Synthetic source 13",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 13",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/13",
+              "index": 14,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_13",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_6",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            },
+            {
+              "type": 2,
+              "title": "Synthetic source 14",
+              "subtitle": "Synthetic format",
+              "introduction": "Synthetic excerpt 14",
+              "logo": "SCRUBBED_LOGO",
+              "cover": "SCRUBBED_COVER",
+              "jumpUrl": "https://ima.qq.com/scrubbed/14",
+              "index": 15,
+              "timestamp": 1,
+              "id": "SCRUBBED_MATERIAL_14",
+              "sourceType": 1,
+              "knowledgeBaseInfo": {
+                "id": "SCRUBBED_OTHER_LIBRARY_4",
+                "name": "Synthetic library",
+                "introduction": "Synthetic library intro",
+                "description": "Synthetic library description",
+                "creatorName": "Synthetic creator",
+                "permissionType": 1
+              }
+            }
+          ],
+          "status": 2
+        }
+      },
+      "Id": "SCRUBBED_FILE_LIST",
+      "UpdateType": "update"
+    }
+  }
+}

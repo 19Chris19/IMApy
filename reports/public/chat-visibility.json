@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-21",
+  "kind": "active_chat_visibility_only",
+  "observedIndependentMcpTools": 11,
+  "independentSkillVisible": true,
+  "installedSkillVersion": "0.1.4",
+  "newReleaseInstalled": false,
+  "realAgentQuestionAcceptance": false,
+  "skillEvidenceWorkflowAcceptance": false,
+  "imaRequests": 0,
+  "registeredVersionChanged": false,
+  "source": "tool_inventory_and_installed_skill_metadata_in_this_chat"
+}

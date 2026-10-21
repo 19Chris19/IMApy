@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two paired official bound-library initialization requests and full responses. Identity fields replaced, nonessential account/storage fields omitted. Browser creates distinct empty sessions for quick/deep; no same-session mode-switch proof. SDK history-list policy differs explicitly and its old full creation response was not captured.",
+  "browserRequestResponsePaired": true,
+  "retainedSdkFullCreationResponse": false,
+  "profiles": {
+    "quick": {
+      "request": {
+        "envInfo": {
+          "robotType": 5,
+          "interactType": 0
+        },
+        "relatedUrl": "SCRUBBED_KB",
+        "sceneType": 1,
+        "msgsLimit": 10,
+        "forbidAutoAddToHistoryList": false,
+        "knowledgeBaseInfoWithFolder": {
+          "knowledgeBaseId": "SCRUBBED_KB",
+          "folderIds": []
+        }
+      },
+      "sdkRequest": {
+        "envInfo": {
+          "robotType": 5,
+          "interactType": 0
+        },
+        "relatedUrl": "SCRUBBED_KB",
+        "sceneType": 1,
+        "msgsLimit": 10,
+        "forbidAutoAddToHistoryList": true,
+        "knowledgeBaseInfoWithFolder": {
+          "knowledgeBaseId": "SCRUBBED_KB",
+          "folderIds": []
+        }
+      },
+      "response": {
+        "code": 0,
+        "session_id": "SCRUBBED_KNOWLEDGE_SESSION_QUICK",
+        "knowledge_base_info": null,
+        "session_info": {
+          "id": "SCRUBBED_KNOWLEDGE_SESSION_QUICK",
+          "robot_type": 5,
+          "interact_type": 0,
+          "session_type": 0,
+          "scene_type": 1,
+          "related_url": "SCRUBBED_KB",
+          "by_knowledge_base_id": "",
+          "knowledge_base_info_with_folder": {
+            "knowledge_base_id": "SCRUBBED_KB",
+            "folder_ids": []
+          },
+          "msgs": []
+        }
+      }
+    },
+    "deep": {
+      "request": {
+        "envInfo": {
+          "robotType": 5,
+          "interactType": 0
+        },
+        "relatedUrl": "SCRUBBED_KB",
+        "sceneType": 1,
+        "msgsLimit": 10,
+        "forbidAutoAddToHistoryList": false,
+        "knowledgeBaseInfoWithFolder": {
+          "knowledgeBaseId": "SCRUBBED_KB",
+          "folderIds": []
+        }
+      },
+      "sdkRequest": {
+        "envInfo": {
+          "robotType": 5,
+          "interactType": 0
+        },
+        "relatedUrl": "SCRUBBED_KB",
+        "sceneType": 1,
+        "msgsLimit": 10,
+        "forbidAutoAddToHistoryList": true,
+        "knowledgeBaseInfoWithFolder": {
+          "knowledgeBaseId": "SCRUBBED_KB",
+          "folderIds": []
+        }
+      },
+      "response": {
+        "code": 0,
+        "session_id": "SCRUBBED_KNOWLEDGE_SESSION_DEEP",
+        "knowledge_base_info": null,
+        "session_info": {
+          "id": "SCRUBBED_KNOWLEDGE_SESSION_DEEP",
+          "robot_type": 5,
+          "interact_type": 0,
+          "session_type": 0,
+          "scene_type": 1,
+          "related_url": "SCRUBBED_KB",
+          "by_knowledge_base_id": "",
+          "knowledge_base_info_with_folder": {
+            "knowledge_base_id": "SCRUBBED_KB",
+            "folder_ids": []
+          },
+          "msgs": []
+        }
+      }
+    }
+  }
+}

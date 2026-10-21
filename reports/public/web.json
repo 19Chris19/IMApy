@@ -1,0 +1,65 @@
+{
+  "runtimeVersion": "0.0.0-s4.16",
+  "result": "limited_pass_sdk_first_fresh_cli_followup",
+  "scope": {
+    "platform": "darwin-arm64",
+    "model": "GLM quick",
+    "accounts": 1,
+    "knowledgeBases": 1,
+    "webSearch": true,
+    "adapterSequence": [
+      "SDK",
+      "fresh_process_CLI"
+    ]
+  },
+  "bindingChecks": {
+    "sameUpstreamSession": true,
+    "sameModel": true,
+    "sameKnowledgeBase": true
+  },
+  "offlineRecovery": {
+    "jsonEqual": true,
+    "structuredMarkdownMetadataEqual": true,
+    "localHistoryEqual": true
+  },
+  "negativeOperations": {
+    "materialOriginal": 0,
+    "sourceWebPageRead": 0
+  },
+  "first": {
+    "status": "succeeded",
+    "complete": true,
+    "doneEvents": 1,
+    "webEvidenceStatus": "verified",
+    "checks": {
+      "rawTextEqual": true,
+      "rawKeysEqual": true,
+      "explicitKeysOnly": true,
+      "urlsEqual": true,
+      "displayNumbersEqual": true
+    },
+    "webReferenceKeys": 9,
+    "uniqueWebPages": 4
+  },
+  "followup": {
+    "status": "succeeded",
+    "complete": true,
+    "doneEvents": 1,
+    "webEvidenceStatus": "verified",
+    "checks": {
+      "rawTextEqual": true,
+      "rawKeysEqual": true,
+      "explicitKeysOnly": true,
+      "urlsEqual": true,
+      "displayNumbersEqual": true
+    },
+    "webReferenceKeys": 4,
+    "uniqueWebPages": 2
+  },
+  "publicProjection": {
+    "schemaVersion": 1,
+    "originalReportSha256": "927fd18a350250c99c28d020ffd1432c15f9bceab013057c6a16d84a025d4ad7",
+    "containsOriginalReport": false,
+    "scope": "historical_bounded_run_not_current_candidate_acceptance"
+  }
+}
