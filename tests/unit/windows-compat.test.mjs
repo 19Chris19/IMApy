@@ -84,13 +84,18 @@ test('Windows directory flush uses no unsupported directory-open, while POSIX st
 });
 
 test('ACL checks use literal input and an isolated environment; malformed/failed checks never grant access', async () => {
-  let request;
+  let request, program;
   const file = 'C:\\private\\quote\';$(not-code)\\key';
   await windowsPrivatePath(file, { env: { SystemRoot: 'C:\\Windows', IMA_OPENAPI_APIKEY: 'SYNTHETIC_SECRET' },
-    runImpl: async (...args) => { request = args; return { stdout: '{"private":true}' }; } });
+    runImpl: (...args) => {
+      request = args; let finish;
+      const operation = new Promise(resolve => { finish = resolve; });
+      operation.child = { stdin: { on() {}, end(value) { program = value; finish({ stdout: '{"private":true}' }); } } };
+      return operation;
+    } });
   assert.equal(request[2].env.IMA_PRIVATE_PATH, file);
   assert.equal(request[2].env.IMA_OPENAPI_APIKEY, undefined);
-  const program = Buffer.from(request[1].at(-1), 'base64').toString('utf16le');
+  assert.deepEqual(request[1].slice(-2), ['-Command', '-']);
   assert.equal(program.includes(file), false); assert.match(program, /Get-Acl -LiteralPath/);
   for (const stdout of ['null', '{}', '{"private":false}', 'not-json'])
     await assert.rejects(windowsPrivatePath(file, { env: { SystemRoot: 'C:\\Windows' }, runImpl: async () => ({ stdout }) }));

@@ -51,11 +51,18 @@ export async function windowsPrivatePath(file, { directory = false, protect = fa
       typeof env.SystemRoot !== 'string' || !/^[A-Za-z]:[\\/]/u.test(env.SystemRoot)) fail('profile_acl_unavailable');
   const executable = path.win32.join(env.SystemRoot, 'System32', 'WindowsPowerShell', 'v1.0', 'powershell.exe');
   try {
-    const { stdout } = await runImpl(executable, ['-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(aclProgram, 'utf16le').toString('base64')], {
+    // A short command line avoids Windows' costly multi-kilobyte encoded
+    // startup path. Feed only this constant ASCII program, then close stdin.
+    const operation = runImpl(executable, ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', '-'], {
       timeout: 5000, maxBuffer: 1024, windowsHide: true,
       env: { SystemRoot: env.SystemRoot, WINDIR: env.SystemRoot, SystemDrive: path.win32.parse(env.SystemRoot).root.slice(0, 2),
         IMA_PRIVATE_PATH: file, IMA_PRIVATE_DIRECTORY: directory ? '1' : '0', IMA_PRIVATE_PROTECT: protect ? '1' : '0' },
     });
+    if (operation.child?.stdin) {
+      operation.child.stdin.on('error', () => {});
+      operation.child.stdin.end(aclProgram + '\n');
+    }
+    const { stdout } = await operation;
     if (JSON.parse(stdout).private !== true) fail('profile_path_unsafe');
   } catch (error) {
     if (error.code === 'profile_path_unsafe') throw error;
