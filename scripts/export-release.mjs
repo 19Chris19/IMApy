@@ -5,7 +5,7 @@ import { checkRelease } from './check-release.mjs';
 import { hash, sourceTar, readTar } from './lib/release-files.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),{summary,source}=await checkRelease(root);
 const prefix='imapy-'+summary.version;
-const manifest={schemaVersion:1,version:summary.version,sourceBaseCommit:'921475346615fb768da4dcfea74f22a95abf17db',
+const manifest={schemaVersion:1,version:summary.version,sourceBaseCommit:'39087b9860368c8726dea2226e90de38df669da0',
   originalGitHistoryIncluded:false,containsUserState:false,files:source.map(({file,sha256,mode})=>({file,sha256,mode}))};
 const manifestBytes=Buffer.from(JSON.stringify(manifest,null,2)+'\n');
 const entries=[...source,{file:'release/source-manifest.json',mode:0o644,bytes:manifestBytes}];

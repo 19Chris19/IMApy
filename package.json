@@ -1,6 +1,6 @@
 {
   "name": "@ima-local/standalone",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "private": true,
   "description": "IMApy development preview: independent IMA web SDK, CLI, MCP and evidence Skill",
   "type": "module",
