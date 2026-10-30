@@ -3,6 +3,7 @@ import { constants } from 'node:fs';
 import path from 'node:path';
 import { hash, seal, unseal } from './task-journal.mjs';
 import { privateStat, checkedDirectory, exclusiveFile, syncDirectory } from './profile-store.mjs';
+import { assertPlatformPrivatePath } from './platform-files.mjs';
 import { fail } from './errors.mjs';
 
 export const batchPattern = /^u_[a-f0-9]{64}$/u;
@@ -45,8 +46,18 @@ export async function openUploadJournal({ home, profile, principal, batchId, key
     }
     if (bytes + extra > UPLOAD_STORAGE_LIMITS.total || creating && count >= UPLOAD_STORAGE_LIMITS.batches || size + extra > UPLOAD_STORAGE_LIMITS.batch) fail('upload_storage_capacity');
   }
+  async function verifyWindowsFile() {
+    if (process.platform !== 'win32') return undefined;
+    const stat = await fs.lstat(file); privateStat(stat);
+    await assertPlatformPrivatePath(file);
+    return stat;
+  }
+  function verifyHandleIdentity(stat, before) {
+    if (before && (stat.dev !== before.dev || stat.ino !== before.ino)) fail('profile_path_unsafe');
+  }
   let handle;
-  try { handle = await fs.open(file, constants.O_RDONLY | (constants.O_NOFOLLOW || 0)); }
+  let before;
+  try { before = await verifyWindowsFile(); handle = await fs.open(file, constants.O_RDONLY | (constants.O_NOFOLLOW || 0)); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
   if (!handle) {
     if (!create || !writable) fail('upload_batch_not_found');
@@ -57,7 +68,7 @@ export async function openUploadJournal({ home, profile, principal, batchId, key
     apply(record); seq = 1; previous = hash(bytes.subarray(0, -1)); size = bytes.length; created = true;
   } else {
     try {
-      const stat = await handle.stat(); privateStat(stat);
+      const stat = await handle.stat(); privateStat(stat); verifyHandleIdentity(stat, before);
       if (stat.size > UPLOAD_STORAGE_LIMITS.batch) fail('upload_storage_capacity');
       const chunk = Buffer.alloc(64 * 1024); let carry = Buffer.alloc(0), offset = 0;
       while (offset < stat.size) {
@@ -89,9 +100,10 @@ export async function openUploadJournal({ home, profile, principal, batchId, key
       const old = state; state = structuredClone(state);
       try { apply(record); } finally { state = old; }
       const bytes = frame(record); await capacity(bytes.length, false); await beforeAppend?.(record);
+      const beforeWrite = await verifyWindowsFile();
       const writer = await fs.open(file, constants.O_WRONLY | constants.O_APPEND | (constants.O_NOFOLLOW || 0));
       try {
-        const stat = await writer.stat(); privateStat(stat);
+        const stat = await writer.stat(); privateStat(stat); verifyHandleIdentity(stat, beforeWrite);
         if (stat.size !== size) fail('upload_journal_changed');
         await writer.writeFile(bytes); await writer.sync();
       } catch (error) { partialTail = true; throw error; }

@@ -31,3 +31,21 @@ jobs:
         run: |
           npm run check:release
           npm run export:source
+  windows-local:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build
+        run: npm run build
+      - name: Pack
+        run: npm run pack:local
+      - name: Native Windows local lifecycle (real upstream blocked)
+        run: node --require ./tests/helpers/no-upstream.cjs --test tests/windows/local-lifecycle.test.mjs

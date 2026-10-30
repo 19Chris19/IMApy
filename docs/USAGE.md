@@ -1,6 +1,6 @@
 # 使用 IMApy
 
-需要 Node.js 22。首次扫码需要 macOS 图形桌面及已安装的 Chrome、Edge 或 Chromium。
+需要 Node.js 22。首次扫码已验证 macOS 图形桌面及已安装的 Chrome、Edge 或 Chromium；Windows 实验适配与单独验收边界见 [Windows 说明](WINDOWS.md)。
 本预览版没有公开 npm 包；请使用同一交付清单内的安装包，并核对 SHA-256。
 
 ## 安装与本地检查

@@ -1,0 +1,7 @@
+# Evidence hashes and generated registries must have identical checkout bytes.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
