@@ -5,6 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { fileURLToPath } from 'node:url';
 
 const execute = promisify(execFile);
 async function isolated(t, phase, source) {
@@ -22,7 +23,7 @@ async function isolated(t, phase, source) {
     ${source}
     console.log(JSON.stringify({passed:true}));
   `;
-  const result = await execute(process.execPath, ['--require', new URL('../helpers/no-upstream.cjs', import.meta.url).pathname,
+  const result = await execute(process.execPath, ['--require', fileURLToPath(new URL('../helpers/no-upstream.cjs', import.meta.url)),
     '--input-type=module', '-e', script], { cwd: directory,
     env: { PATH: '/usr/bin:/bin', IMA_RECOVERY_PHASE: phase }, timeout: 10000 });
   assert.equal(result.stderr, ''); assert.deepEqual(JSON.parse(result.stdout), { passed: true });

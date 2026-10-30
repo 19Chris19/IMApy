@@ -6,7 +6,8 @@
     "scripts/build.mjs", "scripts/pack.mjs", "scripts/check-recorded-acceptance.mjs", "scripts/check-release.mjs", "scripts/export-release.mjs",
     "release/source-policy.json", "release/AGENTS.md", "docs/USAGE.md", "docs/ACCEPTANCE.md", "docs/KNOWN_LIMITATIONS.md",
     "docs/PROVIDER_ADAPTER.md", "docs/PRE_RELEASE.md", "docs/source-provenance.json", "docs/local-protocol-revisions.json", "docs/login-device-provenance.json",
-    "CONTRIBUTING.md", "scripts/build-readme.py"
+    "CONTRIBUTING.md", "scripts/build-readme.py", "docs/UPLOADS.md", "docs/upload-formats.json",
+    "scripts/inspect-upload-script.mjs", "scripts/check-upload-resources.mjs", "reports/upload-implementation-20261022.md", "reports/upload-validation.json", "reports/upload-web-entry-acceptance-20261022.json"
   ],
   "mappings": [{"from": "release/AGENTS.md", "to": "AGENTS.md"}],
   "excludedHistoricalOriginalsRetainedLocally": true,

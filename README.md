@@ -129,3 +129,9 @@ npm run check:release
 MIT。协议代码源于 [IMA QA Web Agent](https://github.com/19Chris19/ima-qa-web-agent)，
 原始提交与文件摘要保留在 `docs/source-provenance.json`，本地修改另列记录。
 上游版权与许可保留；依赖许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+### 文件上传开发进度
+
+上传与批量入库正在本地开发，尚未列入已支持能力。格式研究覆盖 11 类、22 个后缀，真实网页与 SDK 上传均待逐类验收；候选中的本地规划、加密队列及六个工具不代表已经接通 IMA 上传。[查看进度、使用入口与安全恢复](docs/UPLOADS.md)。
+
+2026-10-22 的真实入口核对发现：独立测试账号个人库的导入按钮要求前往客户端。已按网页范围停止，实际上传与续期均为 0；未将这次检查记作上传通过。各格式继续待验收，详见上述进度说明。

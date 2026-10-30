@@ -34,7 +34,10 @@
     "docs/login-device-provenance.json",
     "reports/public",
     "assets/readme",
-    "CONTRIBUTING.md"
+    "CONTRIBUTING.md",
+    "docs/UPLOADS.md",
+    "docs/upload-formats.json",
+    "reports/upload-web-entry-acceptance-20261022.json"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",

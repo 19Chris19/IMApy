@@ -5,7 +5,8 @@ import packageMetadata from '../../../../package.json' with { type: 'json' };
 
 export const VERSION = packageMetadata.version;
 export const LOCAL_TOOLS = Object.freeze(['ima_status', 'ima_doctor', 'ima_capabilities']);
-export const AGENT_TOOLS = Object.freeze([...LOCAL_TOOLS, 'ima_models', 'ima_libraries', 'ima_ask', 'ima_task', 'ima_recover_task', 'ima_conversation', 'ima_cancel_task', 'ima_export_task']);
+export const AGENT_TOOLS = Object.freeze([...LOCAL_TOOLS, 'ima_models', 'ima_libraries', 'ima_ask', 'ima_task', 'ima_recover_task', 'ima_conversation', 'ima_cancel_task', 'ima_export_task',
+  'ima_upload_plan', 'ima_upload_batch', 'ima_upload_status', 'ima_upload_reconcile', 'ima_upload_resume', 'ima_upload_cancel']);
 const FUTURE = Object.freeze(['material_original_read', 'native_agent_real_acceptance', 'provider_pool_migration']);
 export function createLocalApplication(options = {}) {
   const runtime = createLocalRuntime(options);
@@ -40,6 +41,12 @@ export function createLocalApplication(options = {}) {
           bodyReferences: true, missingAndConflictedRelationsReported: true,
           knowledgeMaterialIdentityProjection: true, identityRequiresOwnedTaskScope: true,
           materialOriginalRead: false, automaticallyFetchesSources: false },
+        uploadContract: { implemented: true, syntheticOnly: true, liveAdapterEnabled: false,
+          webUploadValidated: false, sdkUploadValidated: false, runtimeDependsOnProvider: false,
+          declaredSuffixCount: 22, declaredCategoryCount: 11, declarationsAreSupportClaims: false,
+          explicitFilesOnly: true, maxFiles: 100, transferConcurrency: 1, overwrite: false,
+          startupNetwork: false, automaticResume: false, automaticRetry: false, automaticQuestion: false,
+          encryptedJournal: true, separateFromQuestionAttachments: true },
         authenticationAcceptance: { syntheticOnly: true, realLogin: false, realRefresh: false },
         authenticationMaintenance: { implemented: true, optInHostOnly: true, enabledByDefault: false,
           sharedConditionalRefresh: true, unknownOutcomeHalts: true, automaticallyRetriesFailures: false,

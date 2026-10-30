@@ -44,7 +44,7 @@ export async function exerciseReadinessArtifact({ directory, runner, installed, 
   const client = new Client({ name: 'installed-readiness-synthetic', version: '1' });
   try {
     await client.connect(transport);
-    assert.equal((await client.listTools()).tools.length, 11);
+    assert.equal((await client.listTools()).tools.length, 17);
     const status = (await client.callTool({ name: 'ima_status', arguments: {} })).structuredContent;
     assert.deepEqual(status.readiness, cli.value.readiness);
     const error = await client.callTool({ name: 'ima_models', arguments: {} });

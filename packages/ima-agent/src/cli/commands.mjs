@@ -18,7 +18,11 @@ Saved: task (--task-id ID | --request-key KEY) [--view summary|events|result]
        recover-task | cancel-task (same task selector; cancel is process-local)
        conversation --conversation-id ID [--limit N]
        export (same task selector) [--format json|markdown] [--output NEW_PRIVATE_FILE]
-Agent: mcp (11 STDIO tools, no startup login/network)
+Upload local: upload plan --input PRIVATE_JSON | upload status --batch-id ID
+Upload explicit: upload start --input PRIVATE_JSON
+       upload reconcile | upload resume | upload cancel --batch-id ID
+       Live upload adapter is closed pending separately authorized web acceptance.
+Agent: mcp (17 STDIO tools, including 6 candidate upload tools; no startup network)
        setup plan [--host generic-json|codex] (configuration/argv plan only)
        setup inspect --config PRIVATE_JSON
        setup apply --config PRIVATE_JSON --expected-sha SHA_OR_absent --confirm
@@ -34,8 +38,8 @@ Real acceptance is version/scope-specific. Online actions need user authorizatio
 `;
 const fault = code => { throw new PersonalAuthError(code); };
 const values = { '--profile': 'profile', '--state-dir': 'stateDir', '--browser-path': 'browserPath', '--timeout-ms': 'timeoutMs',
-  '--lock-id': 'lockId', '--input': 'input', '--task-id': 'taskId', '--request-key': 'requestKey', '--conversation-id': 'conversationId',
-  '--view': 'view', '--after-event-id': 'afterEventId', '--limit': 'limit', '--answer-offset': 'answerOffset', '--answer-limit': 'answerLimit',
+  '--lock-id': 'lockId', '--input': 'input', '--task-id': 'taskId', '--request-key': 'requestKey', '--conversation-id': 'conversationId', '--batch-id': 'batchId',
+  '--view': 'view', '--after-event-id': 'afterEventId', '--offset': 'offset', '--limit': 'limit', '--answer-offset': 'answerOffset', '--answer-limit': 'answerLimit',
   '--format': 'format', '--output': 'output', '--config': 'config', '--expected-sha': 'expectedSha256', '--receipt': 'receipt', '--host': 'host' };
 const commandOptions = {
   doctor: ['local'], login: ['replace', 'browserPath', 'timeoutMs'], 'auth logout': ['confirm'], 'auth recover-lock': ['lockId'],
@@ -43,9 +47,12 @@ const commandOptions = {
   'recover-task': ['taskId', 'requestKey'], 'cancel-task': ['taskId', 'requestKey'], conversation: ['conversationId', 'limit'],
   export: ['taskId', 'requestKey', 'format', 'output'], 'setup plan': ['host'], 'setup inspect': ['config'],
   'setup apply': ['config', 'expectedSha256', 'confirm'], 'setup rollback': ['receipt', 'confirm'],
+  'upload plan': ['input'], 'upload start': ['input'], 'upload status': ['batchId','requestKey','limit','offset'],
+  'upload reconcile': ['batchId','requestKey'], 'upload resume': ['batchId','requestKey'], 'upload cancel': ['batchId','requestKey'],
 };
 const supported = ['doctor', 'status', 'capabilities', 'mcp', 'init', 'login', 'auth status', 'auth refresh', 'auth recover', 'auth logout', 'auth lock-status', 'auth recover-lock',
-  'models', 'libraries', 'ask', 'task', 'recover-task', 'cancel-task', 'conversation', 'export', 'setup plan', 'setup inspect', 'setup apply', 'setup rollback', 'skill path'];
+  'models', 'libraries', 'ask', 'task', 'recover-task', 'cancel-task', 'conversation', 'export', 'setup plan', 'setup inspect', 'setup apply', 'setup rollback', 'skill path',
+  'upload plan', 'upload start', 'upload status', 'upload reconcile', 'upload resume', 'upload cancel'];
 export function parseArguments(args) {
   const options = {}, words = [];
   for (let i = 0; i < args.length; i++) {
@@ -61,7 +68,7 @@ export function parseArguments(args) {
   const allowed = new Set(['profile', 'stateDir', 'json', 'help', 'version', ...(commandOptions[command] || [])]);
   if (Object.keys(options).some(key => !allowed.has(key))) fault('invalid_arguments');
   if (command === 'mcp' && (options.json || options.help || options.version)) fault('invalid_arguments');
-  for (const key of ['timeoutMs', 'afterEventId', 'limit', 'answerOffset', 'answerLimit']) if (options[key] !== undefined) {
+  for (const key of ['timeoutMs', 'afterEventId', 'limit', 'answerOffset', 'answerLimit', 'offset']) if (options[key] !== undefined) {
     if (!/^\d+$/u.test(options[key]) || !Number.isSafeInteger(Number(options[key]))) fault('invalid_arguments');
     options[key] = Number(options[key]);
   }
@@ -93,13 +100,24 @@ export async function main(args, dependencies = {}) {
     if (!supported.includes(command)) fault(command === 'setup' ? 'invalid_arguments' : 'unknown_command');
     app = (dependencies.appFactory || createLocalApplication)({ profile: options.profile, stateDir: options.stateDir });
     if (command === 'mcp') { const { runStdio } = await import('../mcp/server.mjs'); await runStdio(app); keepAlive = true; return 0; }
-    if (['login', 'auth refresh', 'models', 'libraries', 'ask'].includes(command)) {
+    if (['login', 'auth refresh', 'models', 'libraries', 'ask', 'upload start', 'upload resume', 'upload reconcile'].includes(command)) {
       controller = new AbortController(); abort = () => controller.abort();
       process.once('SIGINT', abort); process.once('SIGTERM', abort);
     }
     const selected = Object.fromEntries(['taskId', 'requestKey'].filter(key => options[key] !== undefined).map(key => [key, options[key]]));
     let value;
-    if (['doctor', 'status', 'capabilities'].includes(command)) value = await app[command]();
+    if (command.startsWith('upload ')) {
+      const action = command.slice(7), names = { plan: 'planUploadBatch', start: 'uploadBatch', status: 'readUploadBatch',
+        reconcile: 'reconcileUploadBatch', resume: 'resumeUploadBatch', cancel: 'cancelUploadBatch' };
+      let input;
+      if (['plan', 'start'].includes(action)) {
+        if (!options.input || !path.isAbsolute(options.input)) fault('agent_input_file_required');
+        try { input = JSON.parse(new TextDecoder('utf8', { fatal: true }).decode(await readPrivate(options.input))); }
+        catch (error) { if (error instanceof PersonalAuthError) throw error; fault('agent_input_invalid'); }
+      } else input = { ...Object.fromEntries(['batchId','requestKey'].filter(k => options[k] !== undefined).map(k => [k, options[k]])),
+        ...(options.limit === undefined ? {} : { limit: options.limit }), ...(options.offset === undefined ? {} : { offset: options.offset }) };
+      value = await app.workflows[names[action]](input, { signal: controller?.signal });
+    } else if (['doctor', 'status', 'capabilities'].includes(command)) value = await app[command]();
     else if (command === 'init') value = await app.auth.initialize();
     else if (command === 'auth status') value = await app.auth.status();
     else if (command === 'auth recover') value = await app.auth.recover();
@@ -145,7 +163,8 @@ export async function main(args, dependencies = {}) {
       value = command === 'setup plan' ? plan : await applyRegistration({ plan, file: options.config, expectedSha256: options.expectedSha256, confirm: options.confirm });
     }
     await finishApp(); await emit(value);
-    return command === 'doctor' && !value.ok || ['status', 'auth status'].includes(command) && (value.authentication || value).state === 'unavailable' || command === 'ask' && value.status !== 'succeeded' ? 1 : 0;
+    return command === 'doctor' && !value.ok || ['status', 'auth status'].includes(command) && (value.authentication || value).state === 'unavailable' || command === 'ask' && value.status !== 'succeeded' ||
+      ['upload start','upload resume','upload reconcile'].includes(command) && ['paused','needs_reconciliation','storage_recovery_required','completed_with_failures','cancelled'].includes(value.status) ? 1 : 0;
   } catch (error) {
     const value = { ...agentError(error), stage: 'S4' };
     if (json) { try { await emit(value); } catch { diagnostic(value.error + '\n'); } }

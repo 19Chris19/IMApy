@@ -57,7 +57,7 @@ export async function exerciseAgentArtifact({ directory, runner, installed, data
       throw Error('synthetic_mcp_timeout');
     };
     try {
-      await client.connect(transport); assert.equal((await client.listTools()).tools.length, 11);
+      await client.connect(transport); assert.equal((await client.listTools()).tools.length, 17);
       if (round === 0) {
         const models = await call('ima_models'); request.modelRef = models.models[0].modelRef; await call('ima_libraries');
         first = await call('ima_ask', request); assert.equal((await finish(first.taskId)).result.complete, true);
