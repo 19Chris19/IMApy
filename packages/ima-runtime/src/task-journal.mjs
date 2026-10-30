@@ -160,6 +160,7 @@ async function openJournal({ file, key, profile, conversationId, writable, budge
     catch (error) {
       if (error.code !== 'ENOENT' || !writable || mustExist) throw error;
       handle = await fs.open(file, constants.O_RDWR | constants.O_APPEND | constants.O_CREAT | constants.O_EXCL | (constants.O_NOFOLLOW || 0), 0o600);
+      await assertPlatformPrivatePath(file, { protect: true });
       await handle.sync(); await syncDirectory(path.dirname(file));
     }
     const stat = await handle.stat(); privateStat(stat);

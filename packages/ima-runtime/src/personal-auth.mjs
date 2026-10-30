@@ -8,7 +8,7 @@ import { normalizeCredentials, principal, credentialDigest } from './credentials
 import { chromiumLoginDriver } from './browser-login.mjs';
 import { fail, PersonalAuthError, publicError } from './errors.mjs';
 import { checkedDirectory } from './profile-store.mjs';
-import { cleanupLoginDirectory } from './platform-files.mjs';
+import { cleanupLoginDirectory, assertPlatformPrivatePath } from './platform-files.mjs';
 
 const clock = now => { const value = now(); if (!Number.isSafeInteger(value) || value < 0) fail('auth_clock_invalid'); return value; };
 const next = (state, values) => ({ ...state, ...values, generation: state.generation + 1 });
@@ -81,6 +81,7 @@ export function createPersonalAuth({ directory, profile, now = Date.now, browser
       let removeAbort;
       try {
         temporary = await fs.mkdtemp(path.join(store.profileDirectory, '.login-')); await fs.chmod(temporary, 0o700);
+        await assertPlatformPrivatePath(temporary, { directory: true, protect: true });
         await checkedDirectory(temporary);
         const interrupted = new Promise((resolve, reject) => {
           removeAbort = () => reject(new PersonalAuthError('login_cancelled'));

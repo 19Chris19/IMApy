@@ -14,7 +14,7 @@ Windows 10/11、Node 22、已安装的 Chrome 或 Edge 是本次适配目标。�
 | 清理异常覆盖原始失败 | 保留原始登录失败原因；无法证明浏览器退出时仍保留私有目录且不发布登录态 |
 | Windows Git 默认换行转换导致构建时证据注册表不一致 | 用 `.gitattributes` 固定文本为 LF、图片为二进制，保留原有字节摘要和严格构建校验 |
 
-不使用 `IMA_UNSAFE_ALLOW_WIN32`，不自动提权，不更改已有目录或其他用户文件的 ACL。只为本次新建的空状态目录建立私有 ACL；已有路径必须通过检查。当前要求本地固定 NTFS/ReFS 卷、当前用户所有者；允许当前用户及 Windows SYSTEM/Administrators 的授权，拒绝其他 Allow 项、UNC、网络卷和重解析点。需要系统自带的 Windows PowerShell，检查失败时停止，不降级为无权限校验。
+不使用 `IMA_UNSAFE_ALLOW_WIN32`，不自动提权，不更改已有目录或其他用户文件的 ACL。只为本次新建的空状态目录、空私有文件建立 ACL 和当前用户所有权，在写入凭据前完成检查；已有路径必须通过检查。当前要求本地固定 NTFS/ReFS 卷、当前用户所有者；允许当前用户及 Windows SYSTEM/Administrators 的授权，拒绝其他 Allow 项、UNC、网络卷和重解析点。需要系统自带的 Windows PowerShell，检查失败时停止，不降级为无权限校验。
 
 Windows 的目录刷盘限制意味着**不能声称与 POSIX 路径具有相同的断电持久性**。状态会报告 `storageDurability=file_flush_atomic_replace_no_directory_flush`；保留文件 flush、提交意图、加密、互斥和恢复检查。系统断电/文件系统故障的整套恢复仍待单独验收。
 

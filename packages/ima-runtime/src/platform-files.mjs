@@ -19,20 +19,32 @@ try {
   [Console]::Error.WriteLine('ima_acl_stage=filesystem')
   $item = Get-Item -LiteralPath $p -Force
   if ([bool]$item.PSIsContainer -ne ($env:IMA_PRIVATE_DIRECTORY -eq '1')) { throw 'type' }
-  $ancestor = $item
-  while ($null -ne $ancestor) {
+  $cursor = $p
+  $depth = 0
+  while (-not [string]::IsNullOrEmpty($cursor)) {
+    $depth++
+    if ($depth -gt 256) { throw 'depth' }
+    $ancestor = Get-Item -LiteralPath $cursor -Force
     if (($ancestor.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'reparse' }
-    if ($ancestor -is [IO.DirectoryInfo]) { $ancestor = $ancestor.Parent } else { $ancestor = $ancestor.Directory }
+    $parent = [IO.Path]::GetDirectoryName($cursor)
+    if ($parent -eq $cursor) { throw 'cycle' }
+    $cursor = $parent
   }
   $sid = [Security.Principal.WindowsIdentity]::GetCurrent().User
   $stage = 'identity'
   [Console]::Error.WriteLine('ima_acl_stage=identity')
   if ($env:IMA_PRIVATE_PROTECT -eq '1') {
-    if (-not $item.PSIsContainer -or @(Get-ChildItem -LiteralPath $p -Force).Count -ne 0) { throw 'not_empty' }
-    $acl = [Security.AccessControl.DirectorySecurity]::new()
+    if ($item.PSIsContainer) {
+      if (@(Get-ChildItem -LiteralPath $p -Force).Count -ne 0) { throw 'not_empty' }
+      $acl = [Security.AccessControl.DirectorySecurity]::new()
+      $rule = [Security.AccessControl.FileSystemAccessRule]::new($sid, 'FullControl', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
+    } else {
+      if ($item.Length -ne 0) { throw 'not_empty' }
+      $acl = [Security.AccessControl.FileSecurity]::new()
+      $rule = [Security.AccessControl.FileSystemAccessRule]::new($sid, 'FullControl', 'Allow')
+    }
     $acl.SetOwner($sid)
     $acl.SetAccessRuleProtection($true, $false)
-    $rule = [Security.AccessControl.FileSystemAccessRule]::new($sid, 'FullControl', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
     $acl.AddAccessRule($rule)
     Set-Acl -LiteralPath $p -AclObject $acl
   }

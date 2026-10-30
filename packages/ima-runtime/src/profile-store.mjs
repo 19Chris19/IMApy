@@ -43,7 +43,7 @@ async function syncDirectory(directory) {
 }
 async function exclusiveFile(file, bytes) {
   const handle = await fs.open(file, constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | (constants.O_NOFOLLOW || 0), 0o600);
-  try { await assertPlatformPrivatePath(file); await handle.writeFile(bytes); await handle.sync(); } finally { await handle.close(); }
+  try { await assertPlatformPrivatePath(file, { protect: true }); await handle.writeFile(bytes); await handle.sync(); } finally { await handle.close(); }
 }
 function validateState(state, profile) {
   if (!plain(state) || state.schemaVersion !== 1 || state.profile !== profile || !Number.isSafeInteger(state.generation) || state.generation < 0 ||
@@ -70,7 +70,7 @@ export function createProfileStore({ directory, profile, now = Date.now, faultHo
   async function gated(action) {
     try { await fs.mkdir(gate, { mode: 0o700 }); }
     catch (error) { if (error.code === 'EEXIST') fail('profile_busy'); throw error; }
-    try { return await action(); } finally { await fs.rmdir(gate); }
+    try { await assertPlatformPrivatePath(gate, { directory: true, protect: true }); return await action(); } finally { await fs.rmdir(gate); }
   }
   async function roots(create) {
     if (create) {
@@ -130,7 +130,7 @@ export function createProfileStore({ directory, profile, now = Date.now, faultHo
     await gated(async () => {
       try { await fs.mkdir(lockPath, { mode: 0o700 }); }
       catch (error) { if (error.code === 'EEXIST') fail('profile_busy'); throw error; }
-      try { await exclusiveFile(path.join(lockPath, 'owner.json'), JSON.stringify(owner)); await syncDirectory(lockPath); await syncDirectory(locks); }
+      try { await assertPlatformPrivatePath(lockPath, { directory: true, protect: true }); await exclusiveFile(path.join(lockPath, 'owner.json'), JSON.stringify(owner)); await syncDirectory(lockPath); await syncDirectory(locks); }
       catch { fail('profile_lock_unavailable'); }
     });
     async function assertCurrent() {
@@ -205,6 +205,7 @@ export function createProfileStore({ directory, profile, now = Date.now, faultHo
       catch (error) { if (error.code !== 'profile_not_initialized') throw error; }
       const staging = await fs.mkdtemp(path.join(profiles, `.init-${profile}-`));
       await fs.chmod(staging, 0o700);
+      await assertPlatformPrivatePath(staging, { directory: true, protect: true });
       const key = randomBytes(32);
       try {
         const state = { schemaVersion: 1, profile, generation: 0, credentialGeneration: 0, createdAt: now(),
