@@ -9,10 +9,14 @@ const run = promisify(execFile);
 // interpolated into PowerShell. No credentials or script execution from profiles.
 const aclProgram = String.raw`
 $ErrorActionPreference = 'Stop'
+$stage = 'started'
+[Console]::Error.WriteLine('ima_acl_stage=started')
 try {
   $p = [IO.Path]::GetFullPath($env:IMA_PRIVATE_PATH)
   $drive = [IO.DriveInfo]::new([IO.Path]::GetPathRoot($p))
   if ($drive.DriveType -ne 'Fixed' -or $drive.DriveFormat -notin @('NTFS','ReFS')) { throw 'filesystem' }
+  $stage = 'filesystem'
+  [Console]::Error.WriteLine('ima_acl_stage=filesystem')
   $item = Get-Item -LiteralPath $p -Force
   if ([bool]$item.PSIsContainer -ne ($env:IMA_PRIVATE_DIRECTORY -eq '1')) { throw 'type' }
   $ancestor = $item
@@ -21,6 +25,8 @@ try {
     if ($ancestor -is [IO.DirectoryInfo]) { $ancestor = $ancestor.Parent } else { $ancestor = $ancestor.Directory }
   }
   $sid = [Security.Principal.WindowsIdentity]::GetCurrent().User
+  $stage = 'identity'
+  [Console]::Error.WriteLine('ima_acl_stage=identity')
   if ($env:IMA_PRIVATE_PROTECT -eq '1') {
     if (-not $item.PSIsContainer -or @(Get-ChildItem -LiteralPath $p -Force).Count -ne 0) { throw 'not_empty' }
     $acl = [Security.AccessControl.DirectorySecurity]::new()
@@ -31,6 +37,8 @@ try {
     Set-Acl -LiteralPath $p -AclObject $acl
   }
   $acl = Get-Acl -LiteralPath $p
+  $stage = 'acl'
+  [Console]::Error.WriteLine('ima_acl_stage=acl')
   if ($acl.GetOwner([Security.Principal.SecurityIdentifier]).Value -ne $sid.Value) { throw 'owner' }
   $full = $false
   foreach ($rule in $acl.GetAccessRules($true, $true, [Security.Principal.SecurityIdentifier])) {
@@ -43,7 +51,7 @@ try {
   }
   if (-not $full) { throw 'permissions' }
   [Console]::Out.Write('{"private":true}')
-} catch { [Console]::Out.Write('{"private":false}'); exit 1 }
+} catch { [Console]::Error.WriteLine('ima_acl_stage=failed_' + $stage); [Console]::Out.Write('{"private":false}'); exit 1 }
 `;
 
 export async function windowsPrivatePath(file, { directory = false, protect = false, env = process.env, runImpl = run } = {}) {

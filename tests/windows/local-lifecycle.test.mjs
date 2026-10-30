@@ -11,6 +11,7 @@ import { createPersonalAuth } from '../../packages/ima-runtime/src/personal-auth
 import { createProfileStore } from '../../packages/ima-runtime/src/profile-store.mjs';
 import { findLoginBrowser } from '../../packages/ima-runtime/src/browser-login.mjs';
 import { stopOwnedWindowsTree } from '../../packages/ima-runtime/src/platform-process.mjs';
+import { windowsPrivatePath } from '../../packages/ima-runtime/src/platform-files.mjs';
 const run = promisify(execFile), windows = process.platform === 'win32';
 const credentials = () => ({ accountInfo: { userId: 'SYNTHETIC_WINDOWS', token: 'SYNTHETIC_ACCESS', refreshToken: 'SYNTHETIC_REFRESH',
   tokenType: 0, idType: 1, tokenExpiresAt: 10000000, refreshTokenExpiresAt: 20000000 }, userAgent: 'SyntheticWindowsBrowser/1', deviceInfo: null, extensionVersion: '' });
@@ -19,6 +20,25 @@ async function context(t) {
   t.after(() => fs.rm(parent, { recursive: true, force: true, maxRetries: 6, retryDelay: 150 }));
   return { directory: path.join(parent, 'private-state'), profile: 'windows-test', now: () => 2000, browserDriver: async () => credentials() };
 }
+test('Windows PowerShell host and ACL probe have sanitized stage diagnostics', { skip: !windows, timeout: 45000 }, async t => {
+  const executable = path.join(process.env.SystemRoot, 'System32/WindowsPowerShell/v1.0/powershell.exe');
+  for (const mode of ['minimal', 'os_context']) {
+    const env = mode === 'minimal' ? { SystemRoot: process.env.SystemRoot, WINDIR: process.env.SystemRoot } :
+      Object.fromEntries(['SystemRoot','WINDIR','SystemDrive','TEMP','TMP','USERPROFILE','LOCALAPPDATA','APPDATA','PATH','COMSPEC','ProgramData','PSModulePath'].filter(k => process.env[k] !== undefined).map(k => [k, process.env[k]]));
+    const at = Date.now(), operation = run(executable, ['-NoLogo','-NoProfile','-NonInteractive','-Command','[Console]::Out.Write("ready")'], { env, timeout: 10000, windowsHide: true });
+    operation.child.stdin.end();
+    try { const r = await operation; t.diagnostic(JSON.stringify({ host: mode, ready: r.stdout === 'ready', milliseconds: Date.now() - at })); }
+    catch (error) { t.diagnostic(JSON.stringify({ host: mode, ready: false, milliseconds: Date.now() - at, killed: error.killed === true, code: error.code })); }
+  }
+  const options = await context(t); await fs.mkdir(options.directory);
+  const observed = (...args) => {
+    const operation = run(...args);
+    const report = result => t.diagnostic(JSON.stringify({ stages: (result.stderr || '').split(/\r?\n/).filter(s => /^ima_acl_stage=[a-z_]+$/.test(s)), killed: result.killed === true, code: result.code }));
+    operation.then(report, report);
+    return operation;
+  };
+  await windowsPrivatePath(options.directory, { directory: true, protect: true, runImpl: observed });
+});
 test('Windows native ACL + encrypted login + fresh runtime recovery, with no browser or IMA access', { skip: !windows, timeout: 180000 }, async t => {
   const options = await context(t), auth = createPersonalAuth(options);
   assert.equal((await auth.initialize()).initialized, true);
