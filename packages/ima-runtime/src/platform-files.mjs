@@ -17,15 +17,16 @@ try {
   if ($drive.DriveType -ne 'Fixed' -or $drive.DriveFormat -notin @('NTFS','ReFS')) { throw 'filesystem' }
   $stage = 'filesystem'
   [Console]::Error.WriteLine('ima_acl_stage=filesystem')
-  $item = Get-Item -LiteralPath $p -Force
-  if ([bool]$item.PSIsContainer -ne ($env:IMA_PRIVATE_DIRECTORY -eq '1')) { throw 'type' }
+  $attributes = [IO.File]::GetAttributes($p)
+  $isDirectory = ($attributes -band [IO.FileAttributes]::Directory) -ne 0
+  if ($isDirectory -ne ($env:IMA_PRIVATE_DIRECTORY -eq '1')) { throw 'type' }
   $cursor = $p
   $depth = 0
   while (-not [string]::IsNullOrEmpty($cursor)) {
     $depth++
     if ($depth -gt 256) { throw 'depth' }
-    $ancestor = Get-Item -LiteralPath $cursor -Force
-    if (($ancestor.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'reparse' }
+    $ancestorAttributes = [IO.File]::GetAttributes($cursor)
+    if (($ancestorAttributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'reparse' }
     $parent = [IO.Path]::GetDirectoryName($cursor)
     if ($parent -eq $cursor) { throw 'cycle' }
     $cursor = $parent
@@ -34,21 +35,22 @@ try {
   $stage = 'identity'
   [Console]::Error.WriteLine('ima_acl_stage=identity')
   if ($env:IMA_PRIVATE_PROTECT -eq '1') {
-    if ($item.PSIsContainer) {
-      if (@(Get-ChildItem -LiteralPath $p -Force).Count -ne 0) { throw 'not_empty' }
+    if ($isDirectory) {
+      $entries = [IO.Directory]::EnumerateFileSystemEntries($p).GetEnumerator()
+      try { if ($entries.MoveNext()) { throw 'not_empty' } } finally { $entries.Dispose() }
       $acl = [Security.AccessControl.DirectorySecurity]::new()
       $rule = [Security.AccessControl.FileSystemAccessRule]::new($sid, 'FullControl', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
     } else {
-      if ($item.Length -ne 0) { throw 'not_empty' }
+      if ([IO.FileInfo]::new($p).Length -ne 0) { throw 'not_empty' }
       $acl = [Security.AccessControl.FileSecurity]::new()
       $rule = [Security.AccessControl.FileSystemAccessRule]::new($sid, 'FullControl', 'Allow')
     }
     $acl.SetOwner($sid)
     $acl.SetAccessRuleProtection($true, $false)
     $acl.AddAccessRule($rule)
-    Set-Acl -LiteralPath $p -AclObject $acl
+    if ($isDirectory) { [IO.Directory]::SetAccessControl($p, $acl) } else { [IO.File]::SetAccessControl($p, $acl) }
   }
-  $acl = Get-Acl -LiteralPath $p
+  $acl = if ($isDirectory) { [IO.Directory]::GetAccessControl($p) } else { [IO.File]::GetAccessControl($p) }
   $stage = 'acl'
   [Console]::Error.WriteLine('ima_acl_stage=acl')
   if ($acl.GetOwner([Security.Principal.SecurityIdentifier]).Value -ne $sid.Value) { throw 'owner' }
@@ -75,7 +77,8 @@ export async function windowsPrivatePath(file, { directory = false, protect = fa
     // startup path. Feed only this constant ASCII program, then close stdin.
     const operation = runImpl(executable, ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', '-'], {
       timeout: 5000, maxBuffer: 1024, windowsHide: true,
-      env: { SystemRoot: env.SystemRoot, WINDIR: env.SystemRoot, SystemDrive: path.win32.parse(env.SystemRoot).root.slice(0, 2),
+      env: { ...Object.fromEntries(['TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA', 'APPDATA', 'PATH', 'COMSPEC', 'ProgramData'].filter(k => env[k] !== undefined).map(k => [k, env[k]])),
+        SystemRoot: env.SystemRoot, WINDIR: env.SystemRoot, SystemDrive: path.win32.parse(env.SystemRoot).root.slice(0, 2),
         IMA_PRIVATE_PATH: file, IMA_PRIVATE_DIRECTORY: directory ? '1' : '0', IMA_PRIVATE_PROTECT: protect ? '1' : '0' },
     });
     if (operation.child?.stdin) {

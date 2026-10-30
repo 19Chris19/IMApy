@@ -96,7 +96,7 @@ test('ACL checks use literal input and an isolated environment; malformed/failed
   assert.equal(request[2].env.IMA_PRIVATE_PATH, file);
   assert.equal(request[2].env.IMA_OPENAPI_APIKEY, undefined);
   assert.deepEqual(request[1].slice(-2), ['-Command', '-']);
-  assert.equal(program.includes(file), false); assert.match(program, /Get-Acl -LiteralPath/);
+  assert.equal(program.includes(file), false); assert.match(program, /\[IO\.File\]::GetAccessControl\(\$p\)/);
   for (const stdout of ['null', '{}', '{"private":false}', 'not-json'])
     await assert.rejects(windowsPrivatePath(file, { env: { SystemRoot: 'C:\\Windows' }, runImpl: async () => ({ stdout }) }));
   await assert.rejects(windowsPrivatePath(file, { env: { SystemRoot: 'C:\\Windows' }, runImpl: async () => { throw Error('PRIVATE_DETAIL'); } }), error => error.code === 'profile_acl_unavailable' && !String(error).includes('PRIVATE_DETAIL'));
