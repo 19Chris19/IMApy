@@ -12,6 +12,8 @@ import { createProfileStore } from '../../packages/ima-runtime/src/profile-store
 import { findLoginBrowser } from '../../packages/ima-runtime/src/browser-login.mjs';
 import { stopOwnedWindowsTree } from '../../packages/ima-runtime/src/platform-process.mjs';
 import { windowsPrivatePath } from '../../packages/ima-runtime/src/platform-files.mjs';
+import { openUploadJournal } from '../../packages/ima-runtime/src/upload-journal.mjs';
+import { uploadMock } from '../helpers/upload-fixture.mjs';
 const run = promisify(execFile), windows = process.platform === 'win32';
 const credentials = () => ({ accountInfo: { userId: 'SYNTHETIC_WINDOWS', token: 'SYNTHETIC_ACCESS', refreshToken: 'SYNTHETIC_REFRESH',
   tokenType: 0, idType: 1, tokenExpiresAt: 10000000, refreshTokenExpiresAt: 20000000 }, userAgent: 'SyntheticWindowsBrowser/1', deviceInfo: null, extensionVersion: '' });
@@ -63,6 +65,39 @@ test('Windows native ACL rejects Everyone read access instead of treating POSIX 
     { env: { ...process.env, IMA_TEST_ACL_PATH: key }, timeout: 10000, windowsHide: true });
   const state = await auth.status(); assert.equal(state.state, 'unavailable');
   assert.ok(['profile_acl_unavailable', 'profile_path_unsafe'].includes(state.error));
+});
+test('Windows upload journal checks ACL on restore and append; no upload occurs', { skip: !windows, timeout: 180000 }, async t => {
+  const options = await context(t), store = createProfileStore(options); await store.initialize();
+  const key = await store.privateKey(), principal = 'a'.repeat(64), batchId = 'u_' + 'b'.repeat(64);
+  const state = { schemaVersion: 1, batchId, principal, requestDigest: 'c'.repeat(64), items: [{ itemId: 'f_000', stage: 'planned', pending: null }] };
+  const args = { home: store.profileDirectory, profile: options.profile, principal, batchId, key, writable: true };
+  try {
+    const journal = await openUploadJournal({ ...args, create: state });
+    await journal.append({ kind: 'item', index: 0, patch: { stage: 'failed', error: 'synthetic' } });
+    const reopened = await openUploadJournal(args); assert.equal(reopened.state.items[0].stage, 'failed');
+    const file = path.join(store.profileDirectory, 'uploads', batchId + '.jsonl');
+    const script = "$ErrorActionPreference='Stop';$a=[IO.File]::GetAccessControl($env:IMA_TEST_ACL_PATH);$s=[Security.Principal.SecurityIdentifier]::new('S-1-1-0');$a.AddAccessRule([Security.AccessControl.FileSystemAccessRule]::new($s,'Read','Allow'));[IO.File]::SetAccessControl($env:IMA_TEST_ACL_PATH,$a)";
+    await run(path.join(process.env.SystemRoot, 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')],
+      { env: { ...process.env, IMA_TEST_ACL_PATH: file }, timeout: 10000, windowsHide: true });
+    const rejectsUnsafe = error => ['profile_acl_unavailable', 'profile_path_unsafe'].includes(error.code);
+    await assert.rejects(openUploadJournal(args), rejectsUnsafe);
+    await assert.rejects(reopened.append({ kind: 'batch', patch: { cancelled: true } }), rejectsUnsafe);
+  } finally { key.fill(0); }
+});
+test('Windows SDK plans and restores a batch with a synthetic adapter only', { skip: !windows, timeout: 300000 }, async t => {
+  const options = await context(t), auth = createPersonalAuth(options), mock = uploadMock();
+  await auth.initialize(); await auth.login();
+  const runtimeOptions = { stateDir: options.directory, profile: options.profile, now: options.now, uploadProtocolFactory: mock.factory };
+  const runtime = createLocalRuntime(runtimeOptions); t.after(() => runtime.close());
+  const file = path.join(path.dirname(options.directory), 'synthetic.txt'); await fs.writeFile(file, 'Synthetic document.\n');
+  const request = { requestKey: 'windows_synthetic_batch', knowledgeBaseId: 'SYNTHETIC_LIBRARY', files: [file] };
+  const plan = await runtime.sdk.planUploadBatch(request); assert.equal(plan.networkUsed, false); assert.equal(plan.sendableFileCount, 1);
+  const result = await runtime.sdk.uploadBatch(request); assert.equal(result.status, 'succeeded');
+  assert.equal(result.retrievalVerified, false); assert.ok(mock.calls.includes('transfer'));
+  await runtime.close();
+  const fresh = createLocalRuntime(runtimeOptions); t.after(() => fresh.close());
+  const count = mock.calls.length, recovered = await fresh.sdk.readUploadBatch({ batchId: result.batchId });
+  assert.equal(recovered.status, 'succeeded'); assert.equal(mock.calls.length, count);
 });
 test('Windows native .exe lookup accepts a real executable without launching it', { skip: !windows }, async () => {
   assert.equal(await findLoginBrowser({ browserPath: process.execPath }), process.execPath);

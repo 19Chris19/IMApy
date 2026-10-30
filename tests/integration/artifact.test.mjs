@@ -18,6 +18,7 @@ import { exerciseG1Artifact } from '../helpers/g1-artifact.mjs';
 import { exerciseMaterialArtifact } from '../helpers/material-artifact.mjs';
 import { exerciseReadinessArtifact } from '../helpers/readiness-artifact.mjs';
 import { exerciseProviderTaskArtifact } from '../helpers/provider-task-artifact.mjs';
+import { exerciseUploadArtifact } from '../helpers/upload-artifact.mjs';
 import { isolateToolchain, createIsolatedArtifactDirectory } from '../helpers/isolated-toolchain.mjs';
 
 const execute = promisify(execFile), hash = v => createHash('sha256').update(v).digest('hex');
@@ -300,6 +301,7 @@ test('packed artifact installs offline outside both checkouts and runs local CLI
     }
   }
   await exerciseAgentArtifact({ directory, runner, installed, data: s3Data, browserHelper, forbidden, child, noEffects, guard, childEnv, sourceRoot: root });
+  await exerciseUploadArtifact({ directory, runner, installed, browserHelper, forbidden, child, noEffects, guard, childEnv });
   const retainedJournal = await fs.readFile(path.join(qaState, 'profiles/synthetic_qa/conversations', installedFirst.conversationId + '.jsonl'));
   await exerciseG1Artifact({ directory, runner, installed, data: s3Data, state: path.join(directory, 'g1-private-state'),
     sourceRoot: root, child, childEnv, forbidden, noEffects });

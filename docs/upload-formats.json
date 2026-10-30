@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "evidence": {
+    "resource": "https://fe-static.ima.myqcloud.com/ima/assets/chat/assets/app-DNcHlL3P.js",
+    "sha256": "267d1f0335b8c346c7e02b1b920f5718286a2119772337e0e75b1f9fdce3e75e",
+    "sampledAt": "2026-10-21T17:41:43.247Z",
+    "authenticated": false,
+    "executed": false,
+    "webUploadValidated": false,
+    "sdkUploadValidated": false
+  },
+  "categories": [
+    {
+      "category": "pdf",
+      "mediaType": 1,
+      "suffixes": [
+        "pdf"
+      ],
+      "staticMaxSizeMB": 200,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "word",
+      "mediaType": 3,
+      "suffixes": [
+        "doc",
+        "docx"
+      ],
+      "staticMaxSizeMB": 200,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "powerpoint",
+      "mediaType": 4,
+      "suffixes": [
+        "ppt",
+        "pptx"
+      ],
+      "staticMaxSizeMB": 200,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "spreadsheet",
+      "mediaType": 5,
+      "suffixes": [
+        "xls",
+        "xlsx",
+        "csv"
+      ],
+      "staticMaxSizeMB": 10,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "markdown",
+      "mediaType": 7,
+      "suffixes": [
+        "md",
+        "markdown"
+      ],
+      "staticMaxSizeMB": 10,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "text",
+      "mediaType": 13,
+      "suffixes": [
+        "txt"
+      ],
+      "staticMaxSizeMB": 10,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "image",
+      "mediaType": 9,
+      "suffixes": [
+        "jpg",
+        "jpeg",
+        "png",
+        "webp"
+      ],
+      "staticMaxSizeMB": 30,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "xmind",
+      "mediaType": 14,
+      "suffixes": [
+        "xmind"
+      ],
+      "staticMaxSizeMB": 10,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "html",
+      "mediaType": 20,
+      "suffixes": [
+        "html"
+      ],
+      "staticMaxSizeMB": 10,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "epub",
+      "mediaType": 21,
+      "suffixes": [
+        "epub"
+      ],
+      "staticMaxSizeMB": 200,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    },
+    {
+      "category": "audio",
+      "mediaType": 15,
+      "suffixes": [
+        "mp3",
+        "m4a",
+        "wav",
+        "aac"
+      ],
+      "staticMaxSizeMB": 200,
+      "staticMaxDurationMs": 10800000,
+      "evidence": "public_script_declaration",
+      "browserValidated": false,
+      "sdkValidated": false
+    }
+  ],
+  "webPathVerified": false,
+  "liveAdapterEnabled": false,
+  "ordinaryWebEntryProbe": {
+    "date": "2026-10-22",
+    "scope": "one_independent_test_personal_library",
+    "result": "desktop_client_required_before_file_selection",
+    "uploadedFormats": [],
+    "perFormatSupportEstablished": false,
+    "report": "reports/upload-web-entry-acceptance-20261022.json"
+  }
+}

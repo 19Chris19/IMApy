@@ -3,6 +3,7 @@ import { resolve, join } from 'node:path';
 import { lstat } from 'node:fs/promises';
 import { createPersonalAuth } from './personal-auth.mjs';
 import { createPersonalClient } from './personal-client.mjs';
+import { createUploadClient } from './upload-client.mjs';
 import { createAuthMaintenance } from './auth-maintenance.mjs';
 import { localReadiness } from './local-readiness.mjs';
 import { assertPlatformPrivatePath } from './platform-files.mjs';
@@ -19,7 +20,12 @@ export function createLocalRuntime({ profile = 'default', stateDir, env = proces
   if (typeof candidate !== 'string' || !candidate.length || candidate.includes('\0')) throw fault('invalid_state_directory');
   const directory = resolve(candidate);
   const auth = createPersonalAuth({ ...adapters, directory, profile });
-  const sdk = createPersonalClient({ ...adapters, directory, profile });
+  const personal = createPersonalClient({ ...adapters, directory, profile });
+  const upload = createUploadClient({ ...adapters, directory, profile });
+  const sdk = Object.freeze({ ...personal, ...upload, async close() {
+    const a = await upload.close(), b = await personal.close();
+    return { ...b, storageErrors: (a.storageErrors || 0) + (b.storageErrors || 0) };
+  } });
   if (!maintenancePolicy || typeof maintenancePolicy !== 'object' || Array.isArray(maintenancePolicy) ||
     Object.keys(maintenancePolicy).some(key => !['pollIntervalMs', 'skewMs', 'minimumIntervalMs', 'limits'].includes(key))) throw fault('auth_maintenance_options_invalid');
   const maintenance = createAuthMaintenance({ ...maintenancePolicy, auth, ...(adapters.now !== undefined ? { now: adapters.now } : {}) });

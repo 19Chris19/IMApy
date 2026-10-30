@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "stage": "local_upload_candidate",
+  "baseCommit": "766dd4d037ae84656975b991ac429f11482fb874",
+  "implementationCommit": "3c23fbb",
+  "node": "v22.23.3",
+  "validationDate": "2026-10-22",
+  "upstreamAcceptance": {
+    "anonymousPublicScriptDownloads": 1,
+    "businessRequests": 0,
+    "uploads": 0,
+    "questions": 0,
+    "scans": 0,
+    "refreshes": 0,
+    "webUploadValidated": false,
+    "sdkUploadValidated": false,
+    "liveAdapterEnabled": false
+  },
+  "offlineRegression": {
+    "passed": 576,
+    "failed": 0,
+    "skipped": 0,
+    "uploadRelatedNewCases": 51,
+    "realUpstreamBlocked": true
+  },
+  "artifactChain": {
+    "offlineCleanInstall": true,
+    "sdkBatches": 1,
+    "cliBatches": 1,
+    "officialSdkStdioMcpBatches": 1,
+    "stdioProcesses": 2,
+    "toolsDiscovered": 17,
+    "restartAdditionalWrites": 0,
+    "syntheticOnly": true
+  },
+  "processCrashes": {
+    "sigkillCases": 6,
+    "automaticResubmissions": 0
+  },
+  "skillValidation": {
+    "passed": true,
+    "installedSkillModified": false
+  },
+  "staticEvidence": {
+    "resource": "https://fe-static.ima.myqcloud.com/ima/assets/chat/assets/app-DNcHlL3P.js",
+    "sha256": "267d1f0335b8c346c7e02b1b920f5718286a2119772337e0e75b1f9fdce3e75e",
+    "bytes": 2772475,
+    "sampledAt": "2026-10-21T18:07:50.736Z",
+    "matchesReviewedSample": true,
+    "executed": false,
+    "authenticated": false
+  },
+  "resources": {
+    "schemaVersion": 1,
+    "scope": "offline_synthetic_single_process_two_isolated_profiles",
+    "node": "v22.23.3",
+    "realImaRequests": 0,
+    "realUploads": 0,
+    "gpuWorkloadIntroduced": false,
+    "rounds": {
+      "baselineQA": 30,
+      "concurrentQAAndUpload": 30,
+      "largeFileUploads": 5
+    },
+    "initialMemory": {
+      "rss": 77709312,
+      "heapUsed": 9207072,
+      "external": 4456552
+    },
+    "beforeConcurrent": {
+      "rss": 81920000,
+      "heapUsed": 10045560,
+      "external": 4363373
+    },
+    "smallSnapshots": [
+      {
+        "completedBatches": 5,
+        "rss": 82477056,
+        "heapUsed": 10263888,
+        "external": 4479859
+      },
+      {
+        "completedBatches": 10,
+        "rss": 83214336,
+        "heapUsed": 10389880,
+        "external": 4528218
+      },
+      {
+        "completedBatches": 15,
+        "rss": 83410944,
+        "heapUsed": 10422400,
+        "external": 4035981
+      },
+      {
+        "completedBatches": 20,
+        "rss": 87638016,
+        "heapUsed": 10473768,
+        "external": 4321523
+      },
+      {
+        "completedBatches": 25,
+        "rss": 91045888,
+        "heapUsed": 10491504,
+        "external": 4436515
+      },
+      {
+        "completedBatches": 30,
+        "rss": 91324416,
+        "heapUsed": 10528952,
+        "external": 4511549
+      }
+    ],
+    "large": [
+      {
+        "round": 1,
+        "fileBytes": 4194304,
+        "durationMs": 120.87908400000015,
+        "rss": 95076352,
+        "heapUsed": 10473736,
+        "external": 9216198
+      },
+      {
+        "round": 2,
+        "fileBytes": 16777216,
+        "durationMs": 148.01475000000028,
+        "rss": 101892096,
+        "heapUsed": 10502320,
+        "external": 11661843
+      },
+      {
+        "round": 3,
+        "fileBytes": 67108864,
+        "durationMs": 285.0447089999998,
+        "rss": 127827968,
+        "heapUsed": 10523744,
+        "external": 4431483
+      },
+      {
+        "round": 4,
+        "fileBytes": 67108864,
+        "durationMs": 281.92562499999985,
+        "rss": 129318912,
+        "heapUsed": 9197872,
+        "external": 4426885
+      },
+      {
+        "round": 5,
+        "fileBytes": 67108864,
+        "durationMs": 281.4730410000011,
+        "rss": 129679360,
+        "heapUsed": 9204240,
+        "external": 4427685
+      }
+    ],
+    "peakRSS": 129679360,
+    "qa": {
+      "baselineFirstDeltaP95Ms": 56.37404199999992,
+      "concurrentFirstDeltaP95Ms": 96.06874999999945,
+      "baselineEventIntervalP95Ms": 22.050749999999994,
+      "concurrentEventIntervalP95Ms": 31.553082999999788
+    },
+    "eventLoop": {
+      "p95Ms": 11.395071,
+      "maxMs": 29.753343
+    },
+    "cpuMicroseconds": {
+      "user": 2297967,
+      "system": 1287768
+    },
+    "ioCounters": {
+      "fsWriteDelta": 0,
+      "fsReadDelta": 0,
+      "physicalBytesNotInferred": true
+    },
+    "journalBytes": 141848,
+    "maxTransferChunkBytes": 65536,
+    "idleHeartbeats": 0,
+    "limitations": [
+      "Synthetic transfer sink; not real network/COS/IMA parsing.",
+      "Peak RSS includes runtime, mocks and synthetic QA.",
+      "OS file counters are not physical SSD writes.",
+      "No production or 3DGS stress workload was introduced."
+    ]
+  },
+  "pending": [
+    "Authorized ordinary-web upload trace and request/response contract",
+    "Real COS destination/signature/redirect and authentication-isolation checks",
+    "Authorized SDK upload and registration/parse/retrieval acceptance",
+    "Per-format legal samples and real acceptance for all 22 suffixes",
+    "Long-duration memory and multiple-platform validation",
+    "GitHub push/release and installed Agent update not authorized"
+  ]
+}

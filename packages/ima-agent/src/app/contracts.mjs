@@ -28,6 +28,9 @@ export function parse(schema, value = {}) {
   return result.data;
 }
 const next = code => code === 'profile_not_initialized' ? 'initialize_profile_then_explicit_login'
+  : code === 'upload_web_contract_unverified' ? 'wait_for_separate_web_upload_acceptance'
+  : ['upload_reconciliation_required','upload_operation_unconfirmed'].includes(code) ? 'read_original_upload_batch_then_explicit_reconcile'
+  : code === 'upload_auth_required' ? 'inspect_auth_without_automatic_refresh'
   : code === 'auth_access_expired' ? 'explicit_cli_refresh'
   : ['profile_not_logged_in', 'auth_reauthentication_required', 'sdk_device_context_missing'].includes(code) ? 'explicit_cli_login'
   : code === 'profile_busy' ? 'inspect_local_status'

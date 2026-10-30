@@ -56,6 +56,12 @@ export function createAgentWorkflows(runtime) {
       answerPage: { offset: options.answerOffset, nextOffset: Math.min(end, answer.length), hasMore: end < answer.length, unit: 'utf16_code_units' } };
   }
   return Object.freeze({
+    planUploadBatch(input) { check(); return sdk.planUploadBatch(input); },
+    uploadBatch(input, options) { check(); return sdk.uploadBatch(input, options); },
+    readUploadBatch(input) { check(); return sdk.readUploadBatch(input); },
+    reconcileUploadBatch(input, options) { check(); return sdk.reconcileUploadBatch(input, options); },
+    resumeUploadBatch(input, options) { check(); return sdk.resumeUploadBatch(input, options); },
+    cancelUploadBatch(input) { check(); return sdk.cancelUploadBatch(input); },
     getModels(options = {}) { check(); return sdk.getModels(options); },
     listKnowledgeBases(options = {}) { check(); return sdk.listKnowledgeBases(options); },
     async ask(input, { signal, onEvent } = {}) {

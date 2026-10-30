@@ -3,12 +3,13 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { VERSION } from '../app/index.mjs';
 import { emptySchema, questionSchema, taskReadSchema, taskSelectorSchema, conversationSchema, exportSchema, agentError } from '../app/contracts.mjs';
 import { PersonalAuthError } from '../../../ima-runtime/src/errors.mjs';
+import { uploadPlanSchema, uploadSelectorSchema, uploadReadSchema } from '../app/upload-contracts.mjs';
 
 export function createMcpServer(app) {
   const server = new McpServer({ name: 'ima-standalone-local', version: VERSION });
-  const register = (name, description, schema, action, { readOnly = true, online = false } = {}) => server.registerTool(name, {
+  const register = (name, description, schema, action, { readOnly = true, online = false, idempotent = true } = {}) => server.registerTool(name, {
     description, inputSchema: schema,
-    annotations: { readOnlyHint: readOnly, destructiveHint: false, idempotentHint: true, openWorldHint: online },
+    annotations: { readOnlyHint: readOnly, destructiveHint: false, idempotentHint: idempotent, openWorldHint: online },
   }, async (input, extra) => {
     try {
       const value = await action(input, extra), text = JSON.stringify(value);
@@ -38,6 +39,20 @@ export function createMcpServer(app) {
     input => app.workflows.cancelTask(input), { readOnly: false });
   register('ima_export_task', 'Return saved JSON or Markdown and exact citation map, without writing files. Missing/unknown evidence is not inferred; large results use CLI export.', exportSchema,
     input => app.workflows.exportTask(input));
+  register('ima_upload_plan', 'LOCAL ONLY: hash/check up to 100 explicit files for a named knowledge base/folder. Static declarations are not verified web support. Does not upload, initialize a profile or contact IMA. Show file list and destination to the human before any submission.', uploadPlanSchema,
+    async input => { const plan = await app.workflows.planUploadBatch(input); return { ...plan,
+      files: plan.files.map(({ originalName, suffix, category, size, sha256, validation, error, contentInspection, durationVerified, withinObservedSizeDefault }) =>
+        ({ originalName, suffix, category, size, sha256, validation, error, contentInspection, durationVerified, withinObservedSizeDefault })) }; });
+  register('ima_upload_batch', 'Explicit authorized upload batch, serial, append-only with stable renamed filenames. Requires a separately verified web upload adapter; the bundled live adapter is CLOSED pending web acceptance. Reuse the original requestKey for reads; never submit a new key after an uncertain result. Returns a local receipt promptly. No automatic question.', uploadPlanSchema,
+    (input, extra) => app.workflows.uploadBatch(input, { signal: extra.signal, waitForCompletion: false }), { readOnly: false, online: true, idempotent: false });
+  register('ima_upload_status', 'Read paged LOCAL encrypted batch state. Transfer, registration, parsing and retrieval verification differ. Startup/read never resumes or polls IMA.', uploadReadSchema,
+    input => app.workflows.readUploadBatch(input));
+  register('ima_upload_reconcile', 'Explicit online READ of the existing batch objects; never uploads or repeats a write. Requires exact scope/digest/identity evidence. Unknown outcomes remain protected; one bounded pass, no polling loop.', uploadSelectorSchema,
+    (input, extra) => app.workflows.reconcileUploadBatch(input, { signal: extra.signal }), { readOnly: false, online: true });
+  register('ima_upload_resume', 'Explicitly resume only proved unfinished steps of the SAME batch. Not an automatic retry; failed items are not resent and uncertain writes require reconciliation first. Requires renewed human authorization and a verified adapter.', uploadSelectorSchema,
+    (input, extra) => app.workflows.resumeUploadBatch(input, { signal: extra.signal, waitForCompletion: false }), { readOnly: false, online: true, idempotent: false });
+  register('ima_upload_cancel', 'Stop only this process transfer and remaining local queue. Retains remote-object evidence and unknown outcomes. Does NOT delete uploaded materials or prove upstream cancellation.', uploadSelectorSchema,
+    input => app.workflows.cancelUploadBatch(input), { readOnly: false });
   const originalClose = server.close.bind(server); let closing;
   server.close = () => closing ??= (async () => { try { await app.close?.(); } finally { await originalClose(); } })();
   server.server.onclose = () => { void server.close().catch(() => {}); };

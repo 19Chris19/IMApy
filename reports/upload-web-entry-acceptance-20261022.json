@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "acceptanceDate": "2026-10-22",
+  "kind": "ordinary_web_upload_entry_probe",
+  "status": "blocked_at_desktop_client_gate_before_file_selection",
+  "scope": "one_existing_personal_library_of_the_original_independent_test_account",
+  "browser": "Ego Lite",
+  "accountMatchedIndependentProfile": true,
+  "entry": {
+    "url": "https://ima.qq.com/wikis",
+    "control": "personal_library_import",
+    "dialogTitle": "上传文件",
+    "requiredActionText": "请前往ima客户端体验",
+    "desktopDownloadOffered": true,
+    "desktopDownloadInvoked": false
+  },
+  "authorizedMaximum": {
+    "webPdfUploads": 1,
+    "sdkPdfUploads": 1,
+    "httpRefreshes": 1,
+    "parseStatusReadsPerFile": 6,
+    "minimumStatusReadIntervalMs": 5000,
+    "questions": 0,
+    "scans": 0
+  },
+  "actual": {
+    "preparedSyntheticPdfs": 2,
+    "selectedFiles": 0,
+    "webUploads": 0,
+    "sdkUploads": 0,
+    "httpRefreshes": 0,
+    "parseStatusReads": 0,
+    "questions": 0,
+    "scans": 0
+  },
+  "outcome": {
+    "webEntryObserved": true,
+    "uploadSucceeded": false,
+    "parseValidated": false,
+    "sdkExercised": false,
+    "sdkFaultInferred": false,
+    "perFormatSupportEstablished": false,
+    "temporaryChatAttachmentsUsedAsFallback": false,
+    "legacyOrOpenApiFallbackUsed": false
+  },
+  "preservation": {
+    "independentProfileGenerationUnchanged": true,
+    "credentialGenerationUnchanged": true,
+    "originalProtectionMarkersRetained": true,
+    "productionServicesChanged": false,
+    "installedMcpOrSkillChanged": false,
+    "productionPoolReadOrModified": false,
+    "airContacted": false,
+    "olderAcceptanceReportsRewritten": false
+  },
+  "evidence": {
+    "originalUiRecordSha256": "92d1f9750552324099d17c18337020f79ce583b1699e46c4140d899685e68dbd",
+    "privateScreenshotSha256": "e731ad4313177e046f197fd5e7b492098a7dde0f644571794cb9b44548740bf3",
+    "rawCaptureIncluded": false,
+    "accountIdentifiersIncluded": false,
+    "materialNamesIncluded": false
+  },
+  "limitations": [
+    "One account and one personal-library entry at one point in time.",
+    "Does not prove every format or every account is unsupported.",
+    "No upload parameters, storage signature, registration or parse request was exercised.",
+    "Static shared frontend declarations cannot override the observed client gate."
+  ],
+  "nextStep": "Require an actually usable ordinary-web knowledge-import entry or a separately scoped officially supported API research path. Do not call guessed candidate endpoints or use the desktop client."
+}
