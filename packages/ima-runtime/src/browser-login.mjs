@@ -5,6 +5,7 @@ import { homedir } from 'node:os';
 import { fail, PersonalAuthError } from './errors.mjs';
 import { captureCredentials, describeCaptureShape } from './credentials.mjs';
 import { prepareOwnedLoginPage } from './login-page.mjs';
+import { stopOwnedWindowsTree } from './platform-process.mjs';
 import { IMA_ORIGIN as ORIGIN, LOGIN_SNAPSHOT_EXPRESSION, assertDeviceModuleURL, deviceCaptureExpression,
   observedClientCarrier, sameAccount, verifyDeviceCapture } from './login-device-context.mjs';
 
@@ -61,19 +62,27 @@ export function createPipeClient(child, { timeoutMs = 10000, onEvent = () => {} 
     });
   } };
 }
-export async function findLoginBrowser({ browserPath, platform = process.platform, home = homedir() } = {}) {
-  if (platform !== 'darwin') fail('login_platform_not_validated');
-  const candidates = browserPath ? [browserPath] : [
+export async function findLoginBrowser({ browserPath, platform = process.platform, home = homedir(), env = process.env, statImpl = fs.lstat } = {}) {
+  if (!['darwin', 'win32'].includes(platform)) fail('login_platform_not_validated');
+  const paths = platform === 'win32' ? path.win32 : path;
+  const windowsCandidates = platform === 'win32' ? [
+    env.PROGRAMFILES && paths.join(env.PROGRAMFILES, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+    env['ProgramFiles(x86)'] && paths.join(env['ProgramFiles(x86)'], 'Microsoft', 'Edge', 'Application', 'msedge.exe'),
+    env.LOCALAPPDATA && paths.join(env.LOCALAPPDATA, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+    env.PROGRAMFILES && paths.join(env.PROGRAMFILES, 'Microsoft', 'Edge', 'Application', 'msedge.exe'),
+  ].filter(Boolean) : [];
+  const candidates = browserPath ? [browserPath] : platform === 'win32' ? windowsCandidates : [
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
     '/Applications/Chromium.app/Contents/MacOS/Chromium',
     path.join(home, 'Applications/Google Chrome.app/Contents/MacOS/Google Chrome'),
   ];
   for (const candidate of candidates) {
-    if (typeof candidate !== 'string' || !path.isAbsolute(candidate) || candidate.includes('\0')) fail('login_browser_path_invalid');
+    if (typeof candidate !== 'string' || !paths.isAbsolute(candidate) || candidate.includes('\0') ||
+        platform === 'win32' && (!/^[A-Za-z]:[\\/]/u.test(candidate) || !/\.exe$/iu.test(candidate))) fail('login_browser_path_invalid');
     try {
-      const stat = await fs.lstat(candidate);
-      if (!stat.isFile() || stat.isSymbolicLink() || !(stat.mode & 0o111)) continue;
+      const stat = await statImpl(candidate);
+      if (!stat.isFile() || stat.isSymbolicLink() || platform !== 'win32' && !(stat.mode & 0o111)) continue;
       return candidate;
     } catch (error) { if (error.code !== 'ENOENT') fail('login_browser_unavailable'); }
   }
@@ -93,7 +102,8 @@ async function settleWithin(promise, ms) {
   finally { clearTimeout(timer); }
 }
 export async function chromiumLoginDriver({ temporaryDirectory, browserPath, signal, onProgress = () => {},
-  spawnImpl = spawn, resolveBrowser = findLoginBrowser, pollMs = 500, deviceCaptureTimeoutMs = 25000 } = {}) {
+  spawnImpl = spawn, resolveBrowser = findLoginBrowser, pollMs = 500, deviceCaptureTimeoutMs = 25000,
+  platform = process.platform, stopWindowsTree = stopOwnedWindowsTree } = {}) {
   if (!(signal instanceof AbortSignal) || typeof temporaryDirectory !== 'string' || !path.isAbsolute(temporaryDirectory)) fail('login_options_invalid');
   if (!Number.isInteger(deviceCaptureTimeoutMs) || deviceCaptureTimeoutMs < 1 || deviceCaptureTimeoutMs > 25000) fail('login_options_invalid');
   if (!Number.isInteger(pollMs) || pollMs < 1 || pollMs > 5000 || typeof onProgress !== 'function') fail('login_options_invalid');
@@ -107,14 +117,15 @@ export async function chromiumLoginDriver({ temporaryDirectory, browserPath, sig
     stdio: ['ignore', 'ignore', 'ignore', 'pipe', 'pipe'], detached: false,
     // Do not copy Provider credentials or arbitrary NODE_OPTIONS into the
     // browser. OS account/home remains unchanged for the system application.
-    env: Object.fromEntries(['HOME', 'PATH', 'TMPDIR', 'LANG', 'LC_ALL', 'DISPLAY', 'XAUTHORITY', 'SystemRoot']
+    env: Object.fromEntries(['HOME', 'PATH', 'TMPDIR', 'LANG', 'LC_ALL', 'DISPLAY', 'XAUTHORITY', 'SystemRoot', 'WINDIR', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA', 'APPDATA']
       .filter(key => process.env[key] !== undefined).map(key => [key, process.env[key]])),
   });
-  let sessionId, carrier, observationError, deviceDeadline;
+  let sessionId, carrier, observationError, deviceDeadline, deviceBoundedCommand = false;
   const commandBudget = (maximum = 10000) => {
     if (deviceDeadline === undefined) return maximum;
     const remaining = deviceDeadline - Date.now();
     if (remaining <= 0) fail('login_device_context_timeout');
+    deviceBoundedCommand = remaining <= maximum;
     return Math.min(maximum, remaining);
   };
   const pipe = createPipeClient(child, { onEvent(event) {
@@ -126,9 +137,9 @@ export async function chromiumLoginDriver({ temporaryDirectory, browserPath, sig
     try { const observed = observedClientCarrier(event.params.request.headers); if (observed) carrier = observed; }
     catch { observationError = 'login_capture_conflict'; }
   } });
-  let exited = false;
+  let exited = false, failure;
   const exit = new Promise(resolve => { child.once('exit', () => { exited = true; resolve(); }); child.once('error', () => { exited = true; resolve(); }); });
-  const abort = () => { if (!exited) child.kill('SIGTERM'); pipe.stop(); };
+  const abort = () => { if (!exited && platform !== 'win32') child.kill('SIGTERM'); pipe.stop(); };
   signal.addEventListener('abort', abort, { once: true });
   try {
     onProgress('opening_browser');
@@ -185,19 +196,29 @@ export async function chromiumLoginDriver({ temporaryDirectory, browserPath, sig
     }
     fail('login_cancelled');
   } catch (error) {
-    if (signal.aborted) fail('login_cancelled');
-    if (error.code === 'login_browser_protocol_timeout' && deviceDeadline !== undefined && Date.now() >= deviceDeadline) fail('login_device_context_timeout');
-    if (error instanceof PersonalAuthError) throw error;
-    fail('login_browser_failed');
+    failure = new PersonalAuthError(signal.aborted ? 'login_cancelled' :
+      error.code === 'login_browser_protocol_timeout' && deviceDeadline !== undefined && (deviceBoundedCommand || Date.now() >= deviceDeadline) ? 'login_device_context_timeout' :
+      error instanceof PersonalAuthError ? error.code : 'login_browser_failed');
+    throw failure;
   } finally {
     signal.removeEventListener('abort', abort);
     if (!exited) {
-      await settleWithin(pipe.send('Browser.close').catch(() => {}), 500);
-      if (!exited) child.kill('SIGTERM');
-      await settleWithin(exit, 1000);
-      if (!exited) { child.kill('SIGKILL'); await settleWithin(exit, 1000); }
+      if (platform === 'win32') {
+        // Terminate only this owned PID and its descendants, while the parent
+        // still exists. Never use /IM chrome.exe or touch the daily browser.
+        await stopWindowsTree(child).catch(() => {});
+        await settleWithin(exit, 2000);
+      } else {
+        await settleWithin(pipe.send('Browser.close').catch(() => {}), 500);
+        if (!exited) child.kill('SIGTERM');
+        await settleWithin(exit, 1000);
+        if (!exited) { child.kill('SIGKILL'); await settleWithin(exit, 1000); }
+      }
     }
     pipe.stop();
-    if (!exited) fail('login_browser_cleanup_failed');
+    if (!exited) {
+      if (failure) Object.defineProperty(failure, 'browserCleanupUnconfirmed', { value: true });
+      else fail('login_browser_cleanup_failed');
+    }
   }
 }
