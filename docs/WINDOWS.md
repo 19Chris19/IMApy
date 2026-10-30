@@ -12,6 +12,7 @@ Windows 10/11、Node 22、已安装的 Chrome 或 Edge 是本次适配目标。�
 | `.exe` 没有 POSIX 执行位而被拒绝 | Windows 检查本地绝对路径、普通文件及 `.exe`，保留符号链接/不合法路径拒绝 |
 | Chrome 临时 lockfile 占用导致登录态丢失 | 证明自有浏览器退出、校验身份并提交后，再有限重试删除临时目录；失败返回 `saved=true`、`cleanup.state=deferred` |
 | 清理异常覆盖原始失败 | 保留原始登录失败原因；无法证明浏览器退出时仍保留私有目录且不发布登录态 |
+| Windows Git 默认换行转换导致构建时证据注册表不一致 | 用 `.gitattributes` 固定文本为 LF、图片为二进制，保留原有字节摘要和严格构建校验 |
 
 不使用 `IMA_UNSAFE_ALLOW_WIN32`，不自动提权，不更改已有目录或其他用户文件的 ACL。只为本次新建的空状态目录建立私有 ACL；已有路径必须通过检查。当前要求本地固定 NTFS/ReFS 卷、当前用户所有者；允许当前用户及 Windows SYSTEM/Administrators 的授权，拒绝其他 Allow 项、UNC、网络卷和重解析点。需要系统自带的 Windows PowerShell，检查失败时停止，不降级为无权限校验。
 
