@@ -77,6 +77,15 @@ test('Windows browser driver waits for the owned tree exit before returning cred
   assert.equal(mock.kills.length, 0);
 });
 
+test('a device-bounded command timeout keeps its meaning when the wall clock has not advanced to the deadline', async t => {
+  const original = Date.now, fixed = original(); Date.now = () => fixed;
+  t.after(() => { Date.now = original; });
+  const mock = loginBrowserMock({ snapshotStallsAfterSigning: true });
+  await assert.rejects(chromiumLoginDriver({ temporaryDirectory: '/synthetic-private-login', signal: new AbortController().signal,
+    resolveBrowser: async () => '/synthetic-browser', spawnImpl: () => mock.child, deviceCaptureTimeoutMs: 20, pollMs: 1 }), { code: 'login_device_context_timeout' });
+  assert.equal(mock.requests.at(-1).method, 'Browser.close');
+});
+
 test('Windows directory flush uses no unsupported directory-open, while POSIX still flushes and closes', async () => {
   const seen = [], fsImpl = { open: async () => { seen.push('open'); return { sync: async () => seen.push('sync'), close: async () => seen.push('close') }; } };
   await flushDirectory('synthetic', { platform: 'win32', fsImpl }); assert.deepEqual(seen, []);

@@ -58,7 +58,7 @@ test('Windows native ACL + encrypted login + fresh runtime recovery, with no bro
 test('Windows native ACL rejects Everyone read access instead of treating POSIX bits as privacy', { skip: !windows, timeout: 180000 }, async t => {
   const options = await context(t), auth = createPersonalAuth(options); await auth.initialize();
   const store = createProfileStore(options), key = path.join(store.profileDirectory, 'key');
-  const script = "$a=Get-Acl -LiteralPath $env:IMA_TEST_ACL_PATH; $s=[Security.Principal.SecurityIdentifier]::new('S-1-1-0'); $a.AddAccessRule([Security.AccessControl.FileSystemAccessRule]::new($s,'Read','Allow')); Set-Acl -LiteralPath $env:IMA_TEST_ACL_PATH -AclObject $a";
+  const script = "$ErrorActionPreference='Stop';$a=[IO.File]::GetAccessControl($env:IMA_TEST_ACL_PATH); $s=[Security.Principal.SecurityIdentifier]::new('S-1-1-0'); $a.AddAccessRule([Security.AccessControl.FileSystemAccessRule]::new($s,'Read','Allow')); [IO.File]::SetAccessControl($env:IMA_TEST_ACL_PATH,$a)";
   await run(path.join(process.env.SystemRoot, 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')],
     { env: { ...process.env, IMA_TEST_ACL_PATH: key }, timeout: 10000, windowsHide: true });
   const state = await auth.status(); assert.equal(state.state, 'unavailable');

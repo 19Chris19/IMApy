@@ -120,11 +120,12 @@ export async function chromiumLoginDriver({ temporaryDirectory, browserPath, sig
     env: Object.fromEntries(['HOME', 'PATH', 'TMPDIR', 'LANG', 'LC_ALL', 'DISPLAY', 'XAUTHORITY', 'SystemRoot', 'WINDIR', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA', 'APPDATA']
       .filter(key => process.env[key] !== undefined).map(key => [key, process.env[key]])),
   });
-  let sessionId, carrier, observationError, deviceDeadline;
+  let sessionId, carrier, observationError, deviceDeadline, deviceBoundedCommand = false;
   const commandBudget = (maximum = 10000) => {
     if (deviceDeadline === undefined) return maximum;
     const remaining = deviceDeadline - Date.now();
     if (remaining <= 0) fail('login_device_context_timeout');
+    deviceBoundedCommand = remaining <= maximum;
     return Math.min(maximum, remaining);
   };
   const pipe = createPipeClient(child, { onEvent(event) {
@@ -196,7 +197,7 @@ export async function chromiumLoginDriver({ temporaryDirectory, browserPath, sig
     fail('login_cancelled');
   } catch (error) {
     failure = new PersonalAuthError(signal.aborted ? 'login_cancelled' :
-      error.code === 'login_browser_protocol_timeout' && deviceDeadline !== undefined && Date.now() >= deviceDeadline ? 'login_device_context_timeout' :
+      error.code === 'login_browser_protocol_timeout' && deviceDeadline !== undefined && (deviceBoundedCommand || Date.now() >= deviceDeadline) ? 'login_device_context_timeout' :
       error instanceof PersonalAuthError ? error.code : 'login_browser_failed');
     throw failure;
   } finally {
