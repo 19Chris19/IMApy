@@ -3,6 +3,7 @@ import { constants } from 'node:fs';
 import path from 'node:path';
 import { createCipheriv, createDecipheriv, randomBytes, createHash } from 'node:crypto';
 import { privateStat, checkedDirectory, readPrivate, syncDirectory, exclusiveFile } from './profile-store.mjs';
+import { assertPlatformPrivatePath } from './platform-files.mjs';
 import { fail, PersonalAuthError } from './errors.mjs';
 
 export const hash = value => createHash('sha256').update(typeof value === 'string' || Buffer.isBuffer(value) ? value : JSON.stringify(value)).digest('hex');
@@ -162,6 +163,7 @@ async function openJournal({ file, key, profile, conversationId, writable, budge
       await handle.sync(); await syncDirectory(path.dirname(file));
     }
     const stat = await handle.stat(); privateStat(stat);
+    await assertPlatformPrivatePath(file);
     if (stat.size > LIMITS.conversationBytes) fail('task_conversation_capacity');
     let buffer = Buffer.alloc(0), position = 0;
     while (position < stat.size) {

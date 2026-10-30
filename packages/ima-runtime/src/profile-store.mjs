@@ -4,28 +4,34 @@ import path from 'node:path';
 import { randomBytes, randomUUID, createCipheriv, createDecipheriv, createHash } from 'node:crypto';
 import { fail, PersonalAuthError, publicError } from './errors.mjs';
 import { normalizeCredentials, principal, credentialDigest } from './credentials.mjs';
+import { assertPlatformPrivatePath, flushDirectory } from './platform-files.mjs';
 
 const MAX_FILE = 128 * 1024;
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const plain = v => v !== null && typeof v === 'object' && !Array.isArray(v);
 function privateStat(stat, directory = false) {
-  if (process.platform === 'win32') fail('profile_permissions_platform_unvalidated');
   if (stat.isSymbolicLink() || (directory ? !stat.isDirectory() : !stat.isFile()) ||
     typeof process.getuid === 'function' && stat.uid !== process.getuid() ||
     process.platform !== 'win32' && (stat.mode & 0o077 || directory && (stat.mode & 0o700) !== 0o700 || !directory && (stat.mode & 0o600) !== 0o600) ||
     !directory && stat.nlink !== 1) fail('profile_path_unsafe');
 }
 async function checkedDirectory(directory, create = false) {
+  let created = false;
   if (create) {
-    try { await fs.mkdir(directory, { mode: 0o700 }); }
+    try { await fs.mkdir(directory, { mode: 0o700 }); created = true; }
     catch (error) { if (error.code !== 'EEXIST') throw error; }
   }
   privateStat(await fs.lstat(directory), true);
+  await assertPlatformPrivatePath(directory, { directory: true, protect: created });
 }
 async function readPrivate(file) {
+  const before = process.platform === 'win32' ? await fs.lstat(file) : undefined;
+  if (before) privateStat(before);
+  await assertPlatformPrivatePath(file);
   const handle = await fs.open(file, constants.O_RDONLY | (constants.O_NOFOLLOW || 0));
   try {
     const stat = await handle.stat(); privateStat(stat);
+    if (before && (stat.dev !== before.dev || stat.ino !== before.ino)) fail('profile_path_unsafe');
     if (stat.size > MAX_FILE) fail('profile_state_too_large');
     const bytes = await handle.readFile();
     if (bytes.length > MAX_FILE) fail('profile_state_too_large');
@@ -33,12 +39,11 @@ async function readPrivate(file) {
   } finally { await handle.close(); }
 }
 async function syncDirectory(directory) {
-  const handle = await fs.open(directory, constants.O_RDONLY);
-  try { await handle.sync(); } finally { await handle.close(); }
+  await flushDirectory(directory);
 }
 async function exclusiveFile(file, bytes) {
   const handle = await fs.open(file, constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | (constants.O_NOFOLLOW || 0), 0o600);
-  try { await handle.writeFile(bytes); await handle.sync(); } finally { await handle.close(); }
+  try { await assertPlatformPrivatePath(file); await handle.writeFile(bytes); await handle.sync(); } finally { await handle.close(); }
 }
 function validateState(state, profile) {
   if (!plain(state) || state.schemaVersion !== 1 || state.profile !== profile || !Number.isSafeInteger(state.generation) || state.generation < 0 ||
@@ -68,7 +73,6 @@ export function createProfileStore({ directory, profile, now = Date.now, faultHo
     try { return await action(); } finally { await fs.rmdir(gate); }
   }
   async function roots(create) {
-    if (create && process.platform === 'win32') fail('profile_permissions_platform_unvalidated');
     if (create) {
       // Only parent containers may be public; the selected state root and
       // every descendant are checked, never chmod'd to hide a preexisting risk.

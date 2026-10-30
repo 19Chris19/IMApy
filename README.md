@@ -39,6 +39,8 @@ SDK、CLI、11 个 STDIO MCP 工具和 Skill 是同一套能力的入口。已�
 ## 先在本地跑起来
 
 需要 **Node.js 22**。首次扫码已验证范围为 **macOS arm64 + 已安装的 Chromium 系浏览器**。
+
+Windows 已加入实验性权限、浏览器与登录清理适配，参见 [Windows 安装与限制](docs/WINDOWS.md)。离线 CI 与真实扫码验收分别记录，不将用户的临时补丁结果当作本版已通过。
 本版没有公开 npm 发布；从[预发布页面](https://github.com/19Chris19/IMApy/releases/tag/v0.1.0-alpha.1)
 下载该页的安装包、源码包、验收文件和 `SHA256SUMS`，放在同一目录核对后安装：
 

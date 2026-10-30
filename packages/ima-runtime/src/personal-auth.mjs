@@ -7,6 +7,8 @@ import { createProfileStore } from './profile-store.mjs';
 import { normalizeCredentials, principal, credentialDigest } from './credentials.mjs';
 import { chromiumLoginDriver } from './browser-login.mjs';
 import { fail, PersonalAuthError, publicError } from './errors.mjs';
+import { checkedDirectory } from './profile-store.mjs';
+import { cleanupLoginDirectory } from './platform-files.mjs';
 
 const clock = now => { const value = now(); if (!Number.isSafeInteger(value) || value < 0) fail('auth_clock_invalid'); return value; };
 const next = (state, values) => ({ ...state, ...values, generation: state.generation + 1 });
@@ -24,12 +26,13 @@ const REFRESH_FAILURE_REASONS = new Map(Object.entries({
 const refreshFailureReason = error => error instanceof PersonalAuthError
   ? REFRESH_FAILURE_REASONS.get(error.code) ?? 'local_failed' : 'local_failed';
 export function createPersonalAuth({ directory, profile, now = Date.now, browserDriver = chromiumLoginDriver,
-  refreshFetch, onRefreshDiagnostic, faultHook, loginBrowserAdapters = {} } = {}) {
+  refreshFetch, onRefreshDiagnostic, faultHook, loginBrowserAdapters = {}, removeLoginDirectory = cleanupLoginDirectory } = {}) {
   // Trusted host injection, like refreshFetch/qaFetch. CLI and MCP arguments
   // cannot set these functions or attach to another browser.
   if (!loginBrowserAdapters || typeof loginBrowserAdapters !== 'object' || Array.isArray(loginBrowserAdapters) ||
       Object.entries(loginBrowserAdapters).some(([key, value]) => !['spawnImpl', 'resolveBrowser'].includes(key) || typeof value !== 'function')) fail('login_options_invalid');
   if (onRefreshDiagnostic !== undefined && typeof onRefreshDiagnostic !== 'function') fail('auth_options_invalid');
+  if (typeof removeLoginDirectory !== 'function') fail('login_options_invalid');
   const store = createProfileStore({ directory, profile, now, faultHook });
   async function status() {
     let state;
@@ -61,6 +64,7 @@ export function createPersonalAuth({ directory, profile, now = Date.now, browser
     clientIdentityCaptured: Boolean(state.credentials?.clientIdentity),
     deviceContextValidation: 'not_checked',
     storage: 'aes-256-gcm-local-key', keychainProtected: false,
+    ...(process.platform === 'win32' ? { storageDurability: 'file_flush_atomic_replace_no_directory_flush' } : {}),
     ...(state.pending ? { pending: { kind: 'refresh', phase, id: state.pending.id }, retryAllowed: false } : {}) };
   }
   async function login({ replace = false, signal, timeoutMs = 300000, browserPath, onProgress = () => {} } = {}) {
@@ -77,6 +81,7 @@ export function createPersonalAuth({ directory, profile, now = Date.now, browser
       let removeAbort;
       try {
         temporary = await fs.mkdtemp(path.join(store.profileDirectory, '.login-')); await fs.chmod(temporary, 0o700);
+        await checkedDirectory(temporary);
         const interrupted = new Promise((resolve, reject) => {
           removeAbort = () => reject(new PersonalAuthError('login_cancelled'));
           controller.signal.addEventListener('abort', removeAbort, { once: true });
@@ -92,7 +97,7 @@ export function createPersonalAuth({ directory, profile, now = Date.now, browser
           // Bounded cleanup: never hold an indefinitely stalled browser driver
           // or allow its late response to reach commit.
           let cleanupTimer;
-          const stopped = await Promise.race([operation.then(() => true, () => true), new Promise(resolve => { cleanupTimer = setTimeout(() => resolve(false), 3500); })]);
+          const stopped = await Promise.race([operation.then(() => true, () => true), new Promise(resolve => { cleanupTimer = setTimeout(() => resolve(false), process.platform === 'win32' ? 12000 : 3500); })]);
           clearTimeout(cleanupTimer);
           if (!stopped) fail('login_browser_cleanup_failed');
         }
@@ -102,14 +107,20 @@ export function createPersonalAuth({ directory, profile, now = Date.now, browser
         if (credentials.accountInfo.tokenExpiresAt !== null && credentials.accountInfo.tokenExpiresAt <= at ||
           credentials.accountInfo.refreshTokenExpiresAt !== null && credentials.accountInfo.refreshTokenExpiresAt <= at) fail('login_capture_expired');
         if (state.principal && state.principal !== principal(credentials.accountInfo)) fail('login_identity_conflict');
-        await fs.rm(temporary, { recursive: true }); temporary = undefined;
         await store.commit(state.generation, next(state, { credentials, principal: principal(credentials.accountInfo),
           credentialGeneration: state.credentialGeneration + 1, pending: null, authIssue: null,
           lastBrowserLoginAt: at, validation: { state: 'not_checked', at: null } }), lease);
+        // The owned browser has settled and validation/commit succeeded. A busy
+        // temporary lockfile cannot turn this into a failed login or a rescan.
+        let cleanup;
+        try { cleanup = await removeLoginDirectory(temporary); }
+        catch { cleanup = { state: 'deferred', reason: 'login_temporary_directory_retained' }; }
+        temporary = undefined;
         return { saved: true, profile, browserClosed: true, upstreamValidation: 'not_checked', qaPerformed: false,
+          cleanup: cleanup?.state === 'complete' ? { state: 'complete' } : { state: 'deferred', reason: 'login_temporary_directory_retained' },
           deviceContextCaptured: Boolean(credentials.deviceInfo), clientIdentityCaptured: Boolean(credentials.clientIdentity) };
       } catch (error) {
-        cleanupUnconfirmed = error.code === 'login_browser_cleanup_failed';
+        cleanupUnconfirmed = error.code === 'login_browser_cleanup_failed' || error.browserCleanupUnconfirmed === true;
         if (timedOut && error.code !== 'login_browser_cleanup_failed') fail('login_timeout');
         throw publicError(error);
       } finally {
@@ -118,7 +129,7 @@ export function createPersonalAuth({ directory, profile, now = Date.now, browser
         // A process whose termination is unproved must not have its working
         // directory removed underneath it. Keep that isolated private folder
         // for explicit cleanup instead of publishing the captured identity.
-        if (temporary && !cleanupUnconfirmed) await fs.rm(temporary, { recursive: true, force: true });
+        if (temporary && !cleanupUnconfirmed) await removeLoginDirectory(temporary).catch(() => {});
       }
     });
   }
