@@ -8,7 +8,7 @@ const fail=()=>{throw Error('release_check_failed');};
 export async function checkRelease(directory=root) {
   const pkg=JSON.parse(await fs.readFile(path.join(directory,'package.json'),'utf8'));
   const lock=JSON.parse(await fs.readFile(path.join(directory,'package-lock.json'),'utf8'));
-  if(pkg.name!=='@ima-local/standalone'||pkg.version!=='0.1.0-alpha.1'||pkg.private!==true||pkg.bin['ima-local']!=='bin/ima.mjs'
+  if(pkg.name!=='@ima-local/standalone'||pkg.version!=='0.1.0-alpha.2'||pkg.private!==true||pkg.bin['ima-local']!=='bin/ima.mjs'
     ||Object.keys(pkg.dependencies).length||pkg.scripts.postinstall||pkg.scripts.prepare||lock.version!==pkg.version||lock.packages[''].version!==pkg.version)fail();
   const source=await collectSource(directory);
   for(const name of ['ima-core','ima-runtime','ima-agent'])if(JSON.parse(await fs.readFile(path.join(directory,'packages',name,'package.json'))).version!==pkg.version)fail();

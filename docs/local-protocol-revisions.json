@@ -63,7 +63,7 @@
     {
       "file": "packages/ima-core/package.json",
       "originalSha256": "2cc6a9021c5808c7392f5fa97c06637275368c970a13acc78beca5c6d17241c1",
-      "currentSha256": "ab1f3c425f847290aee4ef0295bed4dcaed9dcfe42fea22375ea1de187cd5ed6",
+      "currentSha256": "0b92868b5abee175d67721ca1d936a56607eec6fb977f59dc9db38e5f7c6ded1",
       "reason": "Release metadata version only; protocol behavior unchanged."
     }
   ],

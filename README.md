@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/19Chris19/IMApy/releases/tag/v0.1.0-alpha.1">下载预览版</a> ·
+  <a href="https://github.com/19Chris19/IMApy/releases/tag/v0.1.0-alpha.2">下载预览版</a> ·
   <a href="docs/USAGE.md">使用指南</a> ·
   <a href="docs/ACCEPTANCE.md">验收范围</a> ·
   <a href="CONTRIBUTING.md">参与贡献</a>
@@ -15,7 +15,7 @@
 知识库流式问答、切换模型与快速／深度模式、连续追问、核对联网引用、恢复任务和导出。
 独立运行，无需 Provider A、Docker 或常驻浏览器。
 
-> **`v0.1.0-alpha.1` · 开发预览版**
+> **`v0.1.0-alpha.2` · 开发预览版**
 >
 > 本版仅支持下方 8 类已打通、具有验收依据的核心能力，供个人试用与开发评审。
 > 不是稳定生产版，也不是腾讯官方 SDK。上游协议、账号资格和登录过期可能影响可用性。
@@ -41,14 +41,14 @@ SDK、CLI、11 个 STDIO MCP 工具和 Skill 是同一套能力的入口。已�
 需要 **Node.js 22**。首次扫码已验证范围为 **macOS arm64 + 已安装的 Chromium 系浏览器**。
 
 Windows 已加入实验性权限、浏览器与登录清理适配，参见 [Windows 安装与限制](docs/WINDOWS.md)。离线 CI 与真实扫码验收分别记录，不将用户的临时补丁结果当作本版已通过。
-本版没有公开 npm 发布；从[预发布页面](https://github.com/19Chris19/IMApy/releases/tag/v0.1.0-alpha.1)
+本版没有公开 npm 发布；从[预发布页面](https://github.com/19Chris19/IMApy/releases/tag/v0.1.0-alpha.2)
 下载该页的安装包、源码包、验收文件和 `SHA256SUMS`，放在同一目录核对后安装：
 
 ```sh
 shasum -a 256 -c SHA256SUMS
 npm install --offline --ignore-scripts --omit=dev --no-audit --no-fund \
   --update-notifier=false --prefix "$HOME/.local/opt/imapy-alpha" \
-  ./ima-local-standalone-0.1.0-alpha.1.tgz
+  ./ima-local-standalone-0.1.0-alpha.2.tgz
 export PATH="$HOME/.local/opt/imapy-alpha/node_modules/.bin:$PATH"
 
 ima-local --version

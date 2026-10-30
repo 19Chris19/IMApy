@@ -11,7 +11,7 @@
 shasum -a 256 -c SHA256SUMS
 npm install --offline --ignore-scripts --omit=dev --no-audit --no-fund \
   --update-notifier=false --prefix "$HOME/.local/opt/imapy-alpha" \
-  ./ima-local-standalone-0.1.0-alpha.1.tgz
+  ./ima-local-standalone-0.1.0-alpha.2.tgz
 ```
 
 以下 `ima-local` 指安装目录中的 `node_modules/.bin/ima-local`，请将该目录加入 PATH，
